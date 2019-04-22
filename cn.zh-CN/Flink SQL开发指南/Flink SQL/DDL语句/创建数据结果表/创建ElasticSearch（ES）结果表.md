@@ -14,7 +14,7 @@ ElasticSearch结果表的实现使用REST API，理论上兼容ElasticSearch的�
   field2 VARBINARY, 
   field3 VARCHAR,
   PRIMARY KEY(field1)
-) WIHT (
+) WITH (
   type ='elasticsearch',
   endPoint = 'yourEndPoint',
   accessId = 'yourAccessId',
