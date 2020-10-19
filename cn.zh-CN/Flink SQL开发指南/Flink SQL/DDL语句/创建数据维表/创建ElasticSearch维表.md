@@ -7,7 +7,7 @@
 ## DDL定义 {#section_pf4_u42_xtx .section}
 
 实时计算支持使用ElasticSearch（ES）作为维表，示例代码如下。
-
+做维表有误
 ``` {#codeblock_3ix_9ik_21x .language-sql}
  CREATE TABLE es_stream_sink(
   field1 LONG, 
