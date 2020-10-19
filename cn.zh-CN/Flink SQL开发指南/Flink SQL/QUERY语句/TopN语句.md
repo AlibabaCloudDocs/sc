@@ -62,8 +62,8 @@ FROM (
             city
         FROM tmp_search
         GROUP BY SUBSTRING(time_str,1,12), keyword, city
-    ) a 
-) t
+    ) 
+) 
 WHERE rownum <= 100
 ```
 
@@ -119,8 +119,8 @@ WHERE rownum <= 100
             IP
             FROM  source_table
             GROUP BY SUBSTRING(`TIME`,1,2), IP
-        )a
-    ) t
+        )
+    ) 
     WHERE rownum <= 3 --可以根据真实top值取相应的数值，这里取得是测试数据。
     ```
 
