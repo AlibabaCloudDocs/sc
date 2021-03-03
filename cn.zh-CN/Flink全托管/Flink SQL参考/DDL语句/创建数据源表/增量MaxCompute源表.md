@@ -111,14 +111,14 @@ CREATE TEMPORARY TABLE odps_source (
     'startpartition' = 'ds=2018****'
 );
 
-CREATE TEMPORARY TABLE backhole_sink (
+CREATE TEMPORARY TABLE blackhole_sink (
     cid VARCHAR,
     rt DOUBLE
 ) WITH (
-    'connector'='backhole'
+    'connector'='blackhole'
 );
 
-INSERT INTO backhole_sink 
+INSERT INTO blackhole_sink 
 SELECT 
     cid, rt FROM odps_source;
 ```
