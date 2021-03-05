@@ -10,6 +10,7 @@ keyword: [MySQL的CDC, CDC]
 
 -   本文仅适用于VVP 2.3.0及以上版本。
 -   不支持定义Watermark。
+-   仅支持单并发消费CDC-MySQL数据。
 
 ## 什么是MySQL的CDC源表
 
