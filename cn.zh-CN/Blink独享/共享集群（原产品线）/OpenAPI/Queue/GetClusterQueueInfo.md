@@ -20,37 +20,37 @@ GET /api/v2/clusters/[clusterId]/queueinfo HTTP/1.1
 
 |名称|类型|位置|是否必选|示例值|描述|
 |--|--|--|----|---|--|
-|clusterId|String|Path|是|h6272cj4etgqe7oets4s\*\*\*\*|集群ID
+|clusterId|String|Path|是|h6272cj4etgqe7oets4s\*\*\*\*|集群ID。
 
  **说明：** 您可以使用[listcluster](~~117251~~)获取集群ID信息。 |
-|RegionId|String|Header|是|cn-hangzhou|区域ID |
+|RegionId|String|Header|是|cn-hangzhou|区域ID。 |
 
 ## 返回数据
 
 |名称|类型|示例值|描述|
 |--|--|---|--|
-|Queues|Array of Queue| |返回结果的数据内容 |
+|Queues|Array of Queue| |返回Queues详情。 |
 |Queue| | | |
-|ClusterId|String|h6272cj4etgqe7oets4s\*\*\*\*|集群ID
+|ClusterId|String|h6272cj4etgqe7oets4s\*\*\*\*|集群ID。
 
  **说明：** 您可以使用[listcluster](~~117251~~)获取集群ID信息。 |
-|ExternalInfo|String|\{\\"minGpu\\":0,\\"maxGpu\\":0,\\"name\\":\\"root.cloudpay\_dev\\",\\"minMem\\":24535,\\"usedVCore\\":50,\\"usedGpu\\":0,\\"usedMem\\":2816,\\"minVCore\\":599,\\"maxVCore\\":600,\\"maxMem\\":24576\}|未转换为INTEGER时的原始信息
+|ExternalInfo|String|\{\\"minGpu\\":0,\\"maxGpu\\":0,\\"name\\":\\"root.cloudpay\_dev\\",\\"minMem\\":24535,\\"usedVCore\\":50,\\"usedGpu\\":0,\\"usedMem\\":2816,\\"minVCore\\":599,\\"maxVCore\\":600,\\"maxMem\\":24576\}|未转换为INTEGER时的原始信息。
 
  **说明：**
 
 -   仅在`aliyun-java-sdk-foas 2.7.0`及以上版本返回ExternalInfo。
 -   Integer类型返回-9999时，表示该数值超过Integer能表示的大小，请从ExternalInfo中取值。 |
-|MaxGpu|Integer|0|最大GPU |
-|MaxMem|Integer|24576|内存最大值（MB） |
-|MaxVCore|Integer|599|最大Vcore数 |
-|MinGpu|Integer|0|最小GPU |
-|MinMem|Integer|24535|最小内存数（MB） |
-|MinVCore|Integer|599|最小Vcore数 |
-|QueueName|String|root.cloudpay\_dev|队列名称 |
-|UsedGpu|Integer|0|已使用GPU |
-|UsedMem|Integer|2816|已使用内存（MB） |
-|UsedVCore|Integer|50|已使用Vcore |
-|RequestId|String|DACD3B42-5977-4293-B5A8-197A33A954BB|请求ID |
+|MaxGpu|Integer|0|最大GPU。 |
+|MaxMem|Integer|24576|内存最大值（MB）。 |
+|MaxVCore|Integer|599|最大Vcore数。 |
+|MinGpu|Integer|0|最小GPU。 |
+|MinMem|Integer|24535|最小内存数（MB）。 |
+|MinVCore|Integer|599|最小Vcore数。 |
+|QueueName|String|root.cloudpay\_dev|队列名称。 |
+|UsedGpu|Integer|0|已使用GPU。 |
+|UsedMem|Integer|2816|已使用内存（MB）。 |
+|UsedVCore|Integer|50|已使用Vcore。 |
+|RequestId|String|DACD3B42-5977-4293-B5A8-197A33A954BB|请求ID。 |
 
 ## 示例
 
