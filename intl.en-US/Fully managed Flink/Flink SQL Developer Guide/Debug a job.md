@@ -2,7 +2,7 @@
 
 This topic describes how to enable job debugging to simulate job running, check outputs, and verify the business logic of SELECT statements. This makes job development efficient and reduces the risks of poor data quality.
 
-A session cluster for SQL previews is created. Before job debugging, the system checks whether a session cluster that allows SQL previews exists. If no such a session cluster exists, the system prompts and guides you to configure a session cluster that allows SQL previews. For more information about how to configure a session cluster, see[Configure a session cluster](/intl.en-US/Fully managed Flink/Configure a session cluster.md).
+A session cluster for SQL previews is created. Before job debugging, the system checks whether a session cluster that allows SQL previews exists. If no such a session cluster exists, the system prompts and guides you to configure a session cluster that allows SQL previews. For more information about how to configure a session cluster, see [Configure a session cluster](/intl.en-US/Fully managed Flink/Configure a session cluster.md).
 
 1.  Log on to the [Realtime Compute for Apache Flink console](https://realtime-compute.console.aliyun.com/regions/cn-shanghai).
 
@@ -31,7 +31,7 @@ A session cluster for SQL previews is created. Before job debugging, the system 
 
         5.  In the script editing box, modify the schema parameters and the parameters in the WITH clause.
 
-            **Note:** Before you use a user-defined function \(UDF\) in an SQL statement, register the UDF. Only the registered UDFs can be used. For information about how to register a UDF, see [Manage UDFs]().
+            **Note:** Before you use a user-defined function \(UDF\) in an SQL statement, register the UDF. Only the registered UDFs can be used. For information about how to register a UDF, see [Manage UDFs](/intl.en-US/Fully managed Flink/Flink SQL Developer Guide/Manage UDFs.md).
 
         6.  Click **Validate**.
         7.  Click **Execute**.
