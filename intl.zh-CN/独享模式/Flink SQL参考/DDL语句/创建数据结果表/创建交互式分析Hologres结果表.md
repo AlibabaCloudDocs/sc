@@ -8,9 +8,10 @@ keyword: 创建交互式分析Hologres结果表
 
 **说明：**
 
--   本文仅适用于Blink 3.6.0及以上版本正式，如果您的Blink为3.6.0以下的版本，您可以：
+-   本文仅适用于Blink 3.6.0及以上版本，如果您的Blink为3.6.0以下的版本，您可以：
     -   升级Blink版本至3.6.0及以上版本，详细请参见[管理独享集群Blink版本](/intl.zh-CN/独享模式/Flink SQL开发指南/管理独享集群Blink版本.md)。
-    -   [提交工单](https://workorder-intl.console.aliyun.com/)获取需要的JAR文件，安装使用。
+    -   [提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)[提交工单](https://workorder-intl.console.aliyun.com/)获取需要的JAR文件，安装使用。
+-   本文仅适用于Blink 3.6.0及以上版本。
 -   建议您使用Hologres 0.7及以上版本。
 -   由于Hologres是异步写入数据的，因此需要添加blink.checkpoint.fail\_on\_checkpoint\_error=true作业参数，作业异常时才会触发Failover。
 
@@ -43,11 +44,13 @@ create table Hologres_sink(
 |参数|说明|是否必填|备注|
 |--|--|----|--|
 |type|结果表类型|是|固定值为hologres。|
-|dbname|数据库名称|是|无|
+|dbname|数据库名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+
+|是|无|
 |tablename|表名称|是|无|
 |username|用户名|是|无|
 |password|密码|是|无|
-|endpoint|Hologres VPC 端点信息|是|详情请参见[访问域名](/intl.zh-CN/实例管理/访问域名.md)。|
+|endpoint|Hologres VPC 端点信息|是|详情请参见[访问域名](/intl.zh-CN/实例管理/访问域名.md)。请联系阿里云运维工程师获取。|
 |field\_delimiter|导出数据时，不同行之间使用的分隔符。 **说明：** 不能在数据中插入分隔符，且需要与bulkload语义一同使用。
 
 |否|默认值为"\\u0002"。|
@@ -85,6 +88,24 @@ create table Hologres_sink(
 -   默认情况下，Hologres Sink只能向一张表导入数据。如果导入数据至分区表的父表，即使导入成功，也会查询数据失败。您可以设置参数partitionRouter为true，开启自动将数据路由到对应分区表的功能。注意事项如下：
     -   tablename参数需要填写为父表的表名。
     -   Blink Connector不会自动创建分区表，因此，需要您提前手动创建需要导入数据的分区表，否则会导入失败。
+
+## 宽表Merge和局部更新功能
+
+在把多个流的数据写到一张Hologres宽表的场景中，会涉及到宽表Merge和数据的局部更新。下面通过一个示例来介绍如何设置。
+
+假设有两个Flink数据流，一个数据流中包含A、B和C字段，另一个数据流中包含A、D和E字段，Hologres宽表WIDE\_TABLE包含A、B、C、D和E字段，其中A字段为主键。具体操作如下：
+
+1.  使用Flink SQL创建两张Hologres结果表，其中一张表只声明A、B和C字段，另一张表只声明A、D和E字段。这两张表都映射至宽表WIDE\_TABLE。
+2.  两张结果表的属性设置：
+    -   mutatetype设置为insertorupdate，可以根据主键更新数据。
+    -   ignoredelete设置为true，防止回撤消息产生Delete请求。
+3.  将两个Flink数据流的数据分别INSERT至对应的结果表中。
+
+**说明：** 在上述场景中，有如下限制：
+
+-   宽表必须有主键。
+-   每个数据流的数据都必须包含完整的主键字段。
+-   列存模式的宽表Merge场景在高RPS的情况下，CPU使用率会偏高，建议关闭表中字段的Dictionary encoding功能。
 
 ## 类型映射
 
