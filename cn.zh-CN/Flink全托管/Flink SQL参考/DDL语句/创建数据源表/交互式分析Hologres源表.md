@@ -30,18 +30,20 @@ create table hologres_source(
 
 **说明：**
 
--   Flink全托管不支持源表中定义计算列。
--   Flink全托管以批模式读取Hologres源表数据，即只扫描一次Hologres全表，扫描结束，消费结束，新到Hologres源表的数据不会被读取。
+-   Flink不支持源表中定义计算列。
+-   Flink以批模式读取Hologres源表数据，即只扫描一次Hologres全表，扫描结束，消费结束，新到Hologres源表的数据不会被读取。
 
 ## WITH参数
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
 |connector|源表类型|是|固定值为hologres。|
-|dbname|数据库名称|是|无|
-|tablename|表名称|是|无|
-|username|用户名，请填写阿里云账号的AccessKey ID。|是|无|
-|password|密码，请填写阿里云账号的AccessKey Secret。|是|无|
+|dbname|数据库名称|是|无。|
+|tablename|表名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+
+|是|无。|
+|username|用户名，请填写阿里云账号的AccessKey ID。|是|无。|
+|password|密码，请填写阿里云账号的AccessKey Secret。|是|无。|
 |endpoint|Hologres端点|是|详情请参见[访问域名](/cn.zh-CN/实例管理/访问域名.md)。|
 |field\_delimiter|导出数据时，不同行之间使用的分隔符。**说明：** 只有在bulkread = true时有效。
 
@@ -80,10 +82,10 @@ from hologres_source;
 
 ## 类型映射
 
-交互式分析Hologres和Flink全托管字段类型对应关系如下，建议使用该对应关系进行DDL声明。
+交互式分析Hologres和Flink字段类型对应关系如下，建议使用该对应关系进行DDL声明。
 
-|Hologres字段类型|Flink全托管字段类型|
-|------------|------------|
+|Hologres字段类型|Flink字段类型|
+|------------|---------|
 |INT|INT|
 |INT\[\]|ARRAY|
 |BIGINT|BIGINT|
