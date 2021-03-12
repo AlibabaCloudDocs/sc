@@ -49,11 +49,13 @@ CREATE TABLE hologres_dim(
 |参数|说明|是否必填|备注|
 |--|--|----|--|
 |connector|维表类型|是|固定值为`hologres`（小写）。|
-|endPoint|hologres endpoint|是|详情请参见[访问域名](/cn.zh-CN/了解控制台/访问域名.md)。|
-|tablename|表名|是|无|
-|dbname|数据库名|是|无|
-|username|用户名，请填写阿里云账号的AccessKey ID。|是|无|
-|password|密码，请填写阿里云账号的AccessKey Secret。|否|无|
+|endPoint|hologres endpoint|是|详情请参见[访问域名](/cn.zh-CN/实例管理/访问域名.md)。|
+|tablename|表名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+
+|是|无。|
+|dbname|数据库名称|是|无。|
+|username|用户名，请填写阿里云账号的AccessKey ID。|是|无。|
+|password|密码，请填写阿里云账号的AccessKey Secret。|否|无。|
 
 ## CACHE参数
 
@@ -65,7 +67,7 @@ CREATE TABLE hologres_dim(
 需要配置相关参数：缓存大小（cacheSize）和缓存更新时间间隔（cacheTTLMs）。 |
 |cacheSize|缓存大小|否|选择`LRU`缓存策略后，可以设置缓存大小，默认值为10000行。|
 |cacheTTLMs|缓存更新时间间隔|否|当选择LRU缓存策略后，可以设置缓存失效的超时时间，默认不过期。|
-|async|是否异步同步数据。|否|取值如下：-   true：表示异步同步数据。
+|async|是否异步同步数据|否|取值如下：-   true：表示异步同步数据。
 -   false（默认值）：表示不进行异步同步数据。 |
 
 ## 类型映射
