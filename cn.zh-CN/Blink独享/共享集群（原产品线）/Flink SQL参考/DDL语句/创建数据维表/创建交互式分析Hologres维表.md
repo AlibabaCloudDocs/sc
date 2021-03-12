@@ -8,7 +8,7 @@ keyword: 创建交互式分析Hologres维表
 
 **说明：**
 
--   本文仅适用于Blink 3.6.0及以上版本。如果您的Blink为3.6.0以下的版本，您可以[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)获取需要的JAR文件，安装使用。
+-   本文仅适用于Blink 3.6.0及以上版本。如果您的Blink为3.6.0以下的版本，您可以[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)[提交工单](https://workorder-intl.console.aliyun.com/)获取需要的JAR文件，安装使用。
 -   建议您使用Hologres 0.7及以上版本。
 
 ## 什么是交互式分析Hologres
@@ -59,8 +59,10 @@ CREATE TABLE rds_dim_table(
 |--|--|----|--|
 |type|数据库类型|是|固定值为hologres。|
 |endpoint|Hologres端点|是|无|
-|tablename|读取的表|是|无|
-|dbname|读取的数据库|是|无|
+|tablename|表名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+
+|是|无|
+|dbname|数据库名称|是|无|
 |username|用户名|是|无|
 |password|密码|是|无|
 
