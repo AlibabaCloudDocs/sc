@@ -8,7 +8,7 @@ keyword: 创建交互式分析Hologres源表
 
 **说明：**
 
--   本文仅适用于Blink 3.6.0及以上版本，如果您的Blink为3.6.0以下的版本，您可以[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)获取需要的JAR文件，安装使用。
+-   本文仅适用于Blink 3.6.0及以上版本，如果您的Blink为3.6.0以下的版本，您可以[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)[提交工单](https://workorder-intl.console.aliyun.com/)获取需要的JAR文件，安装使用。
 -   建议您使用Hologres 0.7及以上版本。
 -   仅支持行存储Hologres表作为实时计算Flink源表。
 -   Hologres源表支持Projection Pushdown操作，您可以只读取需要的列。
@@ -44,10 +44,12 @@ create table mysource(
 |--|--|----|--|
 |type|源表类型|是|固定值为hologres。|
 |dbname|数据库名称|是|无|
-|tablename|表名称|是|无|
+|tablename|表名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+
+|是|无|
 |username|用户名，请填写阿里云账号的AccessKey ID。|是|无|
 |password|密码，请填写阿里云账号的AccessKey Secret。|是|无|
-|endpoint|Hologres端点|是|详情请参见[访问域名](/cn.zh-CN/了解控制台/访问域名.md)。|
+|endpoint|Hologres端点|是|详情请参见[访问域名](/cn.zh-CN/实例管理/访问域名.md)。请联系阿里云运维工程师获取。|
 |field\_delimiter|导出数据时，不同行之间使用的分隔符。 **说明：** 不能在数据中插入分隔符。
 
 |是|默认值为"\\u0002"。|
