@@ -34,7 +34,9 @@ create table hologres_sink(
 |--|--|----|--|
 |connector|结果表类型|是|固定值为hologres。|
 |dbname|数据库名称|是|无|
-|tablename|表名称|是|无|
+|tablename|表名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+
+|是|无|
 |username|用户名|是|无|
 |password|密码|是|无|
 |endpoint|Hologres端点|是|格式为<ip\>:<port\>。|
