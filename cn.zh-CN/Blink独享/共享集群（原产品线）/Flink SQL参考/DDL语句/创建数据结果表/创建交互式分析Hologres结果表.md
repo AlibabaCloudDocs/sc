@@ -8,9 +8,10 @@ keyword: 创建交互式分析Hologres结果表
 
 **说明：**
 
--   本文仅适用于Blink 3.6.0及以上版本正式，如果您的Blink为3.6.0以下的版本，您可以：
+-   本文仅适用于Blink 3.6.0及以上版本，如果您的Blink为3.6.0以下的版本，您可以：
     -   升级Blink版本至3.6.0及以上版本，详细请参见[管理独享集群Blink版本](/cn.zh-CN/Blink独享/共享集群（原产品线）/Flink SQL开发指南/管理独享集群Blink版本.md)。
-    -   [提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)获取需要的JAR文件，安装使用。
+    -   [提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)[提交工单](https://workorder-intl.console.aliyun.com/)获取需要的JAR文件，安装使用。
+-   本文仅适用于Blink 3.6.0及以上版本。
 -   建议您使用Hologres 0.7及以上版本。
 -   由于Hologres是异步写入数据的，因此需要添加blink.checkpoint.fail\_on\_checkpoint\_error=true作业参数，作业异常时才会触发Failover。
 
@@ -43,23 +44,25 @@ create table Hologres_sink(
 |参数|说明|是否必填|备注|
 |--|--|----|--|
 |type|结果表类型|是|固定值为hologres。|
-|dbname|数据库名称|是|无|
+|dbname|数据库名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+
+|是|无|
 |tablename|表名称|是|无|
 |username|用户名|是|无|
 |password|密码|是|无|
-|endpoint|Hologres VPC 端点信息|是|详情请参见[访问域名](/cn.zh-CN/了解控制台/访问域名.md)。|
+|endpoint|Hologres VPC 端点信息|是|详情请参见[访问域名](/cn.zh-CN/实例管理/访问域名.md)。请联系阿里云运维工程师获取。|
 |field\_delimiter|导出数据时，不同行之间使用的分隔符。 **说明：** 不能在数据中插入分隔符，且需要与bulkload语义一同使用。
 
 |否|默认值为"\\u0002"。|
 |mutateType|流式写入语义，详情请参见[流式语义](#section_yce_507_nhr)。|否|默认值为insertorignore。|
-|partitionrouter|分区表写入|否|默认值为false。 **说明：** 3.6.x版本Hologres Sink暂不支持自动创建分区表。因此，在写入分区表之前，需要您在Hologres中手工创建对应的子表。 |
-|ignoredelete|是否忽略撤回消息。|否|默认值为false。 **说明：** 仅在使用流式语义时生效。 |
-|createPartTable|当写入分区表时，是否根据分区值自动创建不存在的分区表。 **说明：** 如果分区值中存在短划线（-），暂不支持自动创建分区表。
+|partitionrouter|分区表写入|否|默认值为false。**说明：** 3.6.x版本Hologres Sink暂不支持自动创建分区表。因此，在写入分区表之前，需要您在Hologres中手工创建对应的子表。 |
+|ignoredelete|是否忽略撤回消息。|否|默认值为false。**说明：** 仅在使用流式语义时生效。 |
+|createPartTable|当写入分区表时，是否根据分区值自动创建不存在的分区表。**说明：** 如果分区值中存在短划线（-），暂不支持自动创建分区表。
 
 |否|-   false（默认值）：不会自动创建。
 -   true：自动创建。
 
- **说明：** 仅Blink 3.7以上版本支持该参数。 |
+**说明：** 仅Blink 3.7以上版本支持该参数。 |
 
 ## 流式语义
 
