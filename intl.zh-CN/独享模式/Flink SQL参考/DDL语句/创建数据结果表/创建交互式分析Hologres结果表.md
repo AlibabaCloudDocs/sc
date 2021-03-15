@@ -10,8 +10,7 @@ keyword: 创建交互式分析Hologres结果表
 
 -   本文仅适用于Blink 3.6.0及以上版本，如果您的Blink为3.6.0以下的版本，您可以：
     -   升级Blink版本至3.6.0及以上版本，详细请参见[管理独享集群Blink版本](/intl.zh-CN/独享模式/Flink SQL开发指南/管理独享集群Blink版本.md)。
-    -   [提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)[提交工单](https://workorder-intl.console.aliyun.com/)获取需要的JAR文件，安装使用。
--   本文仅适用于Blink 3.6.0及以上版本。
+    -   [提交工单](https://workorder-intl.console.aliyun.com/)获取需要的JAR文件，安装使用。
 -   建议您使用Hologres 0.7及以上版本。
 -   由于Hologres是异步写入数据的，因此需要添加blink.checkpoint.fail\_on\_checkpoint\_error=true作业参数，作业异常时才会触发Failover。
 
@@ -50,7 +49,7 @@ create table Hologres_sink(
 |tablename|表名称|是|无|
 |username|用户名|是|无|
 |password|密码|是|无|
-|endpoint|Hologres VPC 端点信息|是|详情请参见[访问域名](/intl.zh-CN/实例管理/访问域名.md)。请联系阿里云运维工程师获取。|
+|endpoint|Hologres VPC 端点信息|是|详情请参见[访问域名](/intl.zh-CN/实例管理/访问域名.md)。|
 |field\_delimiter|导出数据时，不同行之间使用的分隔符。 **说明：** 不能在数据中插入分隔符，且需要与bulkload语义一同使用。
 
 |否|默认值为"\\u0002"。|
