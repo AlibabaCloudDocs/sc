@@ -8,7 +8,7 @@ keyword: 创建交互式分析Hologres维表
 
 **说明：**
 
--   本文仅适用于Blink 3.6.0及以上版本。如果您的Blink为3.6.0以下的版本，您可以[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)[提交工单](https://workorder-intl.console.aliyun.com/)获取需要的JAR文件，安装使用。
+-   本文仅适用于Blink 3.6.0及以上版本。如果您的Blink为3.6.0以下的版本，您可以[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?spm=5176.2020520129.console-base-top.dwork-order-1.29d546aee0gsiH)获取需要的JAR文件，安装使用。
 -   建议您使用Hologres 0.7及以上版本。
 
 ## 什么是交互式分析Hologres
