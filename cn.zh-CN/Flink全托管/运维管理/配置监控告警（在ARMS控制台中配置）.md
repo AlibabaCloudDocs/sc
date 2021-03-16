@@ -10,11 +10,11 @@ Flink全托管支持配置作业运行的监控告警，作业运行过程中，
 
 在ARMS产品中配置监控告警时，需要指定集群、类型、大盘和PromQL等信息，但此方式操作复杂、上手成本高、告警配置效率低。您可以在Flink全托管开发控制台，快速配置监控告警，操作简单、易用，效率高，详情请参见[配置监控告警（在Flink全托管开发控制台配置）](/cn.zh-CN/Flink全托管/运维管理/配置监控告警（在Flink全托管开发控制台配置）.md)。
 
-1.  登录[实时计算统一控制台](https://realtime-compute.console.aliyun.com/regions/cn-shanghai)。
+1.  登录[实时计算控制台](https://realtime-compute.console.aliyun.com/regions/cn-shanghai)。
 
 2.  在**Flink全托管**页签，单击对应工作空间**操作**列下的**开发控制台**。
 
-3.  在左侧导航栏上，单击**作业列表**。
+3.  在左侧导航栏上，单击**作业运维**。
 
 4.  单击目标作业名称。
 
@@ -22,7 +22,7 @@ Flink全托管支持配置作业运行的监控告警，作业运行过程中，
 
 5.  在**作业概览**页面右上角，单击**指标**。
 
-    ![Metrics](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1639279951/p111848.png)
+    ![指标](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/3165635161/p247662.png)
 
 6.  在左侧导航栏上，单击**Alerting**。
 
