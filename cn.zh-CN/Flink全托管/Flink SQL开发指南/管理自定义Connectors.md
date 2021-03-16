@@ -8,25 +8,27 @@
 -   如果您提交的自定义Connectors类型，Flink全托管产品已经内置，则将以您提交的自定义Connectors来启动作业，如果您后续删除了自定义的Connectors，则会使用Flink全托管产品内置的Connectors。
 -   同种类型的Connectors仅可以上传一次。
 
-为了避免JAR依赖冲突，您需要注意以下几点：
+为了避免JAR包依赖冲突，您需要注意以下几点：
 
--   Flink镜像和Pom依赖Flink版本请保持一致。
--   请不要上传Runtime层的JAR，即在依赖中添加`<scope>provided</scope>`。
+-   Flink镜像和Pom依赖的Flink版本请保持一致。
+-   请不要上传Runtime层的JAR包，即在依赖中添加`<scope>provided</scope>`。
 -   其他第三方依赖请采用Shade方式打包，Shade打包详情参见[Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/index.html)。
 
 ## 创建自定义Connectors
 
-1.  登录[实时计算统一控制台](https://realtime-compute.console.aliyun.com/regions/cn-shanghai)。
+1.  登录[实时计算控制台](https://realtime-compute.console.aliyun.com/regions/cn-shanghai)。
 
 2.  在**Flink全托管**页签，单击目标工作空间**操作**列下的**开发控制台**。
 
-3.  在左侧导航栏，选择**应用** \> **SQL编辑器**。
+3.  在左侧导航栏，选择**应用** \> **作业开发**。
 
 4.  单击**Connectors**页签。
 
 5.  单击![加号](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5741796061/p187440.png)图标。
 
     ![添加connector](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5741796061/p187441.png)
+
+    ![添加connector](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1233574161/p245238.png)
 
 6.  上传自定义Connectors JAR文件。
 
@@ -47,11 +49,11 @@
 
 ## 更新自定义Connectors
 
-1.  登录[实时计算统一控制台](https://realtime-compute.console.aliyun.com/regions/cn-shanghai)。
+1.  登录[实时计算控制台](https://realtime-compute.console.aliyun.com/regions/cn-shanghai)。
 
 2.  在**Flink全托管**页签，单击目标工作空间**操作**列下的**开发控制台**。
 
-3.  在左侧导航栏，选择**应用** \> **SQL编辑器**。
+3.  在左侧导航栏，选择**应用** \> **作业开发**。
 
 4.  单击**Connectors**页签。
 
@@ -78,11 +80,11 @@
 
 如果您的自定义Connectors不再使用，您可以按照以下步骤删除自定义Connectors。
 
-1.  登录[实时计算统一控制台](https://realtime-compute.console.aliyun.com/regions/cn-shanghai)。
+1.  登录[实时计算控制台](https://realtime-compute.console.aliyun.com/regions/cn-shanghai)。
 
 2.  在**Flink全托管**页签，单击目标工作空间**操作**列下的**开发控制台**。
 
-3.  在左侧导航栏，选择**应用** \> **SQL编辑器**。
+3.  在左侧导航栏，选择**应用** \> **作业开发**。
 
 4.  单击**Connectors**页签。
 
