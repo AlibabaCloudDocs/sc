@@ -36,7 +36,9 @@ create table kafka_sink(
 |properties.bootstrap.servers|Kafka Broker地址|是|STRING|格式为`host:port,host:port,host:port`，以英文逗号（,）分割。|
 |format|Flink Kafka Connector在反序列化来自Kafka的消息时使用的格式。|是|STRING|格式取值如下：-   csv
 -   json
--   avro |
+-   avro
+-   debezium-json
+-   canal-json |
 |sink.partitioner|从Flink分区到Kafka分区的映射模式。|否|STRING|映射模式取值如下：-   fixed：每个Flink分区对应至多一个Kafka分区。
 -   round-robin：Flink分区中的数据将被轮流分配至Kafka的各个分区。
 -   自定义FlinkKafkaPartitioner的子类：如果fixed和round-robin不满足您的需求，您可以自定义映射模式到FlinkKafkaPartitioner的子类。例如`org.mycompany.MyPartitioner`。 |
