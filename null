@@ -1,0 +1,8 @@
+# 内置函数
+
+本文为您介绍FlinK提供的用于数据转换的内置函数。
+
+Flink V1.11内置函数详情，请参见[Flink Table API & SQL开发指南](https://ci.apache.org/projects/flink/flink-docs-release-1.11/dev/table/functions/systemFunctions.html)。
+
+**说明：** 如果内置函数中不存在您所需的函数，您可以通过自定义函数实现，自定义函数详情请参见[自定义函数概述](/cn.zh-CN/Flink全托管/Flink SQL参考/自定义函数（UDX）/概述.md)。
+
