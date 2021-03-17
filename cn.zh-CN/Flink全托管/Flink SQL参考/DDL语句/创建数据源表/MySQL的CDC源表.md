@@ -9,8 +9,8 @@ keyword: [MySQL的CDC, CDC]
 **说明：**
 
 -   本文仅适用于VVP 2.3.0及以上版本。
--   不支持定义Watermark。
 -   仅支持单并发消费CDC-MySQL数据。
+-   MySQL CDC 源表目前不支持定义Watermark。
 -   在全量读取MYSQL CDC源表时，Checkpoint不生效，因此读取全量MYSQL CDC源表时，不建议开启自动调优。
 
 ## 什么是MySQL的CDC源表
@@ -27,7 +27,7 @@ MySQL的CDC源表，即MySQL的流式源表，支持对MySQL数据库的全量�
 
 -   全局读锁（FLUSH TABLES WITH READ LOCK）的影响
 
-    全局读锁阶段会去获取Binlog位点以及表的schema，因此其持锁耗时与表的数量成正比，数据库持锁耗时可能达到秒级。而读锁是会阻塞写入操作，因此仍可能对线上业务造成影响。如果您希望跳过锁阶段，且能容忍非Exactly Once语义，则可以通过增加 `'debezium.snapshot.locking.mode' = 'none'`属性来显式跳过锁阶段。
+    全局读锁阶段会去获取Binlog位点以及表的Schema，因此其持锁耗时与表的数量成正比，数据库持锁耗时可能达到秒级，例如上千张表大概两三秒。而读锁是会阻塞写入操作，因此仍可能对线上业务造成影响。如果您希望跳过锁阶段，且能容忍非Exactly Once语义，则可以通过增加 `'debezium.snapshot.locking.mode' = 'none'`属性来显式跳过锁阶段。
 
 -   每个作业需显式配置不同的SERVER ID
 
@@ -137,4 +137,8 @@ MySQL的CDC和Flink字段类型对应关系如下。
 
     -   增加并发度。
     -   开启minibatch等聚合优化参数（下游聚合节点）。
+-   不支持定义Watermark，那怎么进行窗口聚合？
+
+    如果您需要在MySQL CDC源表上进行窗口聚合，可以考虑采用非窗口聚合的方式，即将时间字段转换成窗口值，然后根据窗口值进行GROUP BY聚合。例如，统计每个店铺每分钟的订单数和销量，代码为`SELECT shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm'), COUNT(*), SUM(price) FROM order_mysql_cdc GROUP BY shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm')`。
+
 
