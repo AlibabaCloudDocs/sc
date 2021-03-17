@@ -1,15 +1,8 @@
 # Overview
 
-Flink SQL is a programming language developed by Alibaba Cloud to simplify the computing model of Realtime Compute for Apache Flink and to decrease the requirements for user skills. Flink SQL complies with standard SQL syntax.
+This topic describes the built-in functions provided by Realtime Compute for Apache Flink for data conversion.
 
-This topic describes how to use Flink SQL in Realtime Compute for Apache Flink. Flink SQL Reference consists of the following topics:
+For more information about the built-in functions of Apache Flink V1.11, visit [System \(Built-in\) Functions](https://ci.apache.org/projects/flink/flink-docs-release-1.11/dev/table/functions/systemFunctions.html).
 
--   [Keywords]()
--   [Create a data view]()
--   [DDL statements]()
--   [DML statements]()
--   [Query statements]()
--   [UDXs]()
--   [Window functions]()
--   [Built-in functions]()
+**Note:** If the built-in functions that you need cannot be found, you can implement user-defined functions. For more information about user-defined functions, see [Overview](/intl.en-US/Fully managed Flink/Flink SQL Reference/UDXs/Overview.md).
 
