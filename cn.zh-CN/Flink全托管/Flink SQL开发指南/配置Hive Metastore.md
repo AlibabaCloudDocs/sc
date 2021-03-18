@@ -5,7 +5,8 @@
 您可以将Hive Metastore配置文件和Hadoop依赖存放至对象存储OSS控制台指定目录后，再在Flink全托管开发控制台上配置Hive Metastore功能，配置成功后，您就可以在Flink全托管开发控制台上直接使用DML创建业务逻辑，获取Hive中表的元数据信息，无需再使用DDL语句声明相应的表信息。使用Hive Metastore功能需要注意以下几点：
 
 -   支持自建Hive Metastore。
--   Hive Metastore版本兼容为2.2.0~2.3.6。
+-   VVP 2.3.0及以上版本支持Hive Metastore。
+-   VVP 2.3.0版本仅支持Hive Metastore 2.3.6版本；VVP 2.3.0以上版本支持Hive Metastore 2.2.0~2.3.6。
 -   Hive Metastore不支持Kerberos鉴权。
 -   一个Flink全托管实例仅支持一个Hive Metastore，多项目无法设置多Hive Metastore。
 -   Hive Metastore只读，即您不能通过Flink全托管开发控制台在Hive中创建物理表。
@@ -18,7 +19,7 @@
 
 2.  在OSS控制台新建文件夹，并将Hive配置文件和Hadoop依赖放置目标路径。
 
-    1.  登录[OSS管理控制台](https://oss.console.aliyun.com/)[OSS管理控制台](https://partners-intl.console.aliyun.com/#/oss)。
+    1.  登录[OSS管理控制台](https://oss.console.aliyun.com/)。
 
     2.  在左侧导航栏，单击**Bucket列表**。
 
