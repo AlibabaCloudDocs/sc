@@ -10,8 +10,8 @@ keyword: [MySQL的CDC, CDC]
 
 -   本文仅适用于VVP 2.3.0及以上版本。
 -   仅支持单并发消费CDC-MySQL数据。
--   MySQL CDC 源表目前不支持定义Watermark。
 -   在全量读取MYSQL CDC源表时，Checkpoint不生效，因此读取全量MYSQL CDC源表时，不建议开启自动调优。
+-   MySQL CDC 源表目前不支持定义Watermark。如果您需要进行窗口聚合，您可以采用非窗口聚合的方式，详情请参见[不支持定义Watermark，那如何进行窗口聚合？](#section_y6t_st6_f0a)
 
 ## 什么是MySQL的CDC源表
 
@@ -79,7 +79,7 @@ CREATE TABLE mysqlcdc_source (
 |port|MySQL数据库服务的端口号|否|INTEGER|默认值为3306。|
 |server-id|数据库客户端的一个ID|否|STRING|该ID必须是MySQL集群中全局唯一的。建议针对同一个数据库的每个作业都设置一个不同的ID。默认会随机生成一个5400~6400的值。|
 |server-time-zone|数据库在使用的会话时区|否|STRING|例如Asia/Shanghai，该参数控制了MySQL中的TIMESTAMP类型如何转成STRING类型。|
-|debezium.min.row.count.to.stream.results|当表的条数大于该值时，会使用分批读取模式。|否|INTEGER|默认值为1000。Flink采用以下方式读取MySQL源表数据：-   全量读取：直接将整个表的数据读取到内存里。优点是速度快，缺点是会消耗对应大小的内存，如果源表数据量非常大，可能会有OOM风险。
+|debezium.min.row.count.to.stream.results|当表的条数大于该值时，会使用分批读取模式。|否|INTEGER|默认值为1000。Flink采用以下方式读取MySQL源表数据： -   全量读取：直接将整个表的数据读取到内存里。优点是速度快，缺点是会消耗对应大小的内存，如果源表数据量非常大，可能会有OOM风险。
 -   分批读取：分多次读取，每次读取一定数量的行数，直到读取完所有数据。优点是读取数据量比较大的表没有OOM风险，缺点是读取速度相对较慢。 |
 |debezium.snapshot.fetch.size|在Snapshot阶段，每次读取MySQL源表数据行数的最大值。|否|INTEGER|仅当分批读取模式时，该参数生效。|
 |debezium.\*|Debezium属性参数|否|STRING|从更细粒度控制Debezium客户端的行为。例如`'debezium.snapshot.mode' = 'never'`，详情请参见[配置属性](https://debezium.io/documentation/reference/1.2/connectors/mysql.html#mysql-connector-configuration-properties_debezium)。|
@@ -121,13 +121,17 @@ MySQL的CDC和Flink字段类型对应关系如下。
 
 ## 常见问题
 
--   Q：如何跳过Snapshot阶段，只从变更数据开始读取？
+-   不支持定义Watermark，那如何进行窗口聚合？
 
-    A：可以通过WITH参数debezium.snapshot.mode来控制，您可以设置为：
+    如果您需要在MySQL CDC源表上进行窗口聚合，可以考虑采用非窗口聚合的方式，即将时间字段转换成窗口值，然后根据窗口值进行GROUP BY聚合。例如，统计每个店铺每分钟的订单数和销量，代码为`SELECT shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm'), COUNT(*), SUM(price) FROM order_mysql_cdc GROUP BY shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm')`。
+
+-   如何跳过Snapshot阶段，只从变更数据开始读取？
+
+    可以通过WITH参数debezium.snapshot.mode来控制，您可以设置为：
 
     -   never：在启动时，不读取数据库的快照，而是直接从变更的最开始位置读取。但需要注意MySQL的变更旧数据可能会被自动清理，因此不能保证变更数据中包含了全量的数据，读取的数据不完整。
     -   schema\_only：如果你不需要保证数据的一致性，只关心作业启动后数据库的新增变更，则可以设置为schema\_only，仅快照schema，不快照数据，从变更的最新数据开始读取。
--   Q：如何读取一个分库分表的MySQL数据库？
+-   如何读取一个分库分表的MySQL数据库？
 
     如果MySQL是一个分库分表的数据库，分成了user\_00、user\_02和user\_99等多个表，且所有表的schema一致。则可以通过table-name选项，指定一个正则表达式来匹配读取多张表，例如设置table-name为user\_.\*，监控所有user\_前缀的表。database-name选项也支持该功能，但需要所有的表schema一致。
 
@@ -137,8 +141,4 @@ MySQL的CDC和Flink字段类型对应关系如下。
 
     -   增加并发度。
     -   开启minibatch等聚合优化参数（下游聚合节点）。
--   不支持定义Watermark，那怎么进行窗口聚合？
-
-    如果您需要在MySQL CDC源表上进行窗口聚合，可以考虑采用非窗口聚合的方式，即将时间字段转换成窗口值，然后根据窗口值进行GROUP BY聚合。例如，统计每个店铺每分钟的订单数和销量，代码为`SELECT shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm'), COUNT(*), SUM(price) FROM order_mysql_cdc GROUP BY shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm')`。
-
 
