@@ -225,7 +225,6 @@ public class SdkSample {
         executeSqlScriptRequest.setNamespace(namespace);
         ExecuteSqlScriptParams executeSqlScriptParams = new ExecuteSqlScriptParams();
         executeSqlScriptParams.setStatement("create table RAN_TABLE (a varchar) with ('connector' = 'random', 'type' = 'random');");
-        executeSqlScriptParams.setStatement("show tables;");
         executeSqlScriptRequest.setParamsJson(JsonUtil.toJson(executeSqlScriptParams));
         executeSqlScriptRequest.setHttpContentType(FormatType.JSON);
         ResultModel<ExecuteSqlScriptResp> executeSqlScriptRespResultModel = JsonUtil.toBean(SdkUtil.getHttpContentString(client, executeSqlScriptRequest), new TypeReference<ResultModel<ExecuteSqlScriptResp>>() {
