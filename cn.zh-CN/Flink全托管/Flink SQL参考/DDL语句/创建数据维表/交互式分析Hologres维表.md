@@ -56,6 +56,10 @@ CREATE TABLE hologres_dim(
 |dbname|数据库名称|是|无。|
 |username|用户名，请填写阿里云账号的AccessKey ID。|是|无。|
 |password|密码，请填写阿里云账号的AccessKey Secret。|否|无。|
+|useRpcMode|自VVP 2.4.0版本开始，默认通过JDBC实现Hologres Connector。VVP 2.4.0以前版本默认是通过RPC实现Hologres Connector。|否|通过JDBC实现会占用SQL连接，导致JDBC链接数增加。如果您需要降低SQL连接数，则可以设置该参数值为true。**说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
+|connectionSize|单个Flink维表任务所创建的JDBC连接池大小。如果作业性能不足，建议您增加连接池大小。连接池大小和数据吞吐成正比。
+
+|否|默认值为3，单位为个。**说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
 
 ## CACHE参数
 
