@@ -38,6 +38,6 @@ INT BITOR(INT number1, INT number2)
 
     |var1\(INT\)|
     |-----------|
-    |3|
+    |-3|
 
 
