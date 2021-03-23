@@ -24,7 +24,7 @@ CREATE TABLE filesystem_dim (
 |参数|说明|是否必选|备注|
 |--|--|----|--|
 |connector|维表类型|是|固定值为filesystem。|
-|path|文件路径|是|URI格式，例如：csv/json/avro/parquet/orc/raw。|
+|path|文件路径|是|URI格式，例如：oss://my\_path/my\_file。|
 |format|文件格式|是|参数取值如下：-   CSV
 -   JSON
 -   AVRO
