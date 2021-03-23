@@ -53,7 +53,7 @@ keyword: [DataHub数据示例, Datastream, 读取DataHub]
         ls /Users/用户名/.m2/repository/com/alibaba/flink/datahub-connector/0.1-SNAPSHOT
         ```
 
-4.  在Intellij IDEA中，单击**file** \> **open**，打开刚才解压缩完成的datahub-demo-master包后，双击pom.xml查看代码。
+4.  在Intellij IDEA中，单击**File** \> **Open**，打开刚才解压缩完成的datahub-demo-master包后，双击pom.xml查看代码。
 
     ![打开文件](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9265749951/p91045.png)
 
