@@ -35,8 +35,8 @@ string_split(string, separator)
 -   测试语句
 
     ```
-    select d,v 
-    from T1, 
+    SELECT d,v 
+    FROM T1, 
     lateral table(string_split(d, s)) as T(v);
     ```
 
