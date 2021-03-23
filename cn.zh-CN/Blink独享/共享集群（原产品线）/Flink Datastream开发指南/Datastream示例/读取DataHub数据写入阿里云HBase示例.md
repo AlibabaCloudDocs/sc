@@ -28,7 +28,7 @@ keyword: [读取DataHub, Datastream, 写入HBase]
 
 1.  下载并解压[Hbase\_Demo-master](https://github.com/RealtimeCompute/Hbase_Demo)示例到本地。
 
-2.  在Intellij IDEA中，单击**file** \> **open**，打开刚才解压缩完成的Hbase\_Demo-master。
+2.  在Intellij IDEA中，单击**File** \> **Open**，打开刚才解压缩完成的Hbase\_Demo-master。
 
 3.  双击打开\\Hbase\_Demo-master\\src\\main\\java\\Hbase\_Demo后，修改HbaseDemo.java文件中的DataHub与HBase相关参数。
 
