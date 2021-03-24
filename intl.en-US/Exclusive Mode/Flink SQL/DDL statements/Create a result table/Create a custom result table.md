@@ -29,7 +29,7 @@ You can use one of the following methods to build a development environment for 
 
             -   [blink-connector-custom-blink-3.2.1](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/99987/cn_zh/1559663345940/blink-connector-custom-blink-3.2.1.jar)
             -   [blink-connector-common-blink-3.2.1](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/99987/cn_zh/1565233225498/blink-connector-common-blink-3.2.1.jar)
-            You must add the following information to the pom.xml file to automatically download the `flink-table_2.11` JAR package.
+            You must add the following information to the POM file to automatically download the `flink-table_2.11` JAR package.
 
             ```
             <profiles>
@@ -162,15 +162,15 @@ You can use one of the following methods to build a development environment for 
             ```
 
 
-## Interface description
+## API description
 
 The class of a custom result table must inherit the CustomSinkBase base class of the custom sink plug-in and is implemented by using the following methods:
 
 ```
-protected Map<String,String> userParamsMap; // userParamsMap is the key-value pair defined in the WITH clause of custom SQL statements. All keys are in lowercase letters.
-protected Set<String> primaryKeys; // primaryKeys is the custom primary key field.
-protected List<String> headerFields; // headerFields is the list of fields marked as header.
-protected RowTypeInfo rowTypeInfo; // rowTypeInfo indicates the field type and name.
+protected Map<String,String> userParamsMap;// userParamsMap is the key-value pair defined in the WITH clause of custom SQL statements. All keys are in lowercase letters.
+protected Set<String> primaryKeys;// primaryKeys is the custom primary key field.
+protected List<String> headerFields;// headerFields is the list of fields marked as header.
+protected RowTypeInfo rowTypeInfo;// rowTypeInfo indicates the field type and name.
 /**
  * The initialization method. This method is called when you create a table for the first time or when a failover occurs.
  * 
@@ -204,7 +204,7 @@ public abstract void writeAddRecord(Row row) throws IOException;
 public abstract void writeDeleteRecord(Row row) throws IOException;
 
 /**
- * If you need to use this method to insert multiple rows of data at the same time, you must load all data cached in the threads to the downstream storage system. If you do not need to insert multiple rows of data at the same time, this method is not required.
+ * If you want to use this method to insert multiple rows of data at the same time, you must load all data cached in the threads to the downstream storage system. If you do not need to insert multiple rows of data at the same time, this method is not required.
  *
  * @throws IOException
  */
@@ -216,9 +216,11 @@ public abstract void sync() throws IOException;
 public String getName();
 ```
 
-## Example: Create a custom ApsaraDB for Redis result table
+## Example of creating a custom ApsaraDB for Redis result table
 
-To create a custom ApsaraDB for Redis result table in the Realtime Compute for Apache Flink console, upload the JAR packages and reference the resources. Then, set the type parameter in the CREATE TABLE statement to `custom` for the custom sink plug-in and specify the class that implements the required interface for the plug-in. For more information about the example of a custom ApsaraDB for Redis result table, see [Examples](http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/attach/110869/cn_zh/1552549477388/customsink_redis.tar.gz). You can use the following sample code to create a custom ApsaraDB for Redis result table:
+Download [Demo of Realtime Compute for Apache Flink V3.0](https://github.com/RealtimeCompute/blink_customersink_3x). Go to the blink\_customersink\_3x directory, run the `mvn clean package` command, and then upload the JAR package blink\_customersink\_3x/target/blink-customersink-3.x-1.0-SNAPSHOT-jar-with-dependencies.jar that is compiled in the Realtime Compute for Apache Flink console. After you reference required resources, you must specify `type = 'custom'` for the custom sink plug-in, and specify the class for implementing the API.
+
+**Note:** This example is only used as a reference for developing custom result tables. It is not suitable for production purposes.
 
 ```
 create table in_table(
@@ -232,9 +234,9 @@ create table out_table(
     `value` varchar
 )with(
     type = 'custom',
-    class = 'com.alibaba.blink.connector.custom.demo.RedisSink',
-    //1. You can define more custom parameters. These parameters can be obtained by using userParamsMap in the open function.
-    //2. The keys for the parameters in the WITH clause are not case-sensitive. In Realtime Compute for Apache Flink, the values of the parameter keys are processed as lowercase letters. We recommend that you declare keys in lowercase letters in the data definition language (DDL) statements that reference the data store.
+    class = 'com.alibaba.blink.customersink.RedisSink',
+    -- 1. You can define more custom parameters. These parameters can be obtained by using userParamsMap in the open function.
+    -- 2. The keys for the parameters in the WITH clause are not case-sensitive. In Realtime Compute for Apache Flink, the values of the parameter keys are processed as lowercase letters. We recommend that you declare keys in lowercase letters in the data definition language (DDL) statements that reference the data store.
     host = 'r-uf****.redis.rds.aliyuncs.com',
     port = '6379',
     db = '0',
@@ -249,13 +251,13 @@ substring(kv,0,6) as `value`
 from in_table;
 ```
 
-The following table describes the parameters of the Redis sink plug-in.
+The following table describes the parameters of the plug-in of the ApsaraDB for Redis sink.
 
 |Parameter|Description|Required|Remarks|
 |---------|-----------|--------|-------|
-|host|The internal endpoint of an ApsaraDB for Redis instance.|Yes|None.|
-|port|The number of the port that is used to connect to an ApsaraDB for Redis database.|Yes|None.|
-|password|The password that is used to connect to an ApsaraDB for Redis instance.|Yes|None.|
+|host|The internal endpoint of the ApsaraDB for Redis instance.|Yes|None.|
+|port|The number of the port that is used to access the ApsaraDB for Redis instance.|Yes|None.|
+|password|The password that is used to access the ApsaraDB for Redis instance.|Yes|None.|
 |db|The serial number of an ApsaraDB for Redis database.|No|Default value: 0. This value indicates db0.|
 |batchsize|The number of data records that can be written at a time.|No|Default value: 1. This value indicates that multiple data records cannot be written at a time.|
 
