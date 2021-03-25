@@ -29,14 +29,14 @@ In shared mode, users share physical resources such as networks, disks, CPUs, an
     -   Rich features
         -   Extract, transform, load \(ETL\) in a data lake: You can use Flink SQL and UDFs to develop ETL tasks.
         -   Computing of heterogeneous data sources: Data can be read from heterogeneous data sources for analysis. For example, Realtime Compute for Apache Flink can read archived logs from Object Storage Service \(OSS\) buckets and associate the logs with high-risk IP addresses in an ApsaraDB for HBase database to analyze web attacks.
-        -   Multiple upstream and downstream data stores are supported, such as [Create a Kafka source table](/intl.en-US/Exclusive Mode/Flink SQL/DDL statements/Create a source table/Create a Kafka source table.md) and [Create a result table of Alibaba Cloud Message Queue for Apache Kafka](/intl.en-US/Exclusive Mode/Flink SQL/DDL statements/Create a result table/Create a result table of Alibaba Cloud Message Queue for Apache Kafka.md).
+        -   Multiple upstream and downstream data stores are supported, such as [Create a Message Queue for Apache Kafka source table](/intl.en-US/Exclusive Mode/Flink SQL/DDL statements/Create a source table/Create a Message Queue for Apache Kafka source table.md) and [Create a Message Queue for Apache Kafka result table](/intl.en-US/Exclusive Mode/Flink SQL/DDL statements/Create a result table/Create a Message Queue for Apache Kafka result table.md).
 -   Architecture of Realtime Compute for Apache Flink in exclusive mode
 
-    ![Architecture of Realtime Compute for Apache Flink in exclusive mode](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/en-US/4544749951/p33597.png)
+    ![Architecture of Realtime Compute for Apache Flink in exclusive mode](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/4544749951/p33597.png)
 
     -   For Realtime Compute for Apache Flink in exclusive mode, all your purchased ECS instances are hosted in the VPC of your Realtime Compute for Apache Flink cluster. In this mode, you cannot log on to these ECS instances. If you want to log on to these ECS instances,[submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23).
-    -   When you create a cluster, you can apply for an elastic network interface \(ENI\) under your account to access all resources in the VPC to which the ENI belongs.
-    -   To access the Internet, you can bind a NAT gateway and an elastic IP address \(EIP\) to the ENI. For more information, see [Associate EIPs with a NAT gateway](/intl.en-US/Manage EIPs/Associate EIPs with a NAT gateway.md).
+    -   When you create a cluster, you can apply for an elastic network interface \(ENI\) within your account to access all resources in the VPC to which the ENI belongs.
+    -   To access the Internet, you can bind a NAT gateway and an elastic IP address \(EIP\) to the ENI. For more information, see [Associate an EIP with a NAT gateway](/intl.en-US/User Guide/Create NAT gateways.md).
 
         **Note:** You are charged for the use of the ENI only when your Realtime Compute for Apache Flink cluster accesses the Internet.
 
@@ -46,11 +46,11 @@ In shared mode, users share physical resources such as networks, disks, CPUs, an
 
 |Item|Exclusive mode|Shared mode|
 |----|--------------|-----------|
-|Development of custom features|Supports UDFs and APIs. This allows you to flexibly develop jobs.|Not supported.|
-|Network Type|Supports Alibaba Cloud VPCs. **Note:** Users in a Realtime Compute for Apache Flink cluster in exclusive mode can only access the upstream and downstream storage resources in the same region and VPC as the cluster. If you want to access resources in another VPC, you must configure port numbers of security groups and use Express Connect to access the VPC.
+|Development of custom features|Supports UDFs and APIs. This allows you to flexibly develop jobs.|Not supported|
+|Network type|Supports Alibaba Cloud VPCs. **Note:** Users in a Realtime Compute for Apache Flink cluster in exclusive mode can access only the upstream and downstream storage resources in the same region and VPC as the cluster. If you want to access resources in another VPC, you must configure port numbers of security groups and use Express Connect to access the VPC.
 
-|Not supported.|
-|Machine type selection|Allows you to select a machine type when you purchase Realtime Compute for Apache Flink in exclusive mode. GPU is supported. FPGA will be supported in the future.|Not supported.|
+|Not supported|
+|Machine type selection|Allows you to select a machine type when you purchase Realtime Compute for Apache Flink in exclusive mode.|Not supported|
 |Supported data sources|-   DataHub
 -   Log Service
 -   Message Queue \(MQ\)
@@ -68,7 +68,7 @@ In shared mode, users share physical resources such as networks, disks, CPUs, an
 -   Log Service
 -   MQ
 -   Tablestore
--   ApsaraDB for RDS or DRDS
+-   ApsaraDB RDS or DRDS
 -   HiTSDB
 -   HybridDB for MySQL
 -   Kafka
@@ -82,13 +82,13 @@ In shared mode, users share physical resources such as networks, disks, CPUs, an
 -   Log Service
 -   MQ
 -   Tablestore
--   ApsaraDB for RDS or DRDS
+-   ApsaraDB RDS or DRDS
 -   HiTSDB
 -   HybridDB for MySQL
 
 **Note:** For more information about result tables of Realtime Compute for Apache Flink, see [Overview of result tables](/intl.en-US/Exclusive Mode/Flink SQL/DDL statements/Create a result table/Overview of result tables.md). |
 |Supported regions|-   Pay-as-you-go: China \(Hangzhou\), China \(Beijing\), China \(Shanghai\), and China \(Shenzhen\)
--   Subscription for the exclusive mode: China \(Hangzhou\), China \(Beijing\), China \(Shanghai\), China \(Shenzhen\), China \(Zhangjiakou-Beijing Winter Olympics\), China \(Hong Kong\), and Singapore \(Singapore\).
+-   Subscription: China \(Hangzhou\), China \(Beijing\), China \(Shanghai\), China \(Shenzhen\), China \(Zhangjiakou\), China \(Hong Kong\), and Singapore \(Singapore\).
 
 If you want to activate Realtime Compute for Apache Flink in exclusive mode in other regions,[submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23).|China \(Shenzhen\) **Note:** As of December 24, 2019, Realtime Compute for Apache Flink in shared mode is no longer available. You cannot purchase projects in this mode. You can only scale out, scale in, or renew existing shared-mode projects. We recommend that you purchase the exclusive mode or semi-managed Flink mode of Realtime Compute for Apache Flink based on your business requirements. |
 |Specification|Provides an independent real-time computing engine and allows each user to perform stream processing in an independent ECS cluster.|Provides a large cluster to allow users to share public resources.|
