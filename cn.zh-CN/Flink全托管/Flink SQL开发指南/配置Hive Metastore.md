@@ -38,6 +38,18 @@
         -   $\{hms\}：您在Flink全托管上显示的Hive Metastore名称。
     6.  将您的Hive配置文件（hive-site.xml）放置到hive-conf-dir目录下。
 
+        在上传hive-site.xml文件前，请您先检查下配置文件中hive.metastore.uris参数配置是否符合下列要求。
+
+        ```
+        <property>
+            <name>hive.metastore.uris</name>
+            <value>thrift://xx.yy.zz.mm:9083</value>
+            <description>Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.</description>
+         </property>
+        ```
+
+        其中`xx.yy.zz.mm`为Hive的内网IP或者公网IP，如果您将hive.metastore.uris填写为hostname，则VVP远程访问Hive时，hive.metastore.uris参数值会被解析失败并报错`UnknownHostException`。
+
     7.  将您的以下配置文件放置到hadoop-conf-dir目录下。
 
         -   hive-site.xml
