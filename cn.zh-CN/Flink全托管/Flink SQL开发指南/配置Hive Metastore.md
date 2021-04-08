@@ -6,7 +6,7 @@
 
 -   支持自建Hive Metastore。
 -   VVP 2.3.0及以上版本支持Hive Metastore。
--   VVP 2.3.0版本仅支持Hive Metastore 2.3.6版本；VVP 2.3.0以上版本支持Hive Metastore 2.2.0~2.3.6。
+-   VVP 2.3.0版本仅支持Hive Metastore 2.3.6版本；VVP 2.3.0以上版本支持Hive Metastore 2.2.0~2.3.7。
 -   Hive Metastore不支持Kerberos鉴权。
 -   一个Flink全托管实例仅支持一个Hive Metastore，多项目无法设置多Hive Metastore。
 -   Hive Metastore只读，即您不能通过Flink全托管开发控制台在Hive中创建物理表。
@@ -86,10 +86,10 @@
         -   default-database ：默认数据库名称。
         -   hive-version：Hive Metastore版本号。
 
-            **说明：** Hive Metastore版本兼容为2.2.0~2.3.6，其中：
+            **说明：** Hive Metastore版本兼容为2.2.0~2.3.7，其中：
 
             -   2.0.0~2.2.0：hive-version需要指定为2.2.0
-            -   2.3.0~2.3.6：hive-version需要指定为2.3.6。
+            -   2.3.0~2.3.7：hive-version需要指定为2.3.7。
         -   hive-conf-dir：存放Hive配置文件的目录。
         -   hadoop-conf-dir：存放Hadoop依赖的目录。
     6.  单击**运行**。
