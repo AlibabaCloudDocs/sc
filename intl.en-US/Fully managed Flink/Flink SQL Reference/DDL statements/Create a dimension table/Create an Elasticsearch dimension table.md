@@ -56,7 +56,7 @@ If you use this cache policy, you must configure the cacheSize and cacheTTLMs pa
 
 ## Field type mapping
 
-Flink parses Elasticsearch data in the JSON format. For more information, see [Field type mapping](https://ci.apache.org/projects/flink/flink-docs-master/zh/dev/table/connectors/formats/json.html).
+Flink parses Elasticsearch data in the JSON format. For more information, see [Data type mapping](https://ci.apache.org/projects/flink/flink-docs-master/docs/connectors/table/formats/json/).
 
 ## Sample code
 
