@@ -13,7 +13,7 @@ You can store the configuration file of the Hive metastore and Hadoop dependenci
 
 1.  Enable virtual private cloud \(VPC\) connection between a Hadoop cluster and a fully managed Flink cluster.
 
-    You can use Alibaba Cloud DNS PrivateZone to enable VPC connection between a Hadoop cluster and a fully managed Flink cluster. For more information, see [Resolver](t1930185.md#). This way, you can connect the fully managed Flink cluster to the Hadoop cluster by using the configuration file of the Hadoop cluster.
+    You can use Alibaba Cloud DNS PrivateZone to enable VPC connection between a Hadoop cluster and a fully managed Flink cluster. For more information, see [Resolver](/intl.en-US/User Guide/Resolver.md). This way, you can connect the fully managed Flink cluster to the Hadoop cluster by using the configuration file of the Hadoop cluster.
 
 2.  Log on to the [OSS console](https://oss.console.aliyun.com/).
 
