@@ -44,7 +44,7 @@ This topic describes how to create a full Elasticsearch source table. It also de
 
 ## Field type mapping
 
-Flink parses Elasticsearch data in the JSON format. For more information, see [Data type mapping](https://ci.apache.org/projects/flink/flink-docs-master/zh/dev/table/connectors/formats/json.html).
+Flink parses Elasticsearch data in the JSON format. For more information, see [Data type mapping](https://ci.apache.org/projects/flink/flink-docs-master/docs/connectors/table/formats/json/).
 
 ## Sample code
 
