@@ -15,7 +15,7 @@
 
 1.  连通Hadoop集群和Flink全托管的VPC。
 
-    您可以使用云解析PrivateZone产品连通Hadoop集群和Flink全托管的VPC，详情请参见[解析器（Resolver）](t1930185.md#)。网络连通后，Flink全托管就可以使用Hadoop集群的配置文件访问Hadoop集群。
+    您可以使用云解析PrivateZone产品连通Hadoop集群和Flink全托管的VPC，详情请参见[解析器（Resolver）](/cn.zh-CN/用户指南/解析器（Resolver）.md)。网络连通后，Flink全托管就可以使用Hadoop集群的配置文件访问Hadoop集群。
 
 2.  在OSS控制台新建文件夹，并将Hive配置文件和Hadoop依赖放置目标路径。
 
