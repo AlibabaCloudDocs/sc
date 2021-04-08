@@ -33,7 +33,7 @@ This topic describes how to use an Alibaba Cloud account to activate fully manag
     |Basic Configurations|Billing Method|The **Subscription** and **Pay-as-you-go** billing methods are supported.|
     |Duration|You need to specify this parameter only when the **Subscription** billing method is used.|
     |Auto-renewal|You need to specify this parameter only when the **Subscription** billing method is used. After the auto-renewal feature is **enabled**, you can modify the renewal policy in **Renewal Management** in the [Alibaba Cloud Management Console](https://home.console.aliyun.com) in the future.|
-    |Region|The following regions are supported: **China \(Beijing\)**, **China \(Shanghai\)**, **China \(Hangzhou\)**, and **China \(Shenzhen\)**.**Note:** We recommend that you select the same **region** as the upstream and downstream storage. |
+    |Region|**Singapore****Note:** We recommend that you select the same **region** as the upstream and downstream storage. |
     |Zone|**Note:** We recommend that you select the same **zone** as the upstream and downstream storage. |
     |Network Configurations|VPC|**Note:** We recommend that you select the same **VPC** as the upstream and downstream storage. |
     |vSwitch|An IP address is assigned to each Task Manager instance and each Job Manager instance of a Flink job. You can select one to five vSwitches to properly plan the CIDR blocks based on the scale of Flink jobs.|
