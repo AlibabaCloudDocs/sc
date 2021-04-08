@@ -8,7 +8,7 @@ This topic describes how to log on to the Realtime Compute for Apache Flink cons
 
 ## Log on to the Realtime Compute for Apache Flink console
 
-1.  Log on to the [Alibaba Cloud official website](https://www.aliyun.com/) with your Alibaba Cloud account.
+1.  Log on to the [Alibaba Cloud official website](www.alibabacloud.com) with your Alibaba Cloud account.
 
 2.  Choose **Products** \> **Analytics** \> **Realtime Compute for Apache Flink**.
 
@@ -37,7 +37,7 @@ This topic describes how to log on to the Realtime Compute for Apache Flink cons
 
     On the **Fully Managed Flink** tab, choose **More** \> **Modify vSwitches** in the **Actions** column of the desired workspace. Then, select the desired vSwitch in the list of available vSwitches and click **OK**.
 
-    **Note:** If no vSwitch is available in the list of available vSwitches, you can create a vSwitch first and then refresh this page. For more information about how to create a vSwitch, see [Modify a vSwitch]().
+    **Note:** If no vSwitch is available in the list of available vSwitches, you can create a vSwitch first and then refresh this page. For more information about how to create a vSwitch, see [Modify a vSwitch](/intl.en-US/Fully managed Flink/Cluster configuration management/Manage components/Modify a vSwitch.md).
 
 -   **Entrance to view workspace details**
 
