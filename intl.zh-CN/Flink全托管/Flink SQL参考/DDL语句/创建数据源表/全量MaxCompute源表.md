@@ -38,13 +38,13 @@ create table odps_source(
 |tableName|MaxCompute表名|是|无|
 |accessId|AccessKey ID|是|无|
 |accessKey|AccessKey Secret|是|无|
-|partition|分区名|否|-   只存在一个分区MaxCompute表
+|partition|分区名|否|-   只存在一级分区的MaxCompute表
 
 例如，如果只存在1个分区列`ds`，则``partition` = 'ds=20180905'`表示读`ds=20180905`分区的数据。
 
 ，值
 
--   存在多个分区的MaxCompute表
+-   存在多级分区的MaxCompute表
 
 例如，如果存在2个分区列`ds`和`hh`，则``partition`='ds=20180905,hh=*'`表示读`ds=20180905`分区的数据。
 
