@@ -73,7 +73,7 @@
         CREATE CATALOG ${HMS Name} WITH (
             'type' = 'hive',
             'default-database' = 'default',
-            'hive-version' = '2.3.6',
+            'hive-version' = '<hive-version>',
             'hive-conf-dir' = '<hive-conf-dir>'
             'hadoop-conf-dir' = '<hadoop-conf-dir>'
         );
@@ -89,7 +89,7 @@
             **说明：** Hive Metastore版本兼容为2.2.0~2.3.7，其中：
 
             -   2.0.0~2.2.0：hive-version需要指定为2.2.0
-            -   2.3.0~2.3.7：hive-version需要指定为2.3.7。
+            -   2.3.0~2.3.7：hive-version需要指定为2.3.6。
         -   hive-conf-dir：存放Hive配置文件的目录。
         -   hadoop-conf-dir：存放Hadoop依赖的目录。
     6.  单击**运行**。
