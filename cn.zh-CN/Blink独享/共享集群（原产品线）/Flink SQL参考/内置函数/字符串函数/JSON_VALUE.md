@@ -53,7 +53,7 @@ JSON_VALUE(json,'$.passenger_name') AS ABC
 
     ```
     SELECT 
-        id，
+        id,
         JSON_VALUE(json, path1) AS `value`
     FROM 
         T1;
