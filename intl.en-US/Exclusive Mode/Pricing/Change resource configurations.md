@@ -11,7 +11,7 @@ This topic describes how to scale out or scale in a Realtime Compute for Apache 
     -   Scale-in \(**Master Scale-Down** or **Slave Scale-In**\): The refund from the scale-in is returned to your account.
 -   After you perform **Master Scale-Up** or **Slave Scale-Out**, you must add required IP addresses to a whitelist of the database. For more information, see [Configure a whitelist for accessing storage resources](/intl.en-US/Exclusive Mode/Flink SQL Development Guide/Data storage/Configure a whitelist for accessing storage resources.md).
 
-You can modify the configuration of **Master Specifications** or **Slave Quantity**to change the configuration of the cluster.
+You can modify the configuration of **Master Specifications** or **Slave Quantity** to change the configuration of the cluster.
 
 1.  Go to the **Project Management** page.
 
