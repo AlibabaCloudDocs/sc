@@ -106,7 +106,7 @@ UDF注册过程，请参见[管理自定义函数（UDF）](/cn.zh-CN/Flink全�
     );
     
     INSERT INTO ASI_UDF_Sink
-    SELECT ASI_UDF('a',2,4)
+    SELECT ASI_UDF(a,2,4)
     FROM ASI_UDF_Source;
     ```
 
