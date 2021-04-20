@@ -6,6 +6,8 @@ keyword: [结果表, MaxCompute]
 
 本文为您介绍MaxCompute结果表的DDL定义、WITH参数、类型映射和代码示例。
 
+**说明：** MaxCompute Connector可以作为Stream作业和Batch作业的结果表使用。
+
 ## 实现原理
 
 MaxCompute Sink可以分为以下两个阶段：
@@ -18,7 +20,7 @@ MaxCompute Sink可以分为以下两个阶段：
 
 ## DDL定义
 
-**Flink全托管**支持将MaxCompute作为结果输出，示例代码如下。
+Flink支持将MaxCompute作为结果输出，示例代码如下。
 
 ```
 create table odps_sink(
@@ -47,8 +49,8 @@ create table odps_sink(
 |参数|说明|是否必填|备注|
 |--|--|----|--|
 |connector|数据结果表类型|是|固定值为`odps`。|
-|endPoint|MaxCompute服务地址|是|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
-|tunnelEndpoint|MaxCompute Tunnel服务的连接地址|是|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
+|endPoint|MaxCompute服务地址|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
+|tunnelEndpoint|MaxCompute Tunnel服务的连接地址|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
 |project|MaxCompute项目名称|是|无|
 |tableName|表名|是|无|
 |accessId|AccessKey ID|是|无|
@@ -75,8 +77,8 @@ create table odps_sink(
 
 ## 类型映射
 
-|MaxCompute字段类型|Flink全托管字段类型|
-|--------------|------------|
+|MaxCompute字段类型|Flink字段类型|
+|--------------|---------|
 |TINYINT|TINYINT|
 |SMALLINT|SMALLINT|
 |INT|INT|
