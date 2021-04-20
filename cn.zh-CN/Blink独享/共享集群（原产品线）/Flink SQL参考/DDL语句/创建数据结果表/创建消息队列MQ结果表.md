@@ -79,7 +79,6 @@ FROM source_table;
     -   内网服务MQ（阿里云经典网络/VPC）接入地址：在MQ控制台目标实例详情中，选择**接入点** \> **TCP协议客户端接入点** \> **内网访问**，获取对应的endPoint。
     -   公网服务MQ接入地址：在MQ控制台目标实例详情中，选择**接入点** \> **TCP协议客户端接入点** \> **公网访问**，获取对应的endPoint。
 -   Blink 3.7.10（不含）以下版本的作业，使用如下接入点：
-
     -   内网服务MQ（阿里云经典网络/VPC）接入地址：
         -   华东1（杭州）、华东2（上海）、华北1（青岛）、华北2（北京）、华南1（深圳）、中国（香港）：`onsaddr-internal.aliyun.com:8080`
         -   亚太东南1（新加坡）：`ap-southeastaddr-internal.aliyun.com:8080`。
@@ -87,11 +86,10 @@ FROM source_table;
         -   亚太南部1（孟买）：`ons-ap-south-1-internal.aliyuncs.com:8080`。
         -   亚太东南3（吉隆坡）：`ons-ap-southeast-3-internal.aliyun.com:8080`。
     -   公网服务MQ接入地址：`onsaddr-internet.aliyun.com:80`。
-**说明：** 如果您已使用了Blink 3.7.10（不含）以下版本的RocketMQ Connector，则您需要将您的实时计算作业升级至Blink 3.7.10及以上版本，并将作业中EndPoint参数取值更改为新的RocketMQ接入点，旧的RocketMQ接入点存在稳定性风险或不可用的问题，详情请参见[RocketMQ接入点变更导致实时计算作业适配升级公告](/cn.zh-CN/Flink全托管/产品公告.md)。
-
 
 **说明：**
 
+-   如果您已使用了Blink 3.7.10（不含）以下版本的RocketMQ Connector，则您需要将您的实时计算作业升级至Blink 3.7.10及以上版本，并将作业中EndPoint参数取值更改为新的RocketMQ接入点，旧的RocketMQ接入点存在稳定性风险或不可用的问题，详情请参见[RocketMQ接入点变更导致实时计算作业适配升级公告](/cn.zh-CN/Flink全托管/产品公告.md)。
 -   内网服务无法跨地域访问。例如，您所购买的实时计算Flink版服务的地域为华东1，但是购买的消息队列MQ服务的地域为华东2，则无法访问。
 -   独享集群默认不能访问公网，如果需要请配置NAT网关，详情参见[独享集群如何访问公网？](/cn.zh-CN/Blink独享/共享集群（原产品线）/常见问题/如何使用.md)
 -   由于阿里云网络安全策略动态变化，实时计算Flink版连接公网服务MQ时可能会出现网络连接问题，推荐您使用内网服务MQ。如果在使用公网服务MQ时出现异常，请您[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?accounttraceid=f7b76db740fa486baa4b63bd5848fbc1idrb)进行咨询。 |
