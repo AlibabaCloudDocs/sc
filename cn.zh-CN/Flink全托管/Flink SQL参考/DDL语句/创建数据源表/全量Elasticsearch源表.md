@@ -11,6 +11,7 @@ keyword: [Elasticsearch, ES, 源表]
 -   仅支持Elasticsearch 5.5及以上版本。
 -   仅支持全量Elasticsearch源表，不支持增量Elasticsearch源表。
 -   DDL中的字段均对应Elasticsearch文档中的字段，不支持将文档ID写入表中。
+-   Elasticsearch Connector可以作为Stream作业和Batch作业的源表使用。
 
 ## DDL定义
 
