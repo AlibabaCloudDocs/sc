@@ -6,6 +6,8 @@ keyword: [创建交互式分析Hologres源表, Hologres源表]
 
 本文为您介绍交互式分析Hologres源表DDL定义、WITH参数、代码示例和类型映射。
 
+**说明：** Hologres Connector可以作为Stream作业和Batch作业的源表使用。
+
 ## 什么是交互式分析Hologres
 
 交互式分析Hologres兼容PostgreSQL协议，与大数据生态紧密连接，支持高并发、低延时实时分析处理PB级数据，让您轻松使用现有BI（Business Intelligence）工具对数据进行多维分析和业务探索。
