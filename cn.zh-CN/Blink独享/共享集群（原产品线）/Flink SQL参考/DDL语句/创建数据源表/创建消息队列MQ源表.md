@@ -105,13 +105,20 @@ FROM source_table;
 |--|--|----|--|
 |type|源表类型|是|固定值为mq。|
 |topic|topic名称|是|无。|
-|endPoint|endPoint地址|是|阿里云消息队列提供内网服务MQ（非公网region）和公网服务MQ（公网region）两种类型，请务必根据您购买的MQ的类型选择对应正确的接入地址（endPoint）：-   内网服务MQ（阿里云经典网络/VPC）接入地址：
-    -   华东1（杭州）、华东2（上海）、华北1（青岛）、华北2（北京）、华南1（深圳）、中国（香港）：`onsaddr-internal.aliyun.com:8080`。
-    -   亚太东南1（新加坡）：`ap-southeastaddr-internal.aliyun.com:8080`。
-    -   中东东部1（迪拜）：`ons-me-east-1-internal.aliyuncs.com:8080`。
-    -   亚太南部1（孟买）：`ons-ap-south-1-internal.aliyuncs.com:8080`。
-    -   亚太东南3（吉隆坡）：`ons-ap-southeast-3-internal.aliyun.com:8080`。
--   公网服务MQ接入地址：`onsaddr-internet.aliyun.com:80`。
+|endPoint|endPoint地址|是|阿里云消息队列提供内网服务MQ（非公网region）和公网服务MQ（公网region）两种类型，请务必根据您购买的MQ的类型选择对应正确的接入地址（endPoint）：-   Blink 3.7.10及以上版本的作业，需要使用TCP协议客户端接入点，详情请参见 [关于TCP内网接入点设置的公告]()。接入点获取方式如下：
+    -   内网服务MQ（阿里云经典网络/VPC）接入地址：在MQ控制台目标实例详情中，选择**接入点** \> **TCP协议客户端接入点** \> **内网访问**，获取对应的endPoint。
+    -   公网服务MQ接入地址：在MQ控制台目标实例详情中，选择**接入点** \> **TCP协议客户端接入点** \> **公网访问**，获取对应的endPoint。
+-   Blink 3.7.10（不含）以下版本的作业，使用如下接入点：
+
+    -   内网服务MQ（阿里云经典网络/VPC）接入地址：
+        -   华东1（杭州）、华东2（上海）、华北1（青岛）、华北2（北京）、华南1（深圳）、中国（香港）：`onsaddr-internal.aliyun.com:8080`
+        -   亚太东南1（新加坡）：`ap-southeastaddr-internal.aliyun.com:8080`。
+        -   中东东部1（迪拜）：`ons-me-east-1-internal.aliyuncs.com:8080`。
+        -   亚太南部1（孟买）：`ons-ap-south-1-internal.aliyuncs.com:8080`。
+        -   亚太东南3（吉隆坡）：`ons-ap-southeast-3-internal.aliyun.com:8080`。
+    -   公网服务MQ接入地址：`onsaddr-internet.aliyun.com:80`。
+**说明：** 如果您已使用了Blink 3.7.10（不含）以下版本的RocketMQ Connector，则您需要将您的实时计算作业升级至Blink 3.7.10及以上版本，并将作业中EndPoint参数取值更改为新的RocketMQ接入点，旧的RocketMQ接入点存在稳定性风险或不可用的问题，详情请参见[RocketMQ接入点变更导致实时计算作业适配升级公告](/cn.zh-CN/Flink全托管/产品公告.md)。
+
 
 **说明：**
 
