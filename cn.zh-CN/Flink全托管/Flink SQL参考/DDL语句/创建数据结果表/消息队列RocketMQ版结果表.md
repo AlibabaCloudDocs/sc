@@ -60,7 +60,7 @@ create table mq_sink(
 |nameServerSubgroup|NameServer组|否|-   内网服务（阿里云经典网络/VPC）：nsaddr4client-internal
 -   公网服务：nsaddr4client-internet
 
-**说明：** 仅VVR 2.1.1及以上版本支持该参数。 |
+**说明：** 仅VVR 2.1.1 ~ VVR 3.0.0版本支持该参数，VVR 3.0.1及以后版本不支持该参数。 |
 |encoding|编码类型|否|默认值为`utf-8`。|
 |retryTimes|写入的重试次数|否|默认值为10。|
 |sleepTimeMs|重试间隔时间|否|默认值为1000（毫秒）。|
