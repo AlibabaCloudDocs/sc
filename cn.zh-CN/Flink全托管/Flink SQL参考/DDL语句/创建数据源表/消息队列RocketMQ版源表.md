@@ -64,7 +64,7 @@ create table mq_source(
 |nameServerSubgroup|NameServer组|否|-   内网服务（阿里云经典网络/VPC）：必须配置'nameServerSubgroup' = 'nsaddr4client-internal'
 -   公网服务：无需配置nameServerSubgroup
 
-**说明：** 仅VVR 2.1.1及以上版本支持该参数。 |
+**说明：** 仅VVR 2.1.1 ~ VVR 3.0.0版本支持该参数，VVR 3.0.1及以后版本不支持该参数。 |
 |startTime|消息消费启动的时间点|否|无|
 |startMessageOffset|消息开始的偏移量|否|如果填写，将优先以startMessageoffset的位点开始加载数据。|
 |tag|订阅的标签|否|无|
