@@ -24,14 +24,17 @@
 
 5.  上传UDF JAR文件。
 
-    ![上传JAR文件](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0160160161/p133485.png)
+    ![注册UDF](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2750938161/p263835.png)
 
     您可以通过以下任何一种方式上传UDF JAR文件：
 
-    -   **上传文件**：单击**选择文件**后，选择您的目标UDF JAR文件。
+    -   **上传文件**：单击**选择文件**项右侧的**选择文件**后，选择您的目标UDF Artifact文件。如果有依赖文件，单击**依赖文件**项右侧的**选择文件**，选择您的目标UDF Artifact所依赖的文件。
     -   **外部URL**：输入外部URL地址。
-    **说明：** 您的UDF JAR文件会被上传到您选择的OSS Bucket中的artifacts目录下。此外，Flink开发控制台会解析您UDF JAR文件中是否使用了Flink UDF、UDAF和UDTF接口的类，并自动提取类名，填充到Function Name字段中。
+    **说明：**
 
+    -   您的UDF JAR文件会被上传到您选择的OSS Bucket中的sql-artifacts目录下。此外，Flink开发控制台会解析您UDF JAR文件中是否使用了Flink UDF、UDAF和UDTF接口的类，并自动提取类名，填充到Function Name字段中。
+    -   对于Java类型的UDF，其依赖可以打包到UDF JAR包中，也可以通过依赖文件项进行上传；对于Python类型的UDF，其依赖推荐通过的单独上传依赖文件方式上传。
+    -   在UDF Artifact文件或者其依赖文件比较大时，推荐通过外部URL的方式进行上传。需要注意的是，如果外部URL是OSS Bucket地址，其依赖文件必须位于sql-artifacts/namespaces/\{namespace\}目录下。
 6.  单击**确认**。
 
     在SQL编辑器页面左侧**UDFs**列表，您可以看到所有注册成功的UDF。
@@ -51,11 +54,11 @@
 
 5.  上传UDF JAR文件。
 
-    ![更新JAR](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/0396574161/p224239.png)
+    ![更新JAR](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2750938161/p263828.png)
 
     您可以通过以下任何一种方式上传UDF JAR文件：
 
-    -   **上传文件**：单击**选择文件**后，选择您的目标UDF JAR文件。
+    -   **上传文件**：单击**选择文件**项右侧的**选择文件**后，选择您的目标UDF Artifact文件。如果有依赖文件，单击**依赖文件**项右侧的**选择文件**，选择您的目标UDF Artifact所依赖的文件。
     -   **外部URL**：输入外部URL地址。
     **说明：**
 
