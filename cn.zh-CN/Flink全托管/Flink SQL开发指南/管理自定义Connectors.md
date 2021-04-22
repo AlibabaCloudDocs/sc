@@ -4,7 +4,7 @@
 
 在使用Flink SQL开发作业时，需要使用SQL Connectors连接您的源表、结果表和维表。Flink全托管产品支持云上常用的多种类型的Connectors，但相对于目前大数据常用的技术栈而言，仍然只是较少的一部分，为了支持您可以使用更多类型的Connectors，我们支持您自定义Connectors后上传使用。在使用过程中，您需要注意以下事项：
 
--   您需要根据社区定义的Connectors标准开发您自定义的Connectors，才能正确的被Flink全托管产品识别并使用，因此您需要明确的Connector Meta文件和申明Factory类。自定义Connector开发详情请参见[User-defined Sources & Sinks](https://ci.apache.org/projects/flink/flink-docs-release-1.12/dev/table/sourceSinks.html)
+-   您需要根据社区定义的Connectors标准开发您自定义的Connectors，才能正确的被Flink全托管产品识别并使用，因此您需要明确的Connector Meta文件和申明Factory类。自定义Connector开发详情请参见[User-defined Sources & Sinks](https://ci.apache.org/projects/flink/flink-docs-release-1.12/dev/table/sourceSinks.html)。
 -   同种类型的Connectors仅可以上传一次。
 
 为了避免JAR包依赖冲突，您需要注意以下几点：
