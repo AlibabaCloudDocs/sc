@@ -15,7 +15,7 @@ keyword: [创建交互式分析Hologres源表, Hologres]
 -   并发的Blink作业都可以读取一个或多个Hologres Shard，建议您配置的Blink并发数小于等于Hologres的Shard数。
 -   在流数据和批数据处理中都可以使用Hologres源表。
 -   Hologres源表使用快照语句高速读取当前数据，读取完后结束作业。如果出现读取数据失败，将重新执行读取操作。
--   实时消费Hologres源表的数据需要开启Binlog。开启Binlog的方法，请参见[订阅Hologres Binlog（Beta）](/cn.zh-CN/数据接入/实时写入/Flink/Blink独享/订阅Hologres Binlog（Beta）.md)
+-   实时消费Hologres源表的数据需要开启Binlog。开启Binlog的方法，请参见[订阅Hologres Binlog（Beta）](/cn.zh-CN/数据接入/实时写入/Flink/Blink独享/订阅Hologres Binlog（Beta）.md)。
 
 ## 什么是交互式分析Hologres
 
@@ -45,7 +45,7 @@ create table mysource(
 |--|--|----|--|
 |type|源表类型|是|固定值为hologres。|
 |dbname|数据库名称|是|无|
-|tablename|表名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+|tablename|表名称 **说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
 
 |是|无|
 |username|用户名，请填写阿里云账号的AccessKey ID。|是|无|
