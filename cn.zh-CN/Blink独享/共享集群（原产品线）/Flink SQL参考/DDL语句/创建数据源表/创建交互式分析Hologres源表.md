@@ -1,5 +1,5 @@
 ---
-keyword: 创建交互式分析Hologres源表
+keyword: [创建交互式分析Hologres源表, Hologres]
 ---
 
 # 创建交互式分析Hologres源表
@@ -15,6 +15,7 @@ keyword: 创建交互式分析Hologres源表
 -   并发的Blink作业都可以读取一个或多个Hologres Shard，建议您配置的Blink并发数小于等于Hologres的Shard数。
 -   在流数据和批数据处理中都可以使用Hologres源表。
 -   Hologres源表使用快照语句高速读取当前数据，读取完后结束作业。如果出现读取数据失败，将重新执行读取操作。
+-   实时消费Hologres源表的数据需要开启Binlog。开启Binlog的方法，请参见[订阅Hologres Binlog（Beta）](/cn.zh-CN/数据接入/实时写入/Flink/Blink独享/订阅Hologres Binlog（Beta）.md)
 
 ## 什么是交互式分析Hologres
 
