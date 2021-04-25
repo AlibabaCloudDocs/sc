@@ -40,14 +40,14 @@ create table sls_source(
 |参数|说明|是否必选|备注|
 |--|--|----|--|
 |connector|源表类型|是|固定值为`sls`。|
-|endPoint|消费端点信息|是|[服务入口](/cn.zh-CN/开发指南/API 参考/服务入口.md)|
+|endPoint|消费端点信息|是|[服务入口](/cn.zh-CN/开发指南/API 参考/服务入口.md)。|
 |accessId|AccessKey ID|是|无|
 |accessKey|AccessKey Secret|是|无|
 |project|读取的SLS项目名称|是|无|
 |logStore|Project下的具体的LogStore名称|是|无|
 |startTime|日志消费的开始时间|是|无|
 |consumerGroup|消费组名|否|您可以自定义消费组名（没有固定格式）。|
-|batchGetSize|单次读取logGroup的条数|否|默认值为10。**说明：**
+|batchGetSize|单次读取logGroup的条数|否|默认值为100。**说明：**
 
 -   batchGetSize设置不能超过1000，否则会报错。
 -   batchGetSize设置单次读取logGroup的条数。如果单条logItem的大小和batchGetSize都很大，则可能会导致频繁的垃圾回收（Garbage Collection），您可以适当减小batchGetSize参数值。 |
