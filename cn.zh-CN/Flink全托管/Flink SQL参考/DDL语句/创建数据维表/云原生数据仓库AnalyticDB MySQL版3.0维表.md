@@ -59,8 +59,8 @@ CREATE TABLE adb30_dim (
 
 ## 类型映射
 
-|云原生数据仓库AnalyticDB MySQL版3.0字段类型|Flink全托管字段类型|
-|-------------------------------|------------|
+|云原生数据仓库AnalyticDB MySQL版3.0字段类型|Flink字段类型|
+|-------------------------------|---------|
 |BOOLEAN|BOOLEAN|
 |TINYINT|INT|
 |SMALLINT|INT|
