@@ -33,7 +33,7 @@ create table phoenix5_sink (
 -   如果Phoenix5是在单机中创建的，则serverUrl是单机的URL地址。
 
 |是|您需要在云数据库HBase实例中开启Hbase SQL服务，详情请参见[开启HBase SQL服务](t1856926.md#)。|
-|tableName|Phoenix5表名|是|无|
+|tableName|Phoenix5表名|是|无。|
 |batchSize|一次批量写入的条数|否|默认值为20。|
 
 ## 代码示例
