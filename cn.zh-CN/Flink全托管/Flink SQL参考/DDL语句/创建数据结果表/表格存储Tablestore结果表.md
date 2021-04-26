@@ -8,7 +8,7 @@ keyword: [表格存储Tablestore, 结果表]
 
 ## 什么是表格存储Tablestore
 
-表格存储Tablestore是基于阿里云飞天分布式系统的分布式NoSQL数据存储服务。表格存储通过数据分片和负载均衡技术，实现数据规模与访问并发的无缝扩展，提供海量结构化数据的存储和实时访问服务。**Flink全托管**支持将Tablestore作为流式数据的输出。
+表格存储Tablestore是基于阿里云飞天分布式系统的分布式NoSQL数据存储服务。表格存储通过数据分片和负载均衡技术，实现数据规模与访问并发的无缝扩展，提供海量结构化数据的存储和实时访问服务。Flink支持将Tablestore作为流式数据的输出。
 
 ## DDL定义
 
@@ -29,7 +29,7 @@ CREATE TABLE ots_sink (
 ); 
 ```
 
-**说明：** Tablestore结果表必须定义有`Primary Key`，输出数据以Update方式追加Tablestore表。Update方式说明请参见[Update类型](/cn.zh-CN/Blink独享/共享集群（原产品线）/Flink SQL参考/DDL语句/创建数据结果表/数据结果表概述.md)。
+**说明：** Tablestore结果表必须定义有`Primary Key`，输出数据以Update方式追加Tablestore表。
 
 ## WITH参数
 
@@ -38,7 +38,7 @@ CREATE TABLE ots_sink (
 |connector|结果表类型|是|固定值为`ots`。|
 |instanceName|实例名|是|无|
 |tableName|表名|是|无|
-|endPoint|实例访问地址|是|参见[服务地址](/cn.zh-CN/功能介绍/基础概念/服务地址.md)。|
+|endPoint|实例访问地址|是|请参见[服务地址](/cn.zh-CN/功能介绍/基础概念/服务地址.md)。|
 |accessId|AccessKey ID|是|无|
 |accessKey|AccessKey Secret|是|无|
 |valueColumns|指定插入的字段列名|是|多个字段以英文逗号（,）分割，例如`ID,NAME`。|
@@ -53,8 +53,8 @@ CREATE TABLE ots_sink (
 
 ## 类型映射
 
-|Tablestore字段类型|Flink全托管字段类型|
-|--------------|------------|
+|Tablestore字段类型|Flink字段类型|
+|--------------|---------|
 |INTEGER|BIGINT|
 |STRING|STRING|
 |BOOLEAN|BOOLEAN|
