@@ -10,7 +10,7 @@ keyword: 创建交互式分析Hologres结果表
 
 ## 什么是交互式分析Hologres
 
-交互式分析Hologres兼容PostgreSQL协议，与大数据生态紧密连接，支持高并发、低延时实时分析处理PB级数据，让您轻松使用现有BI（Business Intelligence）工具对数据进行多维分析和业务探索。
+[交互式分析Hologres](/cn.zh-CN/产品简介/什么是Hologres.md)兼容PostgreSQL协议，与大数据生态紧密连接，支持高并发、低延时实时分析处理PB级数据，让您轻松使用现有BI（Business Intelligence）工具对数据进行多维分析和业务探索。
 
 ## DDL定义
 
