@@ -65,9 +65,9 @@ CREATE TABLE stream_test_influxdb(
 
 url支持HTTP和HTTPS。 |
 |database|InfluxDB的数据库名称|是|例如db-flink。|
-|username|数据库的用户名|是|需要对目标数据库有写权限。|
-|password|数据库的密码|是|无。|
-|batchPutSize|批量提交的记录条数|否|默认每次批量提交300条记录。|
+|username|数据库的用户名|是|需要对目标数据库有写权限。用户名详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11186623.6.711.6709769eUmPMur)。|
+|password|数据库的密码|是|密码详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11186623.6.711.6709769eUmPMur)。|
+|batchSize|批量提交的记录条数|否|默认每次批量提交300条记录。|
 |retentionPolicy|保留策略|否|如果您不配置该参数时，该参数会被默认填写为每个数据库的默认保留策略autogen，保留策略详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11186623.6.711.6709769eUmPMur)。|
 |ignoreErrorData|是否忽略异常数据|否|取值如下：-   true：忽略异常数据。
 -   false（默认值）：不忽略异常数据。 |
@@ -93,7 +93,7 @@ url支持HTTP和HTTPS。 |
 CREATE TEMPORARY TABLE datahub_source(
  `metric` VARCHAR,
  `timestamp` BIGINT,
- `tag_value1` DOUBLE,
+ `filedvalue` DOUBLE,
  `tagvalue` VARCHAR
 ) WITH (
   'connector' = 'datagen',
@@ -124,10 +124,10 @@ CREATE TEMPORARY TABLE influxdb_sink(
 
 INSERT INTO influxdb_sink
 SELECT 
-   metric,
-   timestamp,
-   filedvalue,
-   tagvalue
+   `metric`,
+   `timestamp`,
+   `filedvalue`,
+   `tagvalue`
 FROM datahub_source;
 ```
 
