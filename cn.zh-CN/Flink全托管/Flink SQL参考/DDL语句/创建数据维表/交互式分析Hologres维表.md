@@ -8,7 +8,7 @@ keyword: [Hologres, 维表, 交互式分析]
 
 ## 什么是交互式分析Hologres
 
-交互式分析Hologres兼容PostgreSQL协议，与大数据生态紧密连接，支持高并发、低延时实时分析处理PB级数据，让您轻松使用现有BI（Business Intelligence）工具对数据进行多维分析和业务探索。
+[交互式分析Hologres](/cn.zh-CN/产品简介/什么是Hologres.md)兼容PostgreSQL协议，与大数据生态紧密连接，支持高并发、低延时实时分析处理PB级数据，让您轻松使用现有BI（Business Intelligence）工具对数据进行多维分析和业务探索。
 
 ## 使用限制
 
@@ -48,12 +48,12 @@ CREATE TABLE hologres_dim(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|维表类型|是|固定值为`hologres`（小写）。|
-|endPoint|hologres endpoint|是|详情请参见[访问域名](/cn.zh-CN/实例管理/访问域名.md)。|
-|tablename|表名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+|connector|维表类型。|是|固定值为`hologres`（小写）。|
+|endPoint|Hologres服务地址。|是|详情请参见[访问域名](/cn.zh-CN/实例管理/访问域名.md)。|
+|tablename|表名称。**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
 
 |是|无。|
-|dbname|数据库名称|是|无。|
+|dbname|数据库名称。|是|无。|
 |username|用户名，请填写阿里云账号的AccessKey ID。|是|无。|
 |password|密码，请填写阿里云账号的AccessKey Secret。|否|无。|
 |useRpcMode|自VVP 2.4.0版本开始，默认通过JDBC实现Hologres Connector。VVP 2.4.0以前版本默认是通过RPC实现Hologres Connector。|否|通过JDBC实现会占用SQL连接，导致JDBC链接数增加。如果您需要降低SQL连接数，则可以设置该参数值为true。**说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
