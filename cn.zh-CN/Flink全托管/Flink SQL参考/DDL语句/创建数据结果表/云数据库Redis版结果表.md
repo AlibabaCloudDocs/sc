@@ -10,7 +10,7 @@ keyword: [Redis, 结果表]
 
 ## 什么是云数据库Redis版
 
-阿里云数据库Redis版是兼容开源Redis协议标准、提供内存加硬盘混合存储的数据库服务，基于高可靠双机热备架构及可平滑扩展的集群架构，充分满足高吞吐、低延迟及弹性变配的业务需求。Flink全托管支持将其作为流式数据的输出。
+阿里云数据库Redis版是兼容开源Redis协议标准、提供内存加硬盘混合存储的数据库服务，基于高可靠双机热备架构及可平滑扩展的集群架构，充分满足高吞吐、低延迟及弹性变配的业务需求。Flink支持将其作为流式数据的输出。
 
 ## DDL定义
 
@@ -21,7 +21,7 @@ keyword: [Redis, 结果表]
     DDL为两列：第1列为key，第2列为value。Redis插入数据的命令为`set key value`。
 
     ```
-    create table resik_output (
+    create table redis_sink (
       a STRING,
       b STRING,
       PRIMARY KEY (a) NOT ENFORCED -- 必填。
@@ -41,7 +41,7 @@ keyword: [Redis, 结果表]
     DDL为两列：第1列为key，第2列为value。Redis插入数据的命令为`lpush key value`。
 
     ```
-    create table resik_output (
+    create table redis_sink (
       a STRING,
       b STRING,
       PRIMARY KEY (a) NOT ENFORCED -- 必填。
@@ -61,7 +61,7 @@ keyword: [Redis, 结果表]
     DDL为两列：第1列为key，第2列为value。Redis插入数据的命令为`sadd key value`。
 
     ```
-    create table resik_output (
+    create table redis_sink (
       a STRING,
       b STRING,
       PRIMARY KEY (a) NOT ENFORCED -- 必填。
@@ -81,7 +81,7 @@ keyword: [Redis, 结果表]
     DDL为三列：第1列为key，第2列为hash\_key，第3列为hash\_key对应的hash\_value。Redis插入数据的命令为`hmset key hash_key hash_value`。
 
     ```
-    create table resik_output (
+    create table redis_sink (
       a STRING,
       b STRING,
       c STRING,
@@ -102,7 +102,7 @@ keyword: [Redis, 结果表]
     DDL为三列：第1列为key，第2列为score，第3列为value。Redis插入数据的命令为`zadd key score value`。
 
     ```
-    create table resik_output (
+    create table redis_sink (
       a STRING,
       b DOUBLE, --必须为DOUBLE类型。
       c STRING,
@@ -138,8 +138,8 @@ keyword: [Redis, 结果表]
 
 ## 类型映射
 
-|Redis字段类型|Flink全托管字段类型|
-|---------|------------|
+|Redis字段类型|Flink字段类型|
+|---------|---------|
 |STRING|STRING|
 |SCORE|DOUBLE|
 
@@ -148,27 +148,27 @@ keyword: [Redis, 结果表]
 ## 代码示例
 
 ```
-CREATE TABLE datagen_stream (
+CREATE TEMPORARY TABLE datagen_source (
   v STRING, 
   p STRING
 ) with (
   'connector' = 'datagen'
 );
 
-create table resik_output (
+CREATE TEMPORARY TABLE redis_sink (
   a STRING,
   b STRING,
   PRIMARY KEY (a) NOT ENFORCED
 ) with (
   'connector' = 'redis',
   'mode' = 'string',
-  'host' = '${reidsHost}', 
-  'port' = '${redisPort}', 
-  'password' = '${password}'
+  'host' = '<yourHost>', 
+  'port' = '<yourPort>', 
+  'password' = '<yourPassword>'
 );
 
-INSERT INTO resik_output 
+INSERT INTO redis_sink 
 SELECT v, p
-FROM datagen_stream;
+FROM datagen_source;
 ```
 
