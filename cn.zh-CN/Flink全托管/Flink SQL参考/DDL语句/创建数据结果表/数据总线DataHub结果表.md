@@ -8,7 +8,7 @@ keyword: [DataHub, 结果表]
 
 ## 什么是数据总线DataHub
 
-阿里云流数据处理平台DataHub是流式数据（Streaming Data）的处理平台，提供对流式数据的发布（Publish）、订阅（Subscribe）和分发功能，让您可以轻松构建基于流式数据的分析和应用。**Flink全托管**支持将DataHub作为流式数据的输出。
+[阿里云流数据处理平台DataHub](https://help.aliyun.com/document_detail/47439.html?spm=a2c4g.11174283.6.542.5e7b63efe2IHMj)是流式数据（Streaming Data）的处理平台，提供对流式数据的发布（Publish）、订阅（Subscribe）和分发功能，让您可以轻松构建基于流式数据的分析和应用。Flink支持将DataHub作为流式数据的输出。
 
 ## DDL定义
 
@@ -50,10 +50,10 @@ create table datahub_sink(
 
 ## 类型映射
 
-DataHub和全托管Flink版字段类型对应关系如下，建议使用该对应关系时进行DDL声明。
+DataHub和Flink字段类型对应关系如下，建议使用该对应关系时进行DDL声明。
 
-|DataHub字段类型|全托管Flink版字段类型|
-|-----------|-------------|
+|DataHub字段类型|Flink字段类型|
+|-----------|---------|
 |STRING|VARCHAR|
 |TIMESTAMP|BIGINT|
 |TINYINT|TINYINT|
