@@ -8,7 +8,7 @@ keyword: [DataHub, 源表]
 
 ## 什么是数据总线DataHub
 
-阿里云流数据处理平台DataHub是流式数据（Streaming Data）的处理平台，提供对流式数据的发布（Publish）、订阅（Subscribe）和分发功能，让您可以轻松构建基于流式数据的分析和应用。**Flink全托管**支持将DataHub作为流式数据的输入。
+[阿里云流数据处理平台DataHub](https://help.aliyun.com/document_detail/47439.html?spm=a2c4g.11174283.6.542.5e7b63efe2IHMj)是流式数据（Streaming Data）的处理平台，提供对流式数据的发布（Publish）、订阅（Subscribe）和分发功能，让您可以轻松构建基于流式数据的分析和应用。
 
 ## DDL定义
 
@@ -59,10 +59,10 @@ create table datahub_source(
 
 ## 类型映射
 
-DataHub和全托管Flink版字段类型对应关系如下，建议使用该对应关系时进行DDL声明。
+DataHub和Flink字段类型对应关系如下，建议使用该对应关系时进行DDL声明。
 
-|DataHub字段类型|全托管Flink版字段类型|
-|-----------|-------------|
+|DataHub字段类型|Flink字段类型|
+|-----------|---------|
 |STRING|VARCHAR|
 |TIMESTAMP|BIGINT|
 |TINYINT|TINYINT|
@@ -82,9 +82,7 @@ Flink SQL支持获取DataHub的属性字段。通过读取属性字段可以获�
 |---|----|
 |TIMESTAMP|每条记录写入DataHub的系统时间（System Time）。|
 
-![Shard数据抽样](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/6084359951/p64847.png)
-
-**说明：** 获取属性字段的方法，请参见[获取数据源表属性字段](/cn.zh-CN/Blink独享/共享集群（原产品线）/Flink SQL参考/DDL语句/创建数据源表/数据源表概述.md)。
+![Shard数据抽样](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/6084359951/p64847.png)
 
 ## 代码示例
 
@@ -121,9 +119,9 @@ from datahub_source;
 
 ## 常见问题
 
--   Q：分裂或者缩容DataHub Topic后导致**Flink全托管**作业失败，如何恢复？
+-   Q：分裂或者缩容DataHub Topic后导致Flink作业失败，如何恢复？
 
-    A：如果分裂或者缩容了**Flink全托管**正在读取的某个Topic，则会导致任务持续出错，无法自行恢复。该情况下需要重新启动（停止-\>启动）来使任务恢复正常。
+    A：如果分裂或者缩容了Flink正在读取的某个Topic，则会导致任务持续出错，无法自行恢复。该情况下需要重新启动（停止-\>启动）来使任务恢复正常。
 
 -   Q：可以删除正在消费的DataHub Topic吗？
 
