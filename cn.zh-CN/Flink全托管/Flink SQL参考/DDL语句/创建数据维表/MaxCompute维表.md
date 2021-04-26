@@ -39,8 +39,8 @@ create table odps_dim(
 |参数|说明|是否必填|备注|
 |--|--|----|--|
 |connector|维表类型|是|固定值为`odps`。|
-|endPoint|MaxCompute服务地址|是|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
-|tunnelEndpoint|MaxCompute Tunnel服务的连接地址|是|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
+|endPoint|MaxCompute服务地址|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
+|tunnelEndpoint|MaxCompute Tunnel服务的连接地址|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
 |project|MaxCompute项目名称|是|无|
 |tableName|表名|是|无|
 |accessId|AccessKey ID|是|无|
