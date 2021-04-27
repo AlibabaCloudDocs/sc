@@ -21,15 +21,15 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
     -   不建议修改taskmanager.numberOfTaskSlots，保持默认值1。
 -   提升吞吐和解决数据热点的推荐配置
 
-    在作业**高级配置**的**更多Flink配置**里填加以下代码，详情请参见[Group Aggregate优化技巧](#section_211_m3y_k5i)
+    在作业**高级配置**的**更多Flink配置**里添加以下代码，详情请参见[Group Aggregate优化技巧](#section_211_m3y_k5i)。
 
     ```
-    execution.checkpointing.interval=180s
-    state.backend=gemini
-    state.backend.gemini.ttl.ms=129600000
-    table.exec.mini-batch.enabled=true
-    table.exec.mini-batch.allow-latency=5s
-    table.optimizer.distinct-agg.split.enabled=true
+    execution.checkpointing.interval: 180s
+    state.backend: gemini
+    state.backend.gemini.ttl.ms: 129600000
+    table.exec.mini-batch.enabled: true
+    table.exec.mini-batch.allow-latency: 5s
+    table.optimizer.distinct-agg.split.enabled: true
     env.java.opts.taskmanager: -Xms4096m -XX:+UseParNewGC -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 -verbose:gc -XX:+HeapDumpOnOutOfMemoryError -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:CMSMaxAbortablePrecleanTime=1000 -XX:+CMSClassUnloadingEnabled -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:SurvivorRatio=5 -XX:ParallelGCThreads=4
     ```
 
@@ -63,8 +63,8 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
         MiniBatch默认关闭，您需要在作业**高级配置**中的**更多Flink配置**填写以下代码。
 
         ```
-        table.exec.mini-batch.enabled=true
-        table.exec.mini-batch.allow-latency=5s
+        table.exec.mini-batch.enabled: true
+        table.exec.mini-batch.allow-latency: 5s
         ```
 
         参数解释如下表所示。
@@ -117,7 +117,7 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
         默认不开启，您需要在作业**高级配置**中的**更多Flink配置**填写以下代码。
 
         ```
-        table.optimizer.distinct-agg.split.enabled=true。
+        table.optimizer.distinct-agg.split.enabled: true。
         ```
 
     -   判断是否生效
@@ -225,7 +225,7 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
         例如，Top100配置缓存10000条，并发50，当您的PatitionBy的key维度较大时，例如10万级别时，Cache命中率只有10000\*50/100/100000=5%，命中率会很低，导致大量的请求都会击中State（磁盘），性能会大幅下降。因此当PartitionBy的Key维度特别大时，可以适当加大TopN的Cache Size，相对应的也建议适当加大TopN节点的Heap Memory。
 
         ```
-        blink.topn.cache.size=200000
+        blink.topn.cache.size: 200000
         ```
 
         默认10000条，调整TopN cahce到200000，那么理论命中率能达到200000\*50/100/100000 = 100%。
