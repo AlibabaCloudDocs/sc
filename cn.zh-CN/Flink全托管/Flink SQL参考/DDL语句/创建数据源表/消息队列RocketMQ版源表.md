@@ -65,7 +65,8 @@ create table mq_source(
 -   公网服务：无需配置nameServerSubgroup
 
 **说明：** 仅VVR 2.1.1 ~ VVR 3.0.0版本支持该参数，VVR 3.0.1及以后版本不支持该参数。 |
-|startTime|消息消费启动的时间点|否|无|
+|timeZone|时区|否|例如，Asia/Shanghai。|
+|startTime|消息消费启动的时间点|否|startTime必须和timeZone同时使用，即配置startTime参数时，必须也要配置timeZone，例如'timeZone' = 'Asia/Shanghai'。|
 |startMessageOffset|消息开始的偏移量|否|如果填写，将优先以startMessageoffset的位点开始加载数据。|
 |tag|订阅的标签|否|无|
 |lineDelimiter|解析Block时，行分隔符|否|默认值为 `\n`。|
