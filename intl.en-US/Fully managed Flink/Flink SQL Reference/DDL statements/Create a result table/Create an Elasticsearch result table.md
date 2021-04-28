@@ -29,7 +29,7 @@ This topic describes how to create an Elasticsearch result table. It also descri
 
 **Note:**
 
--   Only Elasticsearch V6.0 and Elasticsearch V7.0 are supported.
+-   Only Elasticsearch V6.x and Elasticsearch V7.x are supported.
 -   The fields in the DDL statement correspond to the fields in an Elasticsearch document. Document IDs cannot be written to the result table.
 
 ## Parameters in the WITH clause
