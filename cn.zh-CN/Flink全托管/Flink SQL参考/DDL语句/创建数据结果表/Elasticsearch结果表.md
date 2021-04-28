@@ -29,7 +29,7 @@ keyword: [Elasticsearch, ES, 结果表]
 
 **说明：**
 
--   仅支持Elasticsearch 6.0和7.0版本。
+-   仅支持Elasticsearch 6.x和7.x版本。
 -   DDL中的字段均对应Elasticsearch文档中的字段，不支持将文档ID写入表中。
 
 ## WITH参数
