@@ -4,7 +4,7 @@
 
 **说明：**
 
--   本文仅适用于Blink 3.5.0 hotfix版本。
+-   本文仅适用于Blink 3.5.0 hotfix及以上版本。
 -   增量MaxCompute源表不支持作为维表使用。
 -   增量MaxCompute源表只支持MaxCompute分区表，不支持非分区表。
 
