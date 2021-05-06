@@ -18,7 +18,7 @@ keyword: [Elasticsearch, ES, 结果表]
    pv BIGINT,
    PRIMARY KEY (user_id) NOT ENFORCED  -- 主键可选，如果定义了主键，则作为文档ID，否则文档ID将为随机值。
 ) WITH (
-   'connector' = 'elasticsearch-7',
+   'connector' = 'elasticsearch-6',
    'hosts' = '<yourHosts>',
    'index' = '<yourIndex>',
    'document-type' = '<yourEelasticsearch.types>',
