@@ -18,7 +18,7 @@ This topic describes how to create an Elasticsearch result table. It also descri
    pv BIGINT,
    PRIMARY KEY (user_id) NOT ENFORCED  -- The primary key is optional. If you specify a primary key, it is used as the document ID. If you do not specify a primary key, the document ID is a random value.
 ) WITH (
-   'connector' = 'elasticsearch-7',
+   'connector' = 'elasticsearch-6',
    'hosts' = '<yourHosts>',
    'index' = '<yourIndex>',
    'document-type' = '<yourEelasticsearch.types>',
