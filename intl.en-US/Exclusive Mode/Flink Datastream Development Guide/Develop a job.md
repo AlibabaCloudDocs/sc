@@ -6,13 +6,17 @@ This topic describes the POM dependency used to develop DataStream jobs, example
 
 -   Only Blink 3.2.2 and later versions of Realtime Compute for Apache Flink in exclusive mode supports Flink DataStream.
 -   We recommend that you use a Maven project of IntelliJ IDEA to develop a DataStream job.
+-   To avoid JAR dependency conflicts, take note of the following points:
+    -   Select the Blink version on the Development page the same as the Blink version of POM dependencies.
+    -   Specify `<scope>provided</scope>` for Blink-related dependencies.
+    -   Use the Shade plug-in to package other third-party dependencies. For more information, see [Apache Maven Shade plug-in](https://maven.apache.org/plugins/maven-shade-plugin/index.html).
 
 ## POM dependency
 
 Add a [POM dependency](https://search.maven.org/search?q=com.alibaba.blink) based on the Blink version of the job that is running. The following example shows the POM file used for Blink 3.4.0.
 
 ```
-<? xml version="1.0" encoding="UTF-8"? >
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -38,7 +42,7 @@ Add a [POM dependency](https://search.maven.org/search?q=com.alibaba.blink) base
             <scope>provided</scope>
         </dependency>
 
-<! --        Add test framework-->
+<!--        Add test framework-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -51,7 +55,7 @@ Add a [POM dependency](https://search.maven.org/search?q=com.alibaba.blink) base
             <version>2.11.12</version>
         </dependency>
 
-<! --        Add logging framework-->
+<!--        Add logging framework-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
