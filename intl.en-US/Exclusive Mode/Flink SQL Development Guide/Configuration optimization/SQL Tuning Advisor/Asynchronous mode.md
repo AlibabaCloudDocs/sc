@@ -4,19 +4,19 @@ keyword: [asynchronous mode, throughput, CPU utilization]
 
 # Asynchronous mode
 
-You can enable the asynchronous mode and configure the parameters to improve job throughput when you join dimension tables.
+You can enable the asynchronous mode and configure related parameters to improve throughput when you join dimension tables.
 
 ## Background information
 
 By default, the synchronous mode is used when you join dimension tables. The system queries the physical table and returns the association result each time a data record is added to the physical table. This results in low throughput and high latency. The asynchronous mode is introduced to process query requests in parallel, so that consecutive requests do not need to wait for processing.
 
-Flink SQL implements asynchronous JOIN operations for dimension tables based on Flink Async I/O and asynchronous clients. This significantly improves job throughput. The following figure shows the comparison between the synchronous and asynchronous modes.
+Flink SQL implements asynchronous JOIN operations for dimension tables based on Flink Async I/O and asynchronous clients. This significantly improves throughput. The following figure shows the comparison between the synchronous and asynchronous modes.
 
-![Comparison](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9366343061/p161580.png)
+![Comparison between synchronous and asynchronous modes](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9366343061/p161580.png)
 
 ## Optimization method
 
-Add async='true' to the WITH clause in the data definition language \(DDL\) statement of the dimension table. The following table describes the parameters related to the asynchronous mode.
+Add async='true' to the WITH clause in the data definition language \(DDL\) statement of a dimension table. The following table describes the parameters related to the asynchronous mode.
 
 |Parameter|Description|Required|Remarks|
 |---------|-----------|--------|-------|
