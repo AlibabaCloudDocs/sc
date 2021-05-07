@@ -6,6 +6,10 @@ keyword: [云原生数据仓库AnalyticDB MySQL版, 3.0, 云原生数据仓库An
 
 本文为您介绍云原生数据仓库AnalyticDB MySQL版3.0维表的DDL定义、WITH参数、CACHE参数和类型映射。
 
+## 什么是云原生数据仓库AnalyticDB MySQL版
+
+[云原生数据仓库AnalyticDB MySQL版]()是融合数据库、大数据技术于一体的云原生企业级数据仓库服务。AnalyticDB MySQL版支持高吞吐的数据实时增删改、低延时的实时分析和复杂ETL，兼容上下游生态工具，可用于构建企业级报表系统、数据仓库和数据服务引擎。
+
 ## DDL定义
 
 ```
