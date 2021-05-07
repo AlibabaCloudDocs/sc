@@ -8,6 +8,10 @@ keyword: Phoenix5结果表
 
 **说明：** Phoenix5结果表仅支持INSERT，不支持UPDATE和DELETE。
 
+## 什么是Phoenix5
+
+HBase SQL服务基于Phoenix 5.x为HBase 2.x提供SQL能力，通过轻客户端即可快速连接访问。SQL服务挂载了SLB负载均衡，通过round robin模式将请求均匀分发在每个query server节点。此外轻客户端还支持Python、Go等多语言访问。Phoenix5详情请参见[HBase SQL\(Phoenix\) 5.x 使用说明]()。
+
 ## DDL定义
 
 ```
