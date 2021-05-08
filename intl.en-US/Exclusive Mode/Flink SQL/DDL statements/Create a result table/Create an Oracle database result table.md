@@ -53,7 +53,7 @@ CREATE TABLE oracle_sink(
 |maxRetryTimes|The maximum number of retries for writing data to a table.|No|Default value: 10.|
 |batchSize|The number of data records that are written at a time. **Note:**
 
--   ThebatchSize parameter takes effect only when the primary key is defined.
+-   The batchSize parameter takes effect only when the primary key is defined.
 -   Write operations are triggered if the value of the batchSize or bufferSize parameter reaches the specified threshold.
 
 |No|Default value: 50.|
