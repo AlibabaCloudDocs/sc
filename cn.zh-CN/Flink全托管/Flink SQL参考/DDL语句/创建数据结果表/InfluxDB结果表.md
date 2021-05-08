@@ -6,6 +6,10 @@ keyword: [InfluxDB结果表, InfluxDB]
 
 本文为您介绍InfluxDB结果表的DDL定义、WITH参数、类型映射和代码示例。
 
+## 什么是时序数据库InfluxDB®版
+
+时序数据库InfluxDB®版是一款专门处理高写入和查询负载的时序数据库，用于存储大规模的时序数据并进行实时分析，包括来自DevOps监控、应用指标和IoT传感器上的数据。时序数据库InfluxDB®版详情请参见[InfluxDB®️介绍]()。
+
 ## DDL定义
 
 Flink支持使用InfluxDB作为结果表输出，示例代码如下。
