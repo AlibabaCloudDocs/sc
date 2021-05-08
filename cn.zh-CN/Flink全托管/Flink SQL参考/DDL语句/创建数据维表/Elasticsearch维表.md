@@ -8,6 +8,10 @@ keyword: [Elasticsearch, ES, 维表]
 
 **说明：** 该Connector支持的功能是和阿里云Elasticsearch产品对齐的，暂不支持HTTPS加密访问形式。
 
+## 什么是云数据库Elasticsearch
+
+[阿里云Elasticsearch](/cn.zh-CN/产品简介/什么是阿里云Elasticsearch.md)兼容开源Elasticsearch的功能，以及Security、Machine Learning、Graph、APM等商业功能，致力于数据分析、数据搜索等场景服务。为您提供企业级权限管控、安全监控告警、自动报表生成等场景服务。
+
 ## DDL定义
 
 ```
