@@ -8,6 +8,10 @@ keyword: [源表, MaxCompute]
 
 **说明：** MaxCompute Connector可以作为Stream作业和Batch作业的源表使用。
 
+## 什么是MaxCompute
+
+大数据计算服务MaxCompute（原名ODPS）是一种快速、完全托管的EB级数据仓库解决方案，致力于批量结构化数据的存储和计算，提供海量数据仓库的解决方案及分析建模服务。MaxCompute详情请参见[什么是MaxCompute](/cn.zh-CN/产品简介/什么是MaxCompute.md)。
+
 ## DDL定义
 
 ```
