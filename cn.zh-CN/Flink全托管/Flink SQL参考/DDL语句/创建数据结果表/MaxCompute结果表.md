@@ -8,6 +8,10 @@ keyword: [结果表, MaxCompute]
 
 **说明：** MaxCompute Connector可以作为Stream作业和Batch作业的结果表使用。
 
+## 什么是MaxCompute
+
+大数据计算服务MaxCompute（原名ODPS）是一种快速、完全托管的EB级数据仓库解决方案，致力于批量结构化数据的存储和计算，提供海量数据仓库的解决方案及分析建模服务。MaxCompute详情请参见[什么是MaxCompute](/cn.zh-CN/产品简介/什么是MaxCompute.md)。
+
 ## 实现原理
 
 MaxCompute Sink可以分为以下两个阶段：
@@ -55,7 +59,7 @@ create table odps_sink(
 |tableName|表名|是|无|
 |accessId|AccessKey ID|是|无|
 |accessKey|AccessKey Secret|是|无|
-|partition|分区名|否|如果存在分区表，则必填partition。填写partition需要注意以下两点：-   固定分区
+|partition|分区名|否|如果存在分区表，则必填partition。填写partition需要注意以下两点： -   固定分区
 
 例如``partition` = 'ds=20180905'`表示将数据写入分区`ds= 20180905`。
 
