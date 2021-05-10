@@ -6,7 +6,7 @@ keyword: [Elasticsearch, ES, 结果表]
 
 本文为您介绍Elasticsearch（ES）结果表DDL定义、WITH参数、类型映射和代码示例。
 
-**说明：** 该Connector支持的功能是和阿里云Elasticsearch产品对齐的，暂不支持HTTPS加密访问形式。
+**说明：** 该Connector支持的功能是和阿里云Elasticsearch产品对齐的，支持HTTPS加密访问形式。
 
 ## 什么是云数据库Elasticsearch
 
