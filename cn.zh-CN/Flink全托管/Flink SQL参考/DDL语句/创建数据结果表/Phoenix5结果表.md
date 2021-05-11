@@ -36,7 +36,7 @@ create table phoenix5_sink (
 |serverUrl|Phoenix5的Query Server地址：-   如果Phoenix5是在集群中创建的，则serverUrl是负载均衡服务的URL地址。
 -   如果Phoenix5是在单机中创建的，则serverUrl是单机的URL地址。
 
-|是|您需要在云数据库HBase实例中开启Hbase SQL服务，详情请参见[开启HBase SQL服务](t1856926.md#)。|
+|是|您需要在云数据库HBase实例中开启Hbase SQL服务，详情请参见[开启HBase](section_2nj_tsp_mbz)。|
 |tableName|Phoenix5表名|是|无。|
 |batchSize|一次批量写入的条数|否|默认值为20。|
 
