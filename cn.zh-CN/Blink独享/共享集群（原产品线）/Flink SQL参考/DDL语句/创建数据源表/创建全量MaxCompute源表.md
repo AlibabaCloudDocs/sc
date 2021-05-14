@@ -55,6 +55,7 @@ create table odps_source(
 -   subscribeNewPartition参数值为`true`时，不可以指定partition的参数值 ，否则会造成无法读取新产生的分区的状况。
 -   该参数只在Blink 3.4.4版本临时存在，Blink 3.5.0版本废弃该参数，请使用[创建增量MaxCompute源表](/cn.zh-CN/Blink独享/共享集群（原产品线）/Flink SQL参考/DDL语句/创建数据源表/创建增量MaxCompute源表.md)。 |
 |subscribeIntervalInSec|监听新分区的间隔|否|默认值为30，单位为秒。**说明：** 监听间隔设置太小，会对全量MaxCompute MetaData服务造成压力，有可能导致监听服务失败。 |
+|maxPartitionCount|未设置Partition参数时，读取当前分区标的分区个数。|否|默认值为100。**说明：** 仅Blink 3.0及以上版本支持该参数。 |
 
 ## 类型映射
 
