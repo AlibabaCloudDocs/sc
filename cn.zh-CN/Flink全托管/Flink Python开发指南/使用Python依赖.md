@@ -75,7 +75,7 @@
 
     3.  在左侧导航栏，单击**资源上传**，上传venv.zip文件。
 
-        **说明：** Flink全托管开发控制台上可以上传文件大小的限制为200 MB，而Python虚拟环境的大小通常会超过该限制，因此，您需要通过[OSS管理控制台](https://oss.console.aliyun.com/)[OSS管理控制台](https://partners-intl.console.aliyun.com/#/oss)上传文件。
+        **说明：** Flink全托管开发控制台上可以上传文件大小的限制为200 MB，而Python虚拟环境的大小通常会超过该限制，因此，您需要通过[OSS管理控制台](https://oss.console.aliyun.com/)上传文件。
 
     4.  在目标作业开发页面的**Python Archives**项，选择venv.zip文件。
 
@@ -97,7 +97,7 @@
     如果您的第三方Python包是[Zip Safe](https://setuptools.readthedocs.io/en/latest/userguide/miscellaneous.html?highlight=zip_safe#setting-the-zip-safe-flag)的，即不需要安装即可直接在Python作业中使用。操作步骤如下：
 
     1.  下载可直接Import的第三方Python包。
-        1.  在浏览器上打开[PyPI](https://pypi.org/project/)页面。
+        1.  在浏览器上打开[PyPI](https://pypi.org/)页面。
         2.  在搜索框中输入目标第三方Python包名称，例如apache-flink 1.12.2。
         3.  在搜索结果中，单击目标结果名称。
         4.  在左侧导航栏，单击Download files。
