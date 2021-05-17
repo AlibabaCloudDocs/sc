@@ -8,7 +8,7 @@ Log on to the [RAM console](https://ram.console.aliyun.com/) to configure your a
 
 Realtime Compute for Apache Flink allows you to log on to its console by using an Alibaba Cloud account or as a RAM user. You can use an Alibaba Cloud account to purchase Realtime Compute for Apache Flink and create projects. You can also authorize a RAM user to use the Realtime Compute for Apache Flink projects that are created by using an Alibaba Cloud account.
 
-In Realtime Compute for Apache Flink, a project belongs to an Alibaba Cloud account. If a project requires collaboration of multiple persons, you must use the Alibaba Cloud account + RAM user model, as shown in the following figure.
+In Realtime Compute for Apache Flink, a project belongs to an Alibaba Cloud account. If a project requires collaboration of multiple persons, you must use the Alibaba Cloud account + RAM user model.
 
 ## Alibaba Cloud account + RAM user model
 
@@ -16,11 +16,11 @@ Realtime Compute for Apache Flink uses the Alibaba Cloud account + RAM user mode
 
 1.  Initialize RAM.
 
-    You must initialize RAM when you use RAM for the first time. For more information, see [Set a password policy for RAM users](/intl.en-US/Security Settings/Passwords/Set a password policy for RAM users.md) and [Set security policies for RAM users](/intl.en-US/Security Settings/Basic security settings/Set security policies for RAM users.md).
+    You must initialize RAM when you use RAM for the first time. For more information, see [Configure the password policy for RAM users](/intl.en-US/Security Settings/Passwords/Configure the password policy for RAM users.md) and [Set security policies for RAM users](/intl.en-US/Security Settings/Basic security settings/Set security policies for RAM users.md).
 
 2.  Create a RAM user.
 
-    You can allocate RAM users to the developers of Realtime Compute for Apache Flink. For more information about how to create a RAM user, see [Create a RAM user](/intl.en-US/RAM User Management/Create a RAM user.md).
+    You can allocate RAM users to the developers of Realtime Compute for Apache Flink. For more information about how to create a RAM user, see [Create a RAM user](/intl.en-US/RAM User Management/Basic operations/Create a RAM user.md).
 
 3.  Create a custom permission policy.
 
@@ -61,7 +61,7 @@ Realtime Compute for Apache Flink uses the Alibaba Cloud account + RAM user mode
 
 4.  Grant permissions to RAM users or RAM user groups.
 
-    Attach the preceding policy to specified RAM users or RAM user groups. For more information, see [Grant permissions to a RAM user](/intl.en-US/RAM User Management/Grant permissions to a RAM user.md) and [Grant permissions to a RAM user group](/intl.en-US/RAM User Group Management/Grant permissions to a RAM user group.md).
+    Attach the preceding policy to specified RAM users or RAM user groups. For more information, see [Grant permissions to a RAM user](/intl.en-US/RAM User Management/Authorization management/Grant permissions to a RAM user.md) and [Grant permissions to a RAM user group](/intl.en-US/RAM User Group Management/Grant permissions to a RAM user group.md).
 
 5.  Log on to the Realtime Compute for Apache Flink console as a RAM user.
 
