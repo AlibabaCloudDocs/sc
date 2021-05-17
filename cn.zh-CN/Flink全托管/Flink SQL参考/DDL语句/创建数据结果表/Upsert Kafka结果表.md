@@ -6,6 +6,8 @@ keyword: [Upsert Kafka, 结果表]
 
 本文为您介绍Upsert Kafka结果表的DDL定义、WITH参数和示例。
 
+**说明：** Upsert Kafka Connector仅支持将结果数据写入到kafka 0.10及以上版本。
+
 ## 什么是Upsert Kafka
 
 Upsert Kafka基于开源Flink社区的Upsert Kafka版实现，详情请参见[Upsert Kafka SQL连接器](https://ci.apache.org/projects/flink/flink-docs-master/zh/dev/table/connectors/upsert-kafka.html)。Upsert Kafka可以消费ChangeLog流，支持Flink将INSERT和UPDATE\_AFTER数据作为正常的Kafka消息写入Kafka Topic，并将DELETE数据以Value为空的Kafka消息写入Kafka Topic，即以Upsert方式将数据写入Kafka Topic。此外，Flink将根据主键列的值对数据进行分区，从而保证主键上的消息有序，因此同一主键上的更新或删除消息将落在同一分区中。
