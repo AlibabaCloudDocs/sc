@@ -69,7 +69,7 @@ In shared mode, users share physical resources such as networks, disks, CPUs, an
 -   MQ
 -   Tablestore
 -   ApsaraDB RDS or DRDS
--   HiTSDB
+-   TSDB
 -   HybridDB for MySQL
 -   Kafka
 -   ApsaraDB for HBase
@@ -83,7 +83,7 @@ In shared mode, users share physical resources such as networks, disks, CPUs, an
 -   MQ
 -   Tablestore
 -   ApsaraDB RDS or DRDS
--   HiTSDB
+-   TSDB
 -   HybridDB for MySQL
 
 **Note:** For more information about result tables of Realtime Compute for Apache Flink, see [Overview of result tables](/intl.en-US/Exclusive Mode/Flink SQL/DDL statements/Create a result table/Overview of result tables.md). |
