@@ -2,7 +2,7 @@
 
 Fully managed Flink allows you to configure monitoring alerts for job running. If a monitoring rule is triggered during job running, the system sends you an alert message. This helps you detect and handle exceptions at the earliest opportunity. This topic describes how to configure monitoring alerts in the development console of fully managed Flink.
 
-Application Real-Time Monitoring Service \(ARMS\) is activated. For more information, see [Activate and upgrade ARMS](/intl.en-US/Quick start/Activate and upgrade ARMS.md).
+Application Real-Time Monitoring Service \(ARMS\) is activated. For more information, see [Activate and upgrade ARMS](/intl.en-US/Quick Start/Activate and upgrade ARMS.md).
 
 In the development console of fully managed Flink, you can quickly configure monitoring alerts. The development console is easy to operate and use and delivers high efficiency. You can also configure monitoring alerts in ARMS, but you must specify information, such as the cluster, type, dashboard, and Prometheus Query Language \(PromQL\). However, this method features complex operations, requires high learning costs, and delivers low efficiency for alert configuration. For more information, see [Configure monitoring alerts \(in the ARMS console\)](/intl.en-US/Fully managed Flink/O&M management/Configure monitoring alerts (in the ARMS console).md).
 
@@ -44,7 +44,7 @@ In the development console of fully managed Flink, you can quickly configure mon
     -   Threshold: The value that is used to compare with the metric. |
     |Effective Time|The time when alert monitoring takes effect. You can specify that alert monitoring takes effect during the day \(from 09:00 to 18:00\). By default, alert monitoring takes effect throughout the day.|
     |Alarm Rate|Valid values: 1 Min and 1 Day. This indicates that an alert is sent once per minute or per day.|
-    |**Notification**|Notify Way|The following three notification delivery methods are supported:    -   DingDing
+    |**Notification**|Notify Way|The following three notification delivery methods are supported:    -   DingTalk
     -   Email
     -   SMS
 **Note:** You can configure the phone number, mailbox, and DingTalk information of a contact in contacts. |
@@ -83,7 +83,7 @@ In the development console of fully managed Flink, you can quickly configure mon
     -   Threshold: The value that is used to compare with the metric. |
     |Effective Time|The time when alert monitoring takes effect. You can specify that alert monitoring takes effect during the day \(from 09:00 to 18:00\). By default, alert monitoring takes effect throughout the day.|
     |Alarm Rate|Valid values: 1 Min and 1 Day. This indicates that an alert is sent once per minute or per day.|
-    |**Notification**|Notify Way|The following three notification delivery methods are supported:    -   DingDing
+    |**Notification**|Notify Way|The following three notification delivery methods are supported:    -   DingTalk
     -   Email
     -   SMS
 **Note:** You can configure the phone number, mailbox, and DingTalk information of a contact in contacts. |
