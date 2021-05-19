@@ -16,7 +16,7 @@ If the following cases occur, you must specify that the operational logs of jobs
     **Note:**
 
     -   If the Task Manager or the Job Manager is started, logs are written to Log Service or OSS. However, if the Task Manager and the Job Manager are not started as expected, logs are not written to Log Service or OSS.
-    -   If you cannot find the corresponding log file on OSS because the Job Manager and the Task Manger are not started as expected,[submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23).
+    -   If you cannot find the corresponding log file on OSS because the Job Manager and the Task Manager are not started as expected,[submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23).
 
 This topic describes how to configure job logs in the following scenarios:
 
@@ -104,7 +104,7 @@ This topic describes how to configure job logs in the following scenarios:
 
 10. In the **Actions** column that corresponds to the name of the desired job, click **Start**.
 
-    You can view the job logs in the OSS console. For more information, see [View job logs on OSS]().
+    You can view the job logs in the OSS console. For more information, see [View job logs on OSS](/intl.en-US/Fully managed Flink/O&M management/View job logs.md).
 
 
 ## Specify that the logs of a single existing job are exported to OSS
@@ -186,7 +186,7 @@ This topic describes how to configure job logs in the following scenarios:
 
 11. In the **Actions** column that corresponds to the name of the desired job, click **Start**.
 
-    You can view the job logs in the OSS console. For more information, see [View job logs on OSS]().
+    You can view the job logs in the OSS console. For more information, see [View job logs on OSS](/intl.en-US/Fully managed Flink/O&M management/View job logs.md).
 
 
 ## Specify that all the job logs in a workspace are exported to OSS
@@ -260,7 +260,7 @@ You can configure **Deployment Defaults** to specify that all the job logs in a 
 
 6.  Click **Save Changes**.
 
-    **Note:** After you configure **Deployment Defaults**, the logs of all the jobs that are created in the workspace are stored in OSS. You can view the job logs in the OSS console. For more information, see [View job logs on OSS]().
+    **Note:** After you configure **Deployment Defaults**, the logs of all the jobs that are created in the workspace are stored in OSS. You can view the job logs in the OSS console. For more information, see [View job logs on OSS](/intl.en-US/Fully managed Flink/O&M management/View job logs.md).
 
 
 ## Specify that the logs of a single new job are exported to Log Service
@@ -346,7 +346,7 @@ You can configure **Deployment Defaults** to specify that all the job logs in a 
 
 10. On the job details page, click **Start**.
 
-    You can view the job logs in the Log Service console. For more information, see [View job logs on Log Service]().
+    You can view the job logs in the Log Service console. For more information, see [View job logs on Log Service](/intl.en-US/Fully managed Flink/O&M management/View job logs.md).
 
 
 ## Specify that the logs of a single existing job are exported to Log Service
@@ -434,7 +434,7 @@ You can configure **Deployment Defaults** to specify that all the job logs in a 
 
 11. On the job details page, click **Start**.
 
-    You can view the job logs in the Log Service console. For more information, see [View job logs on Log Service]().
+    You can view the job logs in the Log Service console. For more information, see [View job logs on Log Service](/intl.en-US/Fully managed Flink/O&M management/View job logs.md).
 
 
 ## Specify that all the job logs in a workspace are exported to Log Service
@@ -514,6 +514,6 @@ You can configure **Deployment Defaults** to specify that all the job logs in a 
     -   Make sure that the account you use to activate the **Fully Managed Flink** service has the permission to read and write the project of Log Service.
 6.  Click **Save Changes**.
 
-    **Note:** After you configure **Deployment Defaults**, the logs of all the jobs that are created in the workspace are stored in the Logstore of the Log Service project that you configure. You can view the job logs in the Log Service console. For more information, see [View job logs on Log Service]().
+    **Note:** After you configure **Deployment Defaults**, the logs of all the jobs that are created in the workspace are stored in the Logstore of the Log Service project that you configure. You can view the job logs in the Log Service console. For more information, see [View job logs on Log Service](/intl.en-US/Fully managed Flink/O&M management/View job logs.md).
 
 
