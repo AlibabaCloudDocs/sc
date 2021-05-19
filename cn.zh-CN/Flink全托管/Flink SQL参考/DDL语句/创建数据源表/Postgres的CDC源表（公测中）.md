@@ -6,7 +6,7 @@ keyword: [Postgres的CDC, Change Data Capture, CDC]
 
 本文为您介绍Postgres的CDC（Change Data Capture）源表DDL定义、WITH参数、类型映射和代码示例。
 
-**说明：** MySQL的CDC源表正处于公测中，如果您对作业稳定性要求较高时，建议不要使用MySQL的CDC源表。
+**说明：** Postgres的CDC源表正处于公测中，如果您对作业稳定性要求较高时，建议不要使用Postgres的CDC源表。
 
 ## 什么是Postgres的CDC源表
 
@@ -54,7 +54,7 @@ CREATE TABLE postgrescdc_source (
 -   wal2json\_rds\_streaming
 -   pgoutput
 
-**说明：** 如果您使用的是阿里云RDS PostgreSQL，你需要开启逻辑解码（wal2json）功能，详情请参见[逻辑解码（wal2json）](/cn.zh-CN/自研内核 AliPG/逻辑解码（wal2json）.md)。 |
+**说明：** 如果您使用的是阿里云RDS PostgreSQL，你需要开启逻辑解码（wal2json）功能，详情请参见[逻辑解码（wal2json）](/cn.zh-CN/RDS PostgreSQL 数据库/自研内核 AliPG/逻辑解码（wal2json）.md)。 |
 |debezium.\*|Debezium属性参数|否|STRING|更细粒度控制Debezium客户端的行为。例如`'debezium.snapshot.mode' = 'never'`，详情请参见[配置属性](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html#postgresql-connector-properties)。**说明：** 建议每个表都设置`debezium.slot.name`参数，以避免出现`PSQLException: ERROR: replication slot "debezium" is active for PID 974`报错。 |
 
 ## 类型映射
