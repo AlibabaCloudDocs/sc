@@ -6,6 +6,8 @@ keyword: [Hologres, 维表, 交互式分析]
 
 本文为您介绍交互式分析Hologres维表DDL定义、WITH参数、CACHE参数和代码示例。
 
+**说明：** Hologres Connector不支持访问Hologres外部表。Hologres外部表详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
+
 ## 什么是交互式分析Hologres
 
 [交互式分析Hologres](/cn.zh-CN/产品简介/什么是Hologres.md)兼容PostgreSQL协议，与大数据生态紧密连接，支持高并发、低延时实时分析处理PB级数据，让您轻松使用现有BI（Business Intelligence）工具对数据进行多维分析和业务探索。
