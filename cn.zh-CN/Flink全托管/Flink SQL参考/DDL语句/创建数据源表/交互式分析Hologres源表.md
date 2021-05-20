@@ -6,7 +6,10 @@ keyword: [创建交互式分析Hologres源表, Hologres源表]
 
 本文为您介绍交互式分析Hologres源表DDL定义、WITH参数、代码示例和类型映射。
 
-**说明：** Hologres Connector可以作为Stream作业和Batch作业的源表使用。
+**说明：**
+
+-   Hologres Connector不支持访问Hologres外部表。Hologres外部表详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
+-   Hologres Connector可以作为Stream作业和Batch作业的源表使用。
 
 ## 什么是交互式分析Hologres
 
@@ -41,26 +44,26 @@ create table hologres_source(
 |--|--|----|--|
 |connector|源表类型|是|固定值为hologres。|
 |dbname|数据库名称|是|无。|
-|tablename|表名称**说明：** 如果Schema不为Public时，需要在表名称前面添加模式名称的前缀，即schema.tableName。
+|tablename|表名称 **说明：** 如果Schema不为Public时，需要在表名称前面添加模式名称的前缀，即schema.tableName。
 
 |是|无。|
 |username|用户名，请填写阿里云账号的AccessKey ID。|是|无。|
 |password|密码，请填写阿里云账号的AccessKey Secret。|是|无。|
 |endpoint|Hologres服务地址。|是|详情请参见[访问域名](/cn.zh-CN/实例管理/访问域名.md)。|
-|field\_delimiter|导出数据时，不同行之间使用的分隔符。**说明：** 只有在bulkread = true时有效。
+|field\_delimiter|导出数据时，不同行之间使用的分隔符。 **说明：** 只有在bulkread = true时有效。
 
 |否|默认值为"\\u0002"。|
-|binlog|是否消费Binlog数据。|否|参数取值如下：-   true：消费Binlog数据。
+|binlog|是否消费Binlog数据。|否|参数取值如下： -   true：消费Binlog数据。
 -   false（默认值）：不消费Binlog数据。
 
-**说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
-|binlogMaxRetryTimes|读取Binlog数据出错后的重试次数。|否|默认值为60。**说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
-|binlogRetryIntervalMs|读取Binlog数据出错后的重试时间间隔。|否|默认值为2000，单位为毫秒。**说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
-|binlogBatchReadSize|批量读取Binlog的数据行数。|否|默认值为16。**说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
-|cdcMode|是否采用CDC模式读取Binlog数据。|否|参数取值如下：-   true：CDC模式读取Binlog数据。
+ **说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
+|binlogMaxRetryTimes|读取Binlog数据出错后的重试次数。|否|默认值为60。 **说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
+|binlogRetryIntervalMs|读取Binlog数据出错后的重试时间间隔。|否|默认值为2000，单位为毫秒。 **说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
+|binlogBatchReadSize|批量读取Binlog的数据行数。|否|默认值为16。 **说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
+|cdcMode|是否采用CDC模式读取Binlog数据。|否|参数取值如下： -   true：CDC模式读取Binlog数据。
 -   false（默认值）：非CDC模式读取Binlog数据。
 
-**说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
+ **说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
 
 ## 代码示例
 
@@ -212,7 +215,7 @@ VVP 2.4.0及以上版本，Hologres Connector支持实时消费Hologres。实时
     |字段名|字段类型|说明|
     |---|----|--|
     |hg\_binlog\_lsn|BIGINT|Binlog系统字段，表示Binlog序号，Shard内部单调递增不保证连续，不同Shard之间不保证唯一和有序。|
-    |hg\_binlog\_event\_type|BIGINT|Binlog系统字段，表示当前记录所表示的修改类型，参数取值如下：    -   INSERT=5：表示当前Binlog为插入一条新的记录。
+    |hg\_binlog\_event\_type|BIGINT|Binlog系统字段，表示当前记录所表示的修改类型，参数取值如下：     -   INSERT=5：表示当前Binlog为插入一条新的记录。
     -   DELETE=2：表示当前Binlog为删除一条已有的记录。
     -   BEFORE\_UPDATE=3：表示当前Binlog为更新操作前的记录。
     -   AFTER\_UPDATE=7：表示当前Binlog为更新操作后的记录。 |
