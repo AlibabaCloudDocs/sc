@@ -8,7 +8,7 @@ keyword: 创建交互式分析Hologres结果表
 
 **说明：**
 
--   Hologres Connector不支持访问Hologres外部表。Hologres外部表详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
+-   Hologres Connector不支持将结果数据写入Hologres外部表。Hologres外部表详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
 -   Hologres Connector可以作为Stream作业和Batch作业的源表使用。
 
 ## 什么是交互式分析Hologres
