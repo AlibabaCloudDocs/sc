@@ -43,7 +43,7 @@ Flink全托管支持**Per-Job集群**和**Session集群**两种集群模式。�
     -   Fixed Delay：固定延迟。选择该选项后，您还需要填写尝试重启的次数和每次重启时间间隔。
     -   Failure Rate：故障率。选择该选项后，您还需要填写检测故障率的时间间隔，时间间隔内的最大失败次数和每次重启时间间隔。
 **说明：** 如果您没有配置该参数，则按Apache Flink默认的重启策略，即当有Task失败时，如果没有开启Checkpoint，JobManager进程不会重启。如果开启了Checkpoint，则JobManager进程会重启。 |
-    |Flink Master 容错配置（高可用性）|该参数取值如下：    -   Kubernetes：Flink系统会将元数据保存到Kubernets中，供JobManager重启恢复时使用。
+    |Flink Master 容错配置（高可用性）|该参数取值如下：    -   Kubernetes：Flink系统会将元数据保存到Kubernetes中，供JobManager重启恢复时使用。
     -   None：Flink系统不会保存元数据，供JobManager重启恢复时使用。 |
     |其他配置|在此设置其他Flink配置。例如`taskmanager.numberOfTaskSlots: 1`。|
     |资源配置|Task Managers 数量|默认与并行度一致。|
