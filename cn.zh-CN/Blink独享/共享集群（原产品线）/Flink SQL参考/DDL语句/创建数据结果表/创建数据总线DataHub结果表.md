@@ -36,7 +36,7 @@ create table datahub_output(
 |参数|参数说明|是否必填|备注|
 |--|----|----|--|
 |type|源表类型|是|固定值为`datahub`。|
-|endPoint|endPoint地址|是|DataHub的endPoint地址详情，请参见[Datahub域名列表](https://help.aliyun.com/document_detail/158778.html?spm=a2c4g.11186623.6.547.77a91fd1eveQrC)。|
+|endPoint|endPoint地址|是|DataHub的endPoint地址详情，请参见[DataHub域名列表](https://help.aliyun.com/document_detail/158778.html?spm=a2c4g.11186623.6.547.77a91fd1eveQrC)。|
 |project|DataHub项目名称|是|无|
 |topic|DataHub中Topic名称|是|无|
 |accessId|AccessKey ID|是|无|
