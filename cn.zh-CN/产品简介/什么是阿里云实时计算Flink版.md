@@ -37,7 +37,7 @@ keyword: [实时计算Flink版, 什么是阿里云实时计算Flink版]
 
         -   主推SQL：在SQL上增加了Minibatch、LocalAGG、高效去重和TopN等功能优化。
         -   Runtime优化：增量Checkpoint实现、异步I/O实现、集群调度策略和Failover的策略优化。
-        -   无缝对接云上10+种数据存储：包括日志服务SLS、数据总线Datahub、消息队列Kafka、表格存储Tablestore、云数据库RDS版、MaxCompute、云数据库Hbase版和ElasticSearch等。
+        -   无缝对接云上10+种数据存储：包括日志服务SLS、数据总线DataHub、消息队列Kafka、表格存储Tablestore、云数据库RDS版、MaxCompute、云数据库Hbase版和ElasticSearch等。
         -   性能优越：部分场景性能相比开源Flink提升5~10倍。
         -   大规模部署：经过阿里巴巴双十一大规模场景下实践检验，稳定性和可靠性高。
     -   开发平台Bayes
@@ -70,7 +70,7 @@ keyword: [实时计算Flink版, 什么是阿里云实时计算Flink版]
             -   使用堆外内存，并基于GeminiDB的特点实现高效的内存分配器，消除JVM GC带来的影响。
             -   支持异步增量Checkpoint，同步阶段只进行内存索引的拷贝，相较于RocksDB可以避免I/O带来的抖动。
             -   支持Local Recovery和Timer落盘。
-        -   提供丰富的Connector：支持日志服务SLS、数据总线Datahub、消息队列Kafka、表格存储OTS等Connector，支持类型持续更新。
+        -   提供丰富的Connector：支持日志服务SLS、数据总线DataHub、消息队列Kafka、表格存储OTS等Connector，支持类型持续更新。
         -   完全兼容开源Flink，紧跟开源Flink版本更新。
     -   开发平台VVP（Ververica Platform）
 
