@@ -115,7 +115,7 @@
 
 5.  在顶部菜单栏下拉框中，切换到目标Hive Metastore。
 
-    ![Hive](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/9556783061/p177086.png)
+    ![Hive](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/2851481261/p177086.png)
 
 6.  在**Tables**列查看不同数据库下的表和字段信息。
 
