@@ -19,15 +19,13 @@
 
 2.  在**Flink全托管**页签，单击目标工作空间**操作**列下的**开发控制台**。
 
-3.  在左侧导航栏，选择**应用** \> **作业开发**。
+3.  在左侧导航栏，单击**作业开发**。
 
-4.  单击**Connectors**页签。
+4.  在**Connectors**页签，单击![加号](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5741796061/p187440.png)图标。
 
-5.  单击![加号](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5741796061/p187440.png)图标。
+    ![添加connector](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/7482481261/p245238.png)
 
-    ![添加connector](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/1233574161/p245238.png)
-
-6.  上传自定义Connectors JAR文件。
+5.  上传自定义Connectors JAR文件。
 
     ![上传JAR](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5924160161/p187443.png)
 
@@ -35,11 +33,11 @@
 
     -   **上传文件**：单击**选择文件**后，选择您的目标Connectors JAR文件。
     -   **外部URL**：输入外部URL地址。
-7.  上传完成后，单击**继续**。
+6.  上传完成后，单击**继续**。
 
     系统会对您上传的自定义Connectors内容进行解析。如果解析成功，您可以继续下一步。如果解析失败，请确认您上传的自定义Connectors代码是否符合Flink社区标准。
 
-8.  单击**完成**。
+7.  单击**完成**。
 
     创建完成的自定义Connectors会出现在Connectors列表中。
 
@@ -50,13 +48,11 @@
 
 2.  在**Flink全托管**页签，单击目标工作空间**操作**列下的**开发控制台**。
 
-3.  在左侧导航栏，选择**应用** \> **作业开发**。
+3.  在左侧导航栏，单击**作业开发**。
 
-4.  单击**Connectors**页签。
+4.  在**Connectors**列表中，鼠标悬停在目标自定义Connectors名称上，单击![更新JAR](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5957179951/p164582.png)。
 
-5.  在**Connectors**列表中，鼠标悬停在目标自定义Connectors名称上，单击![更新JAR](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5957179951/p164582.png)。
-
-6.  上传自定义Connectors JAR文件。
+5.  上传自定义Connectors JAR文件。
 
     ![修改connector](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5924160161/p187445.png)
 
@@ -64,11 +60,11 @@
 
     -   **上传文件**：单击**选择文件**后，选择您的目标Connectors JAR文件。
     -   **外部URL**：输入外部URL地址。
-7.  上传完成后，单击**继续**。
+6.  上传完成后，单击**继续**。
 
     系统会对您上传的自定义Connectors内容进行解析。如果解析成功，您可以继续下一步。如果解析失败，请确认您上传的自定义Connectors代码是否符合Flink社区标准。
 
-8.  单击**完成**。
+7.  单击**完成**。
 
     创建完成的自定义Connectors会出现在Connectors列表中。
 
@@ -81,12 +77,10 @@
 
 2.  在**Flink全托管**页签，单击目标工作空间**操作**列下的**开发控制台**。
 
-3.  在左侧导航栏，选择**应用** \> **作业开发**。
+3.  在左侧导航栏，单击**作业开发**。
 
-4.  单击**Connectors**页签。
+4.  在**Connectors**列表中，鼠标悬停在目标自定义Connectors名称上，单击![删除JAR](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5957179951/p164586.png)图标。
 
-5.  在**Connectors**列表中，鼠标悬停在目标自定义Connectors名称上，单击![删除JAR](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5957179951/p164586.png)图标。
-
-6.  单击**确认**。
+5.  单击**确认**。
 
 
