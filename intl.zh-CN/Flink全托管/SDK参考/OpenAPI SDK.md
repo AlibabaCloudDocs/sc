@@ -8,7 +8,7 @@
 
     **说明：** 为避免主账号泄露AccessKey带来安全风险，建议您创建RAM用户，授予RAM用户Flink全托管相关的访问权限，再使用RAM用户的AccessKey调用SDK。相关文档请参见：
 
-    -   创建RAM用户操作步骤，请参见[创建RAM用户](/intl.zh-CN/用户管理/创建RAM用户.md)。
+    -   创建RAM用户操作步骤，请参见[创建RAM用户](/intl.zh-CN/用户管理/基本操作/创建RAM用户.md)。
     -   Flink全托管相关访问权限，请参见[手动授权（方式一）](/intl.zh-CN/Flink全托管/准备工作/角色授权.md)。
     -   为RAM用户创建AccessKey，请参见[创建AccessKey]()。
 -   已安装Java环境。Flink全托管SDK for Java要求使用JDK 8或更高版本。
