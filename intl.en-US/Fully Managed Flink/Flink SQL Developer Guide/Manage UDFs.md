@@ -24,7 +24,7 @@ Before you can use a UDF in SQL statements, register the UDF. Only registered UD
 
 5.  Upload a UDF JAR file.
 
-    ![Register a UDF](../images/p263835.png)
+    ![Register a UDF](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0826291261/p263835.png)
 
     You can use one of the following methods to upload a UDF JAR file:
 
