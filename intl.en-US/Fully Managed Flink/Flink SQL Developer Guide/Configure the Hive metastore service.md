@@ -67,7 +67,7 @@ Before you use the Hive metastore service, take note of the following points:
 
     2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Development Console** in the **Actions** column.
 
-    3.  In the left-side navigation pane, choose **Applications** **Draft Editor**.
+    3.  In the left-side navigation pane, choose **Applications** \> **Draft Editor**.
 
     4.  In the upper-left corner of the page, click **New**. In the New Draft dialog box, select STREAM/SQL from the drop-down list of Type.
 
