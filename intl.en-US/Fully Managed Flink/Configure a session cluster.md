@@ -43,7 +43,7 @@ Fully managed Flink supports two cluster modes: Per-Job cluster mode and session
     -   Fixed Delay: A delayed restart at a fixed interval. If you select this option, you must also configure Number of Restart Attempts and Delay between Restart Attempts.
     -   Failure Rate: the failure rate. If you select this option, you must also configure Failure Rate Interval, Max Failures per Interval, and Delay between Restart Attempts.
 **Note:** If you leave this parameter empty, the default Apache Flink restart strategy is used. In this case, if a task fails and checkpointing is disabled, JobManager is not restarted. If you enable checkpointing, JobManager is restarted. |
-    |Flink Master Failover Configuration \('High Availability'\)|Valid values:    -   Kubernetes: The Flink system saves the metadata to Kubernets for use when a JobManager is restarting.
+    |Flink Master Failover Configuration \('High Availability'\)|Valid values:    -   Kubernetes: The Flink system saves the metadata to Kubernetes for use when a JobManager is restarting.
     -   None: The Flink system does not save metadata for use when JobManager is restarting. |
     |Additional Configuration|Configure other Flink settings. For example, `taskmanager.numberOfTaskSlots: 1`.|
     |Resources|Number of Task Managers|By default, the value is the same as the parallelism.|
