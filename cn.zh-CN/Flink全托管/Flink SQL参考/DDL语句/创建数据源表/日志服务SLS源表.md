@@ -4,7 +4,7 @@ keyword: [日志服务, 源表]
 
 # 日志服务SLS源表
 
-本文为您介绍日志服务SLS源表的DDL定义、WITH参数、类型映射和属性字段。
+本文为您介绍日志服务SLS源表的DDL定义、WITH参数、类型映射、属性字段和代码示例。
 
 ## 什么是日志服务
 
@@ -18,14 +18,14 @@ create table sls_source(
   b int,
   c varchar
 ) with (
-  'connector' ='sls',  
-  'endPoint' ='<endPoint>',
-  'accessId' ='<yourAccessId>',
-  'accessKey' ='<yourAccessKey>',
-  'startTime' = '2017-07-05 00:00:00',
-  'project' ='<yourProjectName>',
-  'logStore' ='<yourLogStoreName>',
-  'consumerGroup' ='<yourConsumerGroupName>'
+  'connector' = 'sls',  
+  'endPoint' = '<yourEndPoint>',
+  'accessId' = '<yourAccessId>',
+  'accessKey' = '<yourAccessKey>',
+  'startTime' = '<yourStartTime>',
+  'project' = '<yourProjectName>',
+  'logStore' = '<yourLogStoreName>',
+  'consumerGroup' = '<yourConsumerGroupName>'
 );
 ```
 
@@ -33,21 +33,21 @@ create table sls_source(
 
 -   SLS暂不支持MAP类型的数据。
 -   SLS对于不存在字段会置为Null。
--   字段顺序可以为无序（建议字段顺序和表中定义一致）。
+-   DDL定义中字段顺序可以为无序，建议和物理表中字段顺序保持一致。
 
 ## WITH参数
 
 |参数|说明|是否必选|备注|
 |--|--|----|--|
-|connector|源表类型|是|固定值为`sls`。|
-|endPoint|消费端点信息|是|[服务入口](/cn.zh-CN/开发指南/API 参考/服务入口.md)。|
-|accessId|AccessKey ID|是|无|
-|accessKey|AccessKey Secret|是|无|
-|project|读取的SLS项目名称|是|无|
-|logStore|Project下的具体的LogStore名称|是|无|
-|startTime|日志消费的开始时间|是|无|
-|consumerGroup|消费组名|否|您可以自定义消费组名（没有固定格式）。|
-|batchGetSize|单次读取logGroup的条数|否|默认值为100。**说明：**
+|connector|源表类型。|是|固定值为`sls`。|
+|endPoint|消费端点信息。|是|[服务入口](/cn.zh-CN/开发指南/API 参考/服务入口.md)。|
+|accessId|AccessKey ID。|是|无。|
+|accessKey|AccessKey Secret。|是|无。|
+|project|SLS项目名称。|是|无。|
+|logStore|LogStore名称。|是|无。|
+|startTime|消费日志的开始时间。|是|无。|
+|consumerGroup|消费组名称。|否|您可以自定义消费组名（没有固定格式）。|
+|batchGetSize|单次读取logGroup的条数。|否|默认值为100。**说明：**
 
 -   batchGetSize设置不能超过1000，否则会报错。
 -   batchGetSize设置单次读取logGroup的条数。如果单条logItem的大小和batchGetSize都很大，则可能会导致频繁的垃圾回收（Garbage Collection），您可以适当减小batchGetSize参数值。 |
@@ -62,11 +62,36 @@ create table sls_source(
 
 ## 属性字段
 
-Flink暂不支持获取SLS属性字段，例如如下字段等。
+|字段名|字段类型|说明|
+|---|----|--|
+|`__source__`|STRING METADATA VIRTUAL|消息源。|
+|`__topic__`|STRING METADATA VIRTUAL|消息主题。|
+|`__timestamp__`|BIGINT METADATA VIRTUAL|日志时间。|
 
-|字段名|说明|
-|---|--|
-|`__source__`|消息源|
-|`__topic__`|消息主题|
-|`__timestamp__`|日志时间|
+**说明：** 仅在VVR 3.0.1版本及以后版本支持获取以上SLS属性字段。
+
+## 代码示例
+
+```
+create table sls_input(
+  `time` bigint,
+  `url` string,
+  dt string,
+  float_field float,
+  double_field double,
+  boolean_field boolean,
+  `__topic__` STRING METADATA VIRTUAL,
+  `__source__` STRING METADATA VIRTUAL,
+  `__timestamp__` BIGINT METADATA VIRTUAL,
+  proctime as PROCTIME()
+) with (
+  'connector' = 'sls',
+  'endpoint' = '<yourEndPoint>',
+  'accessid' = '<yourAccessId>',
+  'accesskey' = '<yourAccessKey>',
+  'starttime' = '2001-08-01 00:00:00',
+  'project' = 'sls-test',
+  'logstore' = 'sls-input'
+);
+```
 
