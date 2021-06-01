@@ -67,7 +67,7 @@
 
     2.  在**Flink全托管**页签，单击目标工作空间**操作**列下的**开发控制台**。
 
-    3.  在左侧导航栏，选择**应用** \> **作业开发**。
+    3.  在左侧导航栏，单击**作业开发**。
 
     4.  在页面左上角，单击**新建**，文件类型选择SQL。
 
@@ -90,10 +90,10 @@
         -   default-database ：默认数据库名称。
         -   hive-version：Hive Metastore版本号。
 
-            **说明：** Hive Metastore版本兼容为2.2.0~2.3.7，其中：
+            **说明：** Flink全托管兼容的Hive Metastore版本为2.2.0~2.3.7，hive-version的配置情况如下：
 
-            -   2.0.0~2.2.0：hive-version需要指定为2.2.0
-            -   2.3.0~2.3.7：hive-version需要指定为2.3.6。
+            -   如果Hive Metastore版本为2.0.0~2.2.0，则hive-version需要指定为2.2.0。
+            -   如果Hive Metastore版本为2.3.0~2.3.7，则hive-version需要指定为2.3.6。
         -   hive-conf-dir：存放Hive配置文件的目录。
         -   hadoop-conf-dir：存放Hadoop依赖的目录。
     6.  单击**运行**。
