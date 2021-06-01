@@ -2,7 +2,7 @@
 
 This topic describes how to configure the Hive metastore service in fully managed Flink.
 
-You can store configuration files of the Hive metastore and Hadoop dependencies in the specified directory in the Object Storage Service \(OSS\) console. Then, you can configure the Hive metastore service in the development console of fully managed Flink. After you configure the Hive metastore, you can execute Data Manipulation Language \(DML\) statements to create business logic and obtain metadata from Hive tables. You do not need to execute Data Definition Language \(DDL\) statements to declare related table information. The Hive metastore can be used as a source table or result table of streaming jobs and batch jobs.
+You can store configuration files of the Hive metastore and Hadoop dependencies in the specified directory in the Object Storage Service \(OSS\) console. Then, you can configure the Hive metastore service in the console of fully managed Flink. After you configure the Hive metastore, you can execute Data Manipulation Language \(DML\) statements to create business logic and obtain metadata from Hive tables. You do not need to execute Data Definition Language \(DDL\) statements to declare related table information. The Hive metastore can be used as a source table or result table of streaming jobs and batch jobs.
 
 ## Usage notes
 
@@ -13,7 +13,7 @@ Before you use the Hive metastore service, take note of the following points:
 -   VVP 2.3.0 supports only Hive metastore 2.3.6. Versions later than VVP 2.3.0 support Hive metastore 2.2.0 to 2.3.7.
 -   The Hive metastore does not support Kerberos authentication.
 -   A fully managed Flink instance supports only one Hive metastore. You cannot configure multiple Hive metastores for multiple projects.
--   The Hive metastore is read-only. This indicates that you cannot create physical tables in Hive in the development console of fully managed Flink.
+-   The Hive metastore is read-only. This indicates that you cannot create physical tables in Hive in the console of fully managed Flink.
 
 ## Configure the Hive metastore service
 
@@ -23,7 +23,7 @@ Before you use the Hive metastore service, take note of the following points:
 
 2.  In the OSS console, create folders under the directories in which you want to store the Hive configuration file and Hadoop dependencies.
 
-    1.  Log on to the .
+    1.  Log on to the [OSS console](https://oss.console.aliyun.com/).
 
     2.  In the left-side navigation pane, click **Buckets**.
 
@@ -39,10 +39,10 @@ Before you use the Hive metastore service, take note of the following points:
 
         -   $\{bucket\}: the name of the bucket that is used by the fully managed Flink instance.
         -   $\{ns\}: the name of the fully managed Flink project that uses the Hive metastore.
-        -   $\{hms\}: the name of the Hive metastore that is displayed in the development console of fully managed Flink.
-    6.  Save the Hive configuration file hive-site.xml in the directory hive-conf-dir.
+        -   $\{hms\}: the name of the Hive metastore that is displayed in the console of fully managed Flink.
+    6.  Save the Hive configuration file hive-site.xml in the hive-conf-dir directory.
 
-        Before you upload the hive-site.xml file, check whether the parameter hive.metastore.uris in the hive\_site.xml file meets the following requirements.
+        Before you upload the hive-site.xml file, check whether the hive.metastore.uris parameter in the hive\_site.xml file meets the following requirements.
 
         ```
         <property>
@@ -54,20 +54,20 @@ Before you use the Hive metastore service, take note of the following points:
 
         `xx.yy.zz.mm` is the internal or public IP address of Hive. If you set hive.metastore.uris to hostname, the value of the hive.metastore.uris parameter fails to be parsed and the error message `UnknownHostException` is returned when VVP remotely accesses Hive.
 
-    7.  Save the following configuration files in the directory hadoop-conf-dir:
+    7.  Save the following configuration files in the hadoop-conf-dir directory:
 
         -   hive-site.xml
         -   core-site.xml
         -   hdfs-site.xml
         -   mapred-site.xml
         -   Other files, such as the compressed packages used by Hive jobs
-3.  Configure the Hive metastore service in the development console of fully managed Flink.
+3.  Configure the Hive metastore service in the console of fully managed Flink.
 
     1.  Log on to the [Realtime Compute for Apache Flink console](https://realtime-compute.console.aliyun.com/regions/cn-shanghai).
 
-    2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Development Console** in the **Actions** column.
+    2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Console** in the **Actions** column.
 
-    3.  In the left-side navigation pane, choose **Applications** \> **Draft Editor**.
+    3.  In the left-side navigation pane, click **Draft Editor**.
 
     4.  In the upper-left corner of the page, click **New**. In the New Draft dialog box, select STREAM/SQL from the drop-down list of Type.
 
@@ -90,10 +90,10 @@ Before you use the Hive metastore service, take note of the following points:
         -   default-database: the name of the default database.
         -   hive-version: the version of the Hive metastore.
 
-            **Note:** Fully managed Flink is compatible with Hive metastore from 2.2.0 to 2.3.7.
+            **Note:** If the version of Hive Metastore that is compatible with fully managed Flink is 2.2.0 to 2.3.7, set the value of the hive-version parameter based on the following scenarios:
 
-            -   2.0.0 to 2.2.0: If the version of the Hive metastore is 2.0.0 to 2.2.0, the hive-version must be 2.2.0.
-            -   2.3.0 to 2.3.7: If the version of the Hive metastore is 2.3.0 to 2.3.7, the hive-version must be 2.3.6.
+            -   If the version of fully managed Flink is 2.0.0 to 2.2.0, set the hive-version parameter to 2.2.0.
+            -   If the version of fully managed Flink is 2.3.0 to 2.3.7, set the hive-version parameter to 2.3.6.
         -   hive-conf-dir: the directory that stores the Hive configuration file.
         -   hadoop-conf-dir: the directory that stores Hadoop dependencies.
     6.  Click **Execute**.
@@ -107,7 +107,7 @@ Before you use the Hive metastore service, take note of the following points:
 
 1.  Log on to the [Realtime Compute for Apache Flink console](https://realtime-compute.console.aliyun.com/regions/cn-shanghai).
 
-2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Development Console** in the **Actions** column.
+2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Console** in the **Actions** column.
 
 3.  In the left-side navigation pane, click **Draft Editor**.
 
@@ -124,7 +124,7 @@ Before you use the Hive metastore service, take note of the following points:
 
 1.  Log on to the [Realtime Compute for Apache Flink console](https://realtime-compute.console.aliyun.com/regions/cn-shanghai).
 
-2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Development Console** in the **Actions** column.
+2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Console** in the **Actions** column.
 
 3.  In the left-side navigation pane, click **Draft Editor**.
 
@@ -134,7 +134,7 @@ Before you use the Hive metastore service, take note of the following points:
 
     `Drop CATALOG ${HMS Name}`
 
-    In the preceding command, HMS Name indicates the name of the Hive metastore that you want to delete. The name displayed in the development console of fully managed Flink.
+    In the preceding command, HMS Name indicates the name of the Hive metastore that you want to delete. The name is displayed in the console of fully managed Flink.
 
     **Note:** The delete operation does not affect the running jobs. However, the jobs that are not published or jobs that need to be suspended and then resumed are affected. Proceed with caution.
 
