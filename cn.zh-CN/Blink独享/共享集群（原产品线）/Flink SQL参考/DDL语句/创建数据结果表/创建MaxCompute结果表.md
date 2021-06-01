@@ -29,17 +29,17 @@ MaxCompute Sink可以分为以下两个阶段：
 
 ```
 create table odps_output(
-    id INT,
-    user_name VARCHAR,
-    content VARCHAR
+  id INT,
+  user_name VARCHAR,
+  content VARCHAR
 ) with (
-    type = 'odps',
-    endPoint = '<YourEndPoint>',
-    project = '<YourProjectName>',
-    tableName = '<YourtableName>',
-    accessId = '<yourAccessKeyId>',
-    accessKey = '<yourAccessKeySecret>',
-    `partition` = 'ds=2018****'
+  type = 'odps',
+  endPoint = '<YourEndPoint>',
+  project = '<YourProjectName>',
+  tableName = '<YourtableName>',
+  accessId = '<yourAccessKeyId>',
+  accessKey = '<yourAccessKeySecret>',
+  `partition` = 'ds=2018****'
 );
 ```
 
@@ -47,14 +47,14 @@ create table odps_output(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|type|结果表类型|是|固定值为`odps`。|
-|endPoint|MaxCompute服务地址|是|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
-|tunnelEndpoint|MaxCompute Tunnel服务的连接地址|是|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。**说明：** VPC环境下必填。 |
-|project|MaxCompute项目名称|是|无|
-|tableName|表名|是|无|
-|accessId|AccessKey ID|是|无|
-|accessKey|AccessKey Secret|是|无|
-|partition|分区名|否|如果存在分区表则必填： -   固定分区
+|type|结果表类型。|是|固定值为`odps`。|
+|endPoint|MaxCompute服务地址。|是|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
+|tunnelEndpoint|MaxCompute Tunnel服务的连接地址。|是|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。**说明：** VPC环境下必填。 |
+|project|MaxCompute项目名称。|是|无。|
+|tableName|表名。|是|无。|
+|accessId|AccessKey ID。|是|无。|
+|accessKey|AccessKey Secret。|是|无。|
+|partition|分区名。|否|如果存在分区表则必填： -   固定分区
 
 例如``partition` = 'ds=20180905'`表示将数据写入分区`ds= 20180905`。
 
@@ -78,7 +78,7 @@ create table odps_output(
 -   Blink 3.2及以上版本默认参数值为false。在声明MaxCompute的流式作业结果表时，isOverwrite参数必须为false，否则在编译时会抛出异常。
 
 **说明：** Blink 3.2及以上版本支持isOverwrite参数值变更为true。Blink 3.2以下版本如需变更isOverwrite参数值，请升级版本。 |
-|dynamicPartitionLimit|底层框架统计分区数目|否|默认值是100，内存中会把出现过的分区和Tunnel/writer的映射关系维护到一个Map里，如果这个Map的大小超过了dynamicPartitionLimit设定值，则会出现`Too many dynamic partitions: 100, which exceeds the size limit: 100`报错。|
+|dynamicPartitionLimit|分区数目最大值。|否|默认值是100，内存中会把出现过的分区和Tunnel/writer的映射关系维护到一个Map里，如果这个Map的大小超过了dynamicPartitionLimit设定值，则会出现`Too many dynamic partitions: 100, which exceeds the size limit: 100`报错。|
 
 ## 类型映射
 
@@ -96,7 +96,6 @@ create table odps_output(
 |VARCHAR|VARCHAR|
 |STRING|VARCHAR|
 |DECIMAL|DECIMAL|
-|BINARY|VARBINARY|
 
 ## 代码示例
 
@@ -137,27 +136,27 @@ create table odps_output(
 
     ```
     CREATE TABLE source (
-       id INT,
-       len INT,
-       content VARCHAR,
-       c TIMESTAMP 
+      id INT,
+      len INT,
+      content VARCHAR,
+      c TIMESTAMP 
     ) with (
-       type = 'random'
+      type = 'random'
     );
     
     create table odps_sink (
-       id INT,
-       len INT,
-       content VARCHAR,
-       ds VARCHAR --动态分区列需要显式写在建表语句中。
+      id INT,
+      len INT,
+      content VARCHAR,
+      ds VARCHAR --动态分区列需要显式写在建表语句中。
     ) with (
-       type = 'odps',
-       endPoint = '<yourEndpoint>', 
-       project = '<yourProjectName>',
-       tableName = '<yourTableName>',
-       accessId = '<yourAccessId>',
-       accessKey = '<yourAccessPassword>',
-       `partition`='ds' --不写分区的值，表示根据ds字段的值写入不同分区。
+      type = 'odps',
+      endPoint = '<yourEndpoint>', 
+      project = '<yourProjectName>',
+      tableName = '<yourTableName>',
+      accessId = '<yourAccessId>',
+      accessKey = '<yourAccessPassword>',
+      `partition`='ds' --不写分区的值，表示根据ds字段的值写入不同分区。
     );
     
     INSERT INTO odps_sink 
