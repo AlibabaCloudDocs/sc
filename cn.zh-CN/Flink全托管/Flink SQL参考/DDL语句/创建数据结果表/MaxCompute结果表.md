@@ -28,18 +28,18 @@ Flink支持将MaxCompute作为结果输出，示例代码如下。
 
 ```
 create table odps_sink(
-    id INT,
-    user_name VARCHAR,
-    content VARCHAR
-) with (
-    'connector' = 'odps',
-    'endpoint' = '<yourEndpoint>',
-    'tunnelEndpoint' = '<yourTunnelEndpoint>',
-    'project' = '<yourProjectName>',
-    'tablename' = '<yourTableName>',
-    'accessid' = '<yourAccessKeyId>',
-    'accesskey' = '<yourAccessKeySecret>',
-    'partition' = 'ds=2018****'
+  id INT,
+  user_name VARCHAR,
+  content VARCHAR
+) WITH (
+  'connector' = 'odps',
+  'endpoint' = '<yourEndpoint>',
+  'tunnelEndpoint' = '<yourTunnelEndpoint>',
+  'project' = '<yourProjectName>',
+  'tablename' = '<yourTableName>',
+  'accessid' = '<yourAccessKeyId>',
+  'accesskey' = '<yourAccessKeySecret>',
+  'partition' = 'ds=2018****'
 );
 ```
 
@@ -52,14 +52,14 @@ create table odps_sink(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|数据结果表类型|是|固定值为`odps`。|
-|endPoint|MaxCompute服务地址|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
-|tunnelEndpoint|MaxCompute Tunnel服务的连接地址|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
-|project|MaxCompute项目名称|是|无|
-|tableName|表名|是|无|
-|accessId|AccessKey ID|是|无|
-|accessKey|AccessKey Secret|是|无|
-|partition|分区名|否|如果存在分区表，则必填partition。填写partition需要注意以下两点： -   固定分区
+|connector|结果表类型。|是|固定值为`odps`。|
+|endPoint|MaxCompute服务地址。|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
+|tunnelEndpoint|MaxCompute Tunnel服务的连接地址。|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
+|project|MaxCompute项目名称。|是|无。|
+|tableName|表名。|是|无。|
+|accessId|AccessKey ID。|是|无。|
+|accessKey|AccessKey Secret。|是|无。|
+|partition|分区名。|否|如果存在分区表，则必填partition。填写partition需要注意以下两点：-   固定分区
 
 例如``partition` = 'ds=20180905'`表示将数据写入分区`ds= 20180905`。
 
@@ -73,11 +73,11 @@ create table odps_sink(
 
     -   动态分区列需要显式写在建表语句中。
     -   在动态分区字段为空时，如果数据源中`ds=null`或者`ds=''`，则输出结果为ds=NULL的分区。 |
-|flushIntervalMs|Odps tunnel writer缓冲区Flush间隔。 MaxCompute Sink写入记录时，先放入数据到MaxCompute的缓冲区中，等缓冲区溢出或者每隔一段时间（flushIntervalMs）时，再把缓冲区里的数据写到目标 MaxCompute表。
+|flushIntervalMs|Odps tunnel writer缓冲区Flush间隔。 MaxCompute Sink写入记录时，先将数据存储到MaxCompute的缓冲区中，等缓冲区溢出或者每隔一段时间（flushIntervalMs），再把缓冲区里的数据写到目标 MaxCompute表。
 
 |否|单位为毫秒，默认值为30000（30秒）。|
-|partitionBy|写入Sink节点前，系统会根据该值做Hash Shuffle，数据就会流向对应的Sink节点。|否|系统按照多个列进行Hash Shuffle，各个列名之间使用逗号（,）分割。默认为空。|
-|dynamicPartitionLimit|分区数目最大值|否|默认值为100，系统会把已写入的分区和TunnelBufferedWriter的映射关系维护到一个Map里，如果该Map大小超过了dynamicPartitionLimit设定值，则会出现`Too many dynamic partitions: 100, which exceeds the size limit: 100`报错。|
+|partitionBy|写入Sink节点前，系统会根据该值进行Hash Shuffle，数据就会流向对应的Sink节点。|否|系统按照多个列进行Hash Shuffle，各个列名之间使用逗号（,）分割。默认为空。|
+|dynamicPartitionLimit|分区数目最大值。|否|默认值为100，系统会把已写入的分区和TunnelBufferedWriter的映射关系维护到一个Map里，如果该Map大小超过了dynamicPartitionLimit设定值，则会出现`Too many dynamic partitions: 100, which exceeds the size limit: 100`报错。|
 
 ## 类型映射
 
@@ -95,7 +95,6 @@ create table odps_sink(
 |VARCHAR|VARCHAR|
 |STRING|VARCHAR|
 |DECIMAL|DECIMAL|
-|BINARY|VARBINARY|
 
 ## 代码示例
 
@@ -103,31 +102,31 @@ create table odps_sink(
 
     ```
     CREATE TEMPORARY TABLE datagen_source (
-        id INT,
-        len INT,
-        content VARCHAR
-    ) with (
-        'connector' = 'datagen'
+      id INT,
+      len INT,
+      content VARCHAR
+    ) WITH (
+      'connector' = 'datagen'
     );
     
     CREATE TEMPORARY TABLE odps_sink (
-        id INT,
-        len INT,
-        content VARCHAR
-    ) with (
-        'connector' = 'odps',
-        'endpoint' = '<yourEndpoint>',
-        'tunnelEndpoint' = '<yourTunnelEndpoint>',
-        'project' = '<yourProjectName>',
-        'tablename' = '<yourTableName>',
-        'accessid' = '<yourAccessKeyId>',
-        'accesskey' = '<yourAccessKeySecret>',
-        'partition' = 'ds=20180905'
+      id INT,
+      len INT,
+      content VARCHAR
+    ) WITH (
+      'connector' = 'odps',
+      'endpoint' = '<yourEndpoint>',
+      'tunnelEndpoint' = '<yourTunnelEndpoint>',
+      'project' = '<yourProjectName>',
+      'tablename' = '<yourTableName>',
+      'accessid' = '<yourAccessKeyId>',
+      'accesskey' = '<yourAccessKeySecret>',
+      'partition' = 'ds=20180905'
     );
     
     INSERT INTO odps_sink 
     SELECT 
-         id, len, content 
+      id, len, content 
     FROM datagen_source;
     ```
 
@@ -135,36 +134,36 @@ create table odps_sink(
 
     ```
     CREATE TEMPORARY TABLE datagen_source (
-        id INT,
-        len INT,
-        content VARCHAR,
-        c TIMESTAMP 
-    ) with (
-        'connector' = 'datagen'
+      id INT,
+      len INT,
+      content VARCHAR,
+      c TIMESTAMP 
+    ) WITH (
+      'connector' = 'datagen'
     );
     
     CREATE TEMPORARY TABLE odps_sink (
-         id  INT,
-         len INT,
-         content VARCHAR,
-         ds VARCHAR --动态分区列需要显式声明。
-    ) with (
-         'connector' = 'odps',
-         'endpoint' = '<yourEndpoint>',
-         'tunnelEndpoint' = '<yourTunnelEndpoint>',
-         'project' = '<yourProjectName>',
-         'tablename' = '<yourTableName>',
-         'accessid' = '<yourAccessKeyId>',
-         'accesskey' = '<yourAccessKeySecret>',
-         'partition' ='ds' --不写分区的值，表示根据ds字段的值写入不同分区。
+      id  INT,
+      len INT,
+      content VARCHAR,
+      ds VARCHAR --动态分区列需要显式声明。
+    ) WITH (
+      'connector' = 'odps',
+      'endpoint' = '<yourEndpoint>',
+      'tunnelEndpoint' = '<yourTunnelEndpoint>',
+      'project' = '<yourProjectName>',
+      'tablename' = '<yourTableName>',
+      'accessid' = '<yourAccessKeyId>',
+      'accesskey' = '<yourAccessKeySecret>',
+      'partition' ='ds' --不写分区的值，表示根据ds字段的值写入不同分区。
     );
     
     INSERT INTO odps_sink 
     SELECT 
-          id, 
-          len, 
-          content,
-          DATE_FORMAT(c, 'yyMMdd') as ds
+       id, 
+       len, 
+       content,
+       DATE_FORMAT(c, 'yyMMdd') as ds
     FROM datagen_source;
     ```
 
