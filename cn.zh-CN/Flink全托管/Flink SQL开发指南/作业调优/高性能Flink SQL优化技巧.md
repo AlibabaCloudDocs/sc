@@ -25,7 +25,7 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
 
     ```
     execution.checkpointing.interval: 180s
-    state.backend: gemini
+    state.backend: com.alibaba.flink.statebackend.GeminiStateBackendFactory
     state.backend.gemini.ttl.ms: 129600000
     table.exec.mini-batch.enabled: true
     table.exec.mini-batch.allow-latency: 5s
