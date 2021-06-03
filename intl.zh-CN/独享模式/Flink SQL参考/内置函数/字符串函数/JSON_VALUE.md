@@ -30,12 +30,6 @@ VARCHAR JSON_VALUE(VARCHAR content, VARCHAR path)
 
 从JSON字符串中提取指定path的值，不合法的JSON和null都统一返回null。
 
-**说明：** 自定义path需要使用单引号（'），示例如下。
-
-```
-JSON_VALUE(json,'$.passenger_name') AS ABC
-```
-
 ## 示例
 
 -   测试数据
