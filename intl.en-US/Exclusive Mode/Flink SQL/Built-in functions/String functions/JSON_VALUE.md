@@ -30,12 +30,6 @@ VARCHAR JSON_VALUE(VARCHAR content, VARCHAR path)
 
 Extracts the value of the specific path from a JSON string. If the JSON string is invalid or any input parameter is null, null is returned.
 
-**Note:** You must use single quotation marks \('\) in a custom path. An example is as follows:
-
-```
-JSON_VALUE(json,'$.passenger_name') AS ABC
-```
-
 ## Example
 
 -   Test data
