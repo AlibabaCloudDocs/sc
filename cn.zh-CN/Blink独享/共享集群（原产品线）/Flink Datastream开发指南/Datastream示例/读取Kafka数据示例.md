@@ -20,7 +20,7 @@ keyword: [Kafka数据示例, Datastream, 读取Kafka, Kafka]
 
 1.  下载并解压[alikafka-demo-master](https://github.com/RealtimeCompute/alikafka-demo)示例到本地。
 
-2.  在Intellij IDEA中，单击**File** \> **Open**，打开刚才解压缩完成的alikafka-demo-master。
+2.  在IntelliJ IDEA中，单击**File** \> **Open**，打开刚才解压缩完成的alikafka-demo-master。
 
 3.  双击打开\\alikafka-demo-master\\src\\main\\resources目录下的kafka.properties后，修改bootstrap.servers、topic和group.id为您创建的Kafka实例对应值。
 
