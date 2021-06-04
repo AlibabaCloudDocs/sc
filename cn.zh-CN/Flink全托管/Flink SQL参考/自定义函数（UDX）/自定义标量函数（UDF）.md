@@ -16,7 +16,7 @@
 
     -   pom.xml：项目级别的配置文件，主要描述了项目的Maven坐标、依赖关系，开发者需要遵循的规则、缺陷管理系统，组织和Licenses，以及其他所有的项目相关因素。
     -   \\ASI\_UDX-main\\src\\main\\java\\ASI\_UDF\\ASI\_UDF.java：自定义标量函数（UDF）示例的Java代码。
-2.  在Intellij IDEA中，单击**file** \> **open**，打开刚才解压缩完成的ASI\_UDX-main。
+2.  在IntelliJ IDEA中，单击**file** \> **open**，打开刚才解压缩完成的ASI\_UDX-main。
 3.  双击打开\\ASI\_UDX-main\\src\\main\\java\\ASI\_UDF后，根据您的业务，配置ASI\_UDF.java。
 
     该示例中，ASI\_UDF.java已配置了获取每条数据中从begin~end位的字符的代码。
