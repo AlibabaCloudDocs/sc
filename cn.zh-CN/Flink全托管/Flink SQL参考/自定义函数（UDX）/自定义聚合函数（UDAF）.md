@@ -16,7 +16,7 @@
 
     -   pom.xml：项目级别的配置文件，主要描述了项目的Maven坐标、依赖关系，开发者需要遵循的规则、缺陷管理系统，组织和Licenses，以及其他所有的项目相关因素。
     -   \\ASI\_UDX-main\\src\\main\\java\\ASI\_UDAF\\ASI\_UDAF.java：自定义聚合函数（UDAF）示例的Java代码。
-2.  在Intellij IDEA中，单击**file** \> **open**，打开刚才解压缩完成的ASI\_UDX-main。
+2.  在IntelliJ IDEA中，单击**file** \> **open**，打开刚才解压缩完成的ASI\_UDX-main。
 3.  双击打开\\ASI\_UDX-main\\src\\main\\java\\ASI\_UDAF后，根据您的业务，配置ASI\_UDAF.java。
 
     该示例中，ASI\_UDAF.java已配置了当前数据和历史数求和的代码。例如，第1个数据是1，第2个数据是2，第3个数据是3，则第一个结果是1，第2个结果是3，第3个结果是6。
@@ -102,7 +102,7 @@ UDAF注册过程，请参见[管理自定义函数（UDF）](/cn.zh-CN/Flink全�
 
 在注册UDAF完成后，您就可以使用UDAF，详细的操作步骤如下。
 
-1.  Flink SQL作业开发。详情请参见[作业开发](/cn.zh-CN/Flink全托管/Flink SQL开发指南/作业开发.md)。
+1.  Flink SQL作业开发。详情请参见[t1894286.md\#](/cn.zh-CN/Flink全托管/Flink SQL开发指南/作业开发.md)。
 
     获取ASI\_UDAF\_Source表中a字段当前数据和历史数据之和，代码示例如下。
 
