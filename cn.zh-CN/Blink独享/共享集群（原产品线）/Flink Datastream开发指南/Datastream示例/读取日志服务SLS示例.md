@@ -19,7 +19,7 @@ keyword: [Datastream, 读取SLS, 日志服务]
 
 1.  下载并解压[SLS\_Demo](https://github.com/RealtimeCompute/SLS_Demo)示例到本地。
 
-2.  在Intellij IDEA中，单击**File** \> **Open**，打开刚才解压缩完成的SLS\_Demo-master。
+2.  在IntelliJ IDEA中，单击**File** \> **Open**，打开刚才解压缩完成的SLS\_Demo-master。
 
 3.  双击打开SLS\_Demo-master\\src\\main\\java\\com\\aliyun\\openservices\\log\\flink\\ConsumerSample后，修改ConsumerSample.java文件中的SLS的相关参数。
 
