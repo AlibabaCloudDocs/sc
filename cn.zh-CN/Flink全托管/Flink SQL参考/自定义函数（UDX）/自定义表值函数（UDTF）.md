@@ -16,7 +16,7 @@
 
     -   pom.xml：项目级别的配置文件，主要描述了项目的Maven坐标、依赖关系，开发者需要遵循的规则、缺陷管理系统，组织和Licenses，以及其他所有的项目相关因素。
     -   \\ASI\_UDX-main\\src\\main\\java\\ASI\_UDF\\ASI\_UDTF.java：自定义表值函数（UDTF）示例的Java代码。
-2.  在Intellij IDEA中，单击**file** \> **open**，打开刚才解压缩完成的ASI\_UDX-main。
+2.  在IntelliJ IDEA中，单击**file** \> **open**，打开刚才解压缩完成的ASI\_UDX-main。
 3.  双击打开\\ASI\_UDX-main\\src\\main\\java\\ASI\_UDTF后，根据您的业务，修改ASI\_UDTF.java文件内容。
 
     该示例中，ASI\_UDTF.java已配置了将一行字符串按照竖线（\|）分割成多列字符串的代码。
@@ -91,7 +91,7 @@ UDTF注册过程，请参见[管理自定义函数（UDF）](/cn.zh-CN/Flink全�
 
 在注册UDTF完成后，您就可以使用UDTF，详细的操作步骤如下。
 
-1.  Flink SQL作业开发。详情请参见[作业开发](/cn.zh-CN/Flink全托管/Flink SQL开发指南/作业开发.md)。
+1.  Flink SQL作业开发。详情请参见[t1894286.md\#](/cn.zh-CN/Flink全托管/Flink SQL开发指南/作业开发.md)。
 
     ASI\_UDTF\_Source表中message字段每行字符串按照竖线（\|）分割成多列，代码示例如下。
 
