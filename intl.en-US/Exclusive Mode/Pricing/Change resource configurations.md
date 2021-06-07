@@ -44,7 +44,7 @@ You can modify the configuration of **Master Specifications** or **Slave Quantit
         **Note:**
 
         -   If the number of CUs is insufficient, we recommend that you select **Slave Scale-Out** and increase the value of **Slave Quantity**.
-        -   If you are unable to complete payment after you specify Slave Quantity and read and select Realtime Compute Exclusive Mode \(Subscription\) Terms of Service, add a VSwitch and enter the ID of the new VSwitch in **vSwitchId**. After verification, you can complete the payment for the scale-out. For more information about how to add a VSwitch, see [Create a vSwitch](/intl.en-US/VPCs and vSwitchs/Work with vSwitches.md).
+        -   If you are unable to complete payment after you specify Slave Quantity and read and select Realtime Compute Exclusive Mode \(Subscription\) Terms of Service, add a vSwitch and enter the ID of the new VSwitch in **vSwitchId**. After verification, you can complete the payment for the scale-out. For more information about how to add a vSwitch, see [Work with vSwitches](/intl.en-US/VPCs and vSwitchs/Work with vSwitches.md).
         -   The slave nodes that you want to add must be located in the same zone as the cluster.
         -   You cannot change the slave specifications for an existing Realtime Compute for Apache Flink cluster in exclusive mode. You can only increase the value of **Slave Quantity**. If you want to change the slave specifications, you must purchase a new cluster.
 5.  Read and select Realtime Compute Exclusive Mode \(Subscription\) Terms of Service.
