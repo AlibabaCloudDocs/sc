@@ -14,7 +14,7 @@ CREATE TABLE filesystem_dim (
   name STRING
 ) WITH (
   'connector' = 'filesystem',
-  'path' = 'csv/json/avro/parquet/orc/raw',
+  'path' = 'oss://my_path/my_file',
   'format' = 'CSV' 
 )
 ```
