@@ -10,34 +10,38 @@ keyword: [云原生数据仓库AnalyticDB MySQL版, 3.0, 云原生数据仓库An
 
 [云原生数据仓库AnalyticDB MySQL版]()是融合数据库、大数据技术于一体的云原生企业级数据仓库服务。AnalyticDB MySQL版支持高吞吐的数据实时增删改、低延时的实时分析和复杂ETL，兼容上下游生态工具，可用于构建企业级报表系统、数据仓库和数据服务引擎。
 
+## 前提条件
+
+已创建云原生数据仓库AnalyticDB MySQL版集群，详情请参见[创建集群]()。
+
 ## DDL定义
 
 ```
 CREATE TABLE adb30_dim (
-    id1 INT,
-    id2 VARCHAR
+  id1 INT,
+  id2 VARCHAR
 ) WITH (
-    'connector' = 'adb3.0',
-    'password' = '<yourPassword>',
-    'tableName' = '<yourTablename>',
-    'url' = '<yourUrl>',
-    'userName' = '<yourUsername>',
-    'cache' = 'ALL',
-    'cacheSize' = '500'
+  'connector' = 'adb3.0',
+  'password' = '<yourPassword>',
+  'tableName' = '<yourTablename>',
+  'url' = '<yourUrl>',
+  'userName' = '<yourUsername>',
+  'cache' = 'ALL',
+  'cacheSize' = '500'
 );
 ```
 
 ## WITH参数
 
-|参数|注释说明|是否必选|备注|
-|--|----|----|--|
-|connector|维表类型|是|固定值为`adb3.0`。|
-|password|密码|是|无|
-|tableName|表名|是|无|
-|url|URL地址|是|云原生数据仓库AnalyticDB MySQL版3.0的专有网络VPC地址。|
-|username|用户名|是|无|
-|maxRetryTimes|写入数据失败后，重试写入的次数|否|默认值为3。|
-|CACHE|缓存策略、缓存大小和缓存超时时间|否|详情请参见[CACHE参数](#section_rd3_uc3_lqr)。|
+|参数|说明|是否必选|备注|
+|--|--|----|--|
+|connector|维表类型。|是|固定值为`adb3.0`。|
+|password|密码。|是|无。|
+|tableName|表名。|是|无。|
+|url|URL地址。|是|云原生数据仓库AnalyticDB MySQL版3.0的专有网络VPC地址。|
+|username|用户名。|是|无。|
+|maxRetryTimes|写入数据失败后，重试写入的次数。|否|默认值为3。|
+|CACHE|缓存策略、缓存大小和缓存超时时间。|否|详情请参见[CACHE参数](#section_rd3_uc3_lqr)。|
 
 ## CACHE参数
 
@@ -58,7 +62,7 @@ CREATE TABLE adb30_dim (
 |cacheSize|缓存大小，即缓存多少行数据。|否|cacheSize配置和cache有关：-   如果cache配置为None，则不用配置cacheSize参数（默认为空）。
 -   如果cache配置为LRU，则必须配置cacheSize参数。
 -   如果cache配置为ALL，则必须配置cacheSize参数。 |
-|cacheTTLMs|缓存超时时间，单位为毫秒|否|cacheTTLMs配置和cache有关：-   如果cache配置为ALL，则cacheTTLMs为缓存加载的间隔时间，默认值为10000ms。
+|cacheTTLMs|缓存超时时间，单位为毫秒。|否|cacheTTLMs配置和cache有关：-   如果cache配置为ALL，则cacheTTLMs为缓存加载的间隔时间，默认值为10000ms。
 -   如果cache配置为LRU，则cacheTTLMs为缓存失效的超时时间，默认值为10000ms。 |
 
 ## 类型映射
