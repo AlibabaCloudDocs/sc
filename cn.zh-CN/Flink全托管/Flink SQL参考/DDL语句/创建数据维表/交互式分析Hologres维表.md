@@ -12,6 +12,10 @@ keyword: [Hologres, 维表, 交互式分析]
 
 [交互式分析Hologres](/cn.zh-CN/产品简介/什么是Hologres.md)兼容PostgreSQL协议，与大数据生态紧密连接，支持高并发、低延时实时分析处理PB级数据，让您轻松使用现有BI（Business Intelligence）工具对数据进行多维分析和业务探索。
 
+## 前提条件
+
+已购买交互式分析Hologres，详情请参见[购买Hologres](/cn.zh-CN/准备工作/购买Hologres.md)。
+
 ## 使用限制
 
 -   创建Hologres维表时建议选择行存模式，列存模式对于点查场景性能开销较大。
@@ -102,28 +106,28 @@ CREATE TABLE hologres_dim(
 
 ```
 CREATE TEMPORARY TABLE datagen_source (
-   a INT,
-   b BIGINT,
-   c STRING,
-   proctime AS PROCTIME()
-) with (
-   'connector' = 'datagen'
+  a INT,
+  b BIGINT,
+  c STRING,
+  proctime AS PROCTIME()
+) WITH (
+  'connector' = 'datagen'
 );
 
 CREATE TEMPORARY TABLE hologres_dim (
-   a INT, 
-   b VARCHAR, 
-   c VARCHAR
-) with (
-   'connector' = 'hologres',
+  a INT, 
+  b VARCHAR, 
+  c VARCHAR
+) WITH (
+  'connector' = 'hologres',
    ...
 );
 
 CREATE TEMPORARY TABLE blackhole_sink (
-   a INT,
-   b STRING
-) with (
-   'connector' = 'blackhole'
+  a INT,
+  b STRING
+) WITH (
+  'connector' = 'blackhole'
 );
 
 insert into blackhole_sink select T.a,H.b
