@@ -76,7 +76,6 @@ create table odps_sink(
 |flushIntervalMs|Odps tunnel writer缓冲区Flush间隔。 MaxCompute Sink写入记录时，先将数据存储到MaxCompute的缓冲区中，等缓冲区溢出或者每隔一段时间（flushIntervalMs），再把缓冲区里的数据写到目标 MaxCompute表。
 
 |否|单位为毫秒，默认值为30000（30秒）。|
-|partitionBy|写入Sink节点前，系统会根据该值进行Hash Shuffle，数据就会流向对应的Sink节点。|否|系统按照多个列进行Hash Shuffle，各个列名之间使用逗号（,）分割。默认为空。|
 |dynamicPartitionLimit|分区数目最大值。|否|默认值为100，系统会把已写入的分区和TunnelBufferedWriter的映射关系维护到一个Map里，如果该Map大小超过了dynamicPartitionLimit设定值，则会出现`Too many dynamic partitions: 100, which exceeds the size limit: 100`报错。|
 
 ## 类型映射
