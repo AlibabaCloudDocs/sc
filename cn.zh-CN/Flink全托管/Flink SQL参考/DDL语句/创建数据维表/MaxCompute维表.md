@@ -10,24 +10,28 @@ keyword: [维表, MaxCompute]
 
 大数据计算服务MaxCompute（原名ODPS）是一种快速、完全托管的EB级数据仓库解决方案，致力于批量结构化数据的存储和计算，提供海量数据仓库的解决方案及分析建模服务。MaxCompute详情请参见[什么是MaxCompute](/cn.zh-CN/产品简介/什么是MaxCompute.md)。
 
+## 前提条件
+
+已开通MaxCompute，详情请参见[开通MaxCompute](/cn.zh-CN/准备工作/开通MaxCompute.md)。
+
 ## DDL定义
 
 ```
 create table odps_dim(
-    id VARCHAR,
-    name VARCHAR,
-    age int,
-    PRIMARY KEY (id, name) not enforced
+  id VARCHAR,
+  name VARCHAR,
+  age int,
+  PRIMARY KEY (id, name) not enforced
 ) with (
-    'connector' = 'odps', 
-    'endpoint' = '<yourEndpoint>',
-    'tunnelEndpoint' = '<yourTunnelEndpoint>',
-    'project' = '<yourProjectName>',
-    'tablename' = '<yourTableName>',
-    'accessid' = '<yourAccessKeyId>',
-    'accesskey' = '<yourAccessKeySecret>',
-    'partition' = 'ds=2018****',
-    'cache' = 'ALL'
+  'connector' = 'odps', 
+  'endpoint' = '<yourEndpoint>',
+  'tunnelEndpoint' = '<yourTunnelEndpoint>',
+  'project' = '<yourProjectName>',
+  'tablename' = '<yourTableName>',
+  'accessid' = '<yourAccessKeyId>',
+  'accesskey' = '<yourAccessKeySecret>',
+  'partition' = 'ds=2018****',
+  'cache' = 'ALL'
 );
 ```
 
@@ -45,10 +49,10 @@ create table odps_dim(
 |connector|维表类型|是|固定值为`odps`。|
 |endPoint|MaxCompute服务地址|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
 |tunnelEndpoint|MaxCompute Tunnel服务的连接地址|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
-|project|MaxCompute项目名称|是|无|
-|tableName|表名|是|无|
-|accessId|AccessKey ID|是|无|
-|accessKey|AccessKey Secret|是|无|
+|project|MaxCompute项目名称|是|无。|
+|tableName|表名|是|无。|
+|accessId|AccessKey ID|是|无。|
+|accessKey|AccessKey Secret|是|无。|
 |partition|分区名|否|-   固定分区
     -   只存在一个分区MaxCompute表
 
@@ -68,18 +72,18 @@ create table odps_dim(
 
 |参数|参数说明|备注|
 |--|----|--|
-|cache|缓存策略|目前MaxCompute维表仅支持`ALL`策略，必须显式声明。 ALL策略：缓存维表里的所有数据。在Job运行前，系统会将维表中所有数据加载到Cache中，之后所有的维表查询都会通过Cache进行。如果在Cache中无法找到数据，则KEY不存在，并在Cache过期后重新加载一遍全量Cache。
+|cache|缓存策略。|目前MaxCompute维表仅支持`ALL`策略，必须显式声明。 ALL策略：缓存维表里的所有数据。在Job运行前，系统会将维表中所有数据加载到Cache中，之后所有的维表查询都会通过Cache进行。如果在Cache中无法找到数据，则KEY不存在，并在Cache过期后重新加载一遍全量Cache。
 
- 适用于远程表数据量小且MISS KEY（源表数据和维表JOIN时，ON条件无法关联）特别多的场景。需要配置缓存更新时间间隔（cacheTTLMs）和更新时间黑名单（cacheReloadTimeBlackList）参数。
+适用于远程表数据量小且MISS KEY（源表数据和维表JOIN时，ON条件无法关联）特别多的场景。需要配置缓存更新时间间隔（cacheTTLMs）和更新时间黑名单（cacheReloadTimeBlackList）参数。
 
- **说明：**
+**说明：**
 
 -   因为系统会异步加载维表数据，所以在使用CACHE ALL时，需要增加维表JOIN节点的内存，增加的内存大小为远程表数据量的至少4倍，具体值与MaxCompute存储压缩算法有关。
 -   在使用超大MaxCompute维表时，如果频繁GC（Allocation Failure）导致作业异常，且在增加维表JOIN节点的内存仍无改善的情况下，建议改为支持LRU cache策略的KV型维表，例如云数据库Hbase版维表。 |
-|cacheSize|缓存大小|可以设置缓存大小，MaxCompute默认缓存值为100000行。|
-|cacheTTLMs|缓存超时时间|单位为毫秒，如果cache选择为`ALL`策略，则为缓存加载的间隔时间，默认为不重新加载。|
-|cacheReloadTimeBlackList|更新时间黑名单。在缓存策略选择为ALL时，启用更新时间黑名单，防止在此时间内做Cache更新（例如双11场景）。|默认为空，格式为`2017-10-24 14:00 -> 2017-10-24 15:00, 2017-11-10 23:30 -> 2017-11-11 08:00`。分隔符的使用情况如下所示： -   用逗号`,`来分隔多个黑名单。
--   用箭头`->`来分割黑名单的起始结束时间。 |
+|cacheSize|缓存大小。|可以设置缓存大小，MaxCompute默认缓存值为100000行。|
+|cacheTTLMs|缓存超时时间。|单位为毫秒，如果cache选择为`ALL`策略，则为缓存加载的间隔时间，默认为不重新加载。|
+|cacheReloadTimeBlackList|更新时间黑名单。在缓存策略选择为ALL时，启用更新时间黑名单，防止在此时间内做Cache更新（例如双11场景）。|默认为空，格式为`2017-10-24 14:00 -> 2017-10-24 15:00, 2017-11-10 23:30 -> 2017-11-11 08:00`。分隔符的使用情况如下所示： -   用英文逗号（,）来分隔多个黑名单。
+-   用箭头（-\>）来分割黑名单的起始结束时间。 |
 
 ## 类型映射
 
