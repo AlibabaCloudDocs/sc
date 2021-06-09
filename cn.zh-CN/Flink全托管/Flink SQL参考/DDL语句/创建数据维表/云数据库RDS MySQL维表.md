@@ -10,6 +10,10 @@ keyword: [云数据库RDS MySQL, 云数据库RDS版, MySQL]
 
 RDS MySQL基于阿里巴巴的MySQL源码分支，经过双十一高并发、大数据量的考验，拥有优良的性能。RDS MySQL支持实例管理、账号管理、数据库管理、备份恢复、白名单、透明数据加密以及数据迁移等基本功能。RDS MySQL详情请参见[概述](/cn.zh-CN/RDS MySQL 数据库/概述.md)。
 
+## 前提条件
+
+已创建云数据库RDS MySQL实例，详情请参见[创建RDS MySQL实例](/cn.zh-CN/RDS MySQL 数据库/快速入门/创建RDS MySQL实例.md)。
+
 ## 语法示例
 
 ```
