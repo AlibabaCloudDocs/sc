@@ -11,7 +11,8 @@ Flink全托管支持**Per-Job集群**和**Session集群**两种集群模式。�
 
     -   每个项目空间可以配置多个Session集群，但只能选择一个Session集群开启SQL Preview 。
     -   Session集群暂不支持开启自动调优功能。
-    -   每个Session集群运行后，都会额外消耗0.5 CU资源。
+    -   无论您是否使用Session集群，在创建Session集群时会消耗集群资源，其中消耗的资源和您创建集群时选择的资源配置有关。
+    -   每个Session集群运行后，都会额外消耗0.5 CU的资源。
 
 ## 创建Session集群
 
@@ -48,9 +49,9 @@ Flink全托管支持**Per-Job集群**和**Session集群**两种集群模式。�
     |其他配置|在此设置其他Flink配置。例如`taskmanager.numberOfTaskSlots: 1`。|
     |资源配置|Task Managers 数量|默认与并行度一致。|
     |Job Manager CPUs|默认值为1。|
-    |Job Manager Memory|最小值为500Mi。单位建议使用Gi或Mi，例如，1024Mi或1.5Gi。|
+    |Job Manager Memory|最小值为1 GiB。单位建议使用GiB或MiB，例如，1024 MiB或1.5 GiB。|
     |Task Manager CPUs|默认值为1。|
-    |Task Manager Memory|最小值为1Gi。单位建议使用Gi或Mi，例如，1024Mi或1.5Gi。|
+    |Task Manager Memory|最小值为1 GiB。单位建议使用GiB或MiB，例如，1024 MiB或1.5 GiB。|
     |日志配置|Root Log Level|TRACE、DEBUG、INFO、WARN和ERROR。|
     |Logger name|填写日志名称。|
     |Logger level|填写日志级别。|
