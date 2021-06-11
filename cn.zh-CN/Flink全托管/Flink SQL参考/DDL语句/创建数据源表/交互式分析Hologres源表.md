@@ -42,9 +42,9 @@ create table hologres_source(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|源表类型|是|固定值为hologres。|
-|dbname|数据库名称|是|无。|
-|tablename|表名称 **说明：** 如果Schema不为Public时，需要在表名称前面添加模式名称的前缀，即schema.tableName。
+|connector|源表类型。|是|固定值为hologres。|
+|dbname|数据库名称。|是|无。|
+|tablename|表名称。 **说明：** 如果Schema不为Public时，需要在表名称前面添加模式名称的前缀，即schema.tableName。
 
 |是|无。|
 |username|用户名，请填写阿里云账号的AccessKey ID。|是|无。|
@@ -64,6 +64,7 @@ create table hologres_source(
 -   false（默认值）：非CDC模式读取Binlog数据。
 
  **说明：** 仅VVP 2.4.0及以上版本支持该参数。 |
+|startTime|启动位点的时间。如果没有设置该参数，且作业没有从state恢复，则从最早的Binlog开始消费Hologres数据。|否|格式为yyyy-MM-dd hh:mm:ss。|
 
 ## 代码示例
 
