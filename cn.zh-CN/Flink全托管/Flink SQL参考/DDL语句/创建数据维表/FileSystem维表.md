@@ -19,7 +19,7 @@ CREATE TABLE filesystem_dim (
 ) WITH (
   'connector' = 'filesystem',
   'path' = 'oss://my_path/my_file',
-  'format' = 'CSV' 
+  'format' = 'csv' 
 )
 ```
 
@@ -29,12 +29,12 @@ CREATE TABLE filesystem_dim (
 |--|--|----|--|
 |connector|维表类型|是|固定值为filesystem。|
 |path|文件路径|是|URI格式，例如：oss://my\_path/my\_file。|
-|format|文件格式|是|参数取值如下：-   CSV
--   JSON
--   AVRO
--   PARQUET
--   ORC
--   RAW
+|format|文件格式|是|参数取值如下：-   csv
+-   json
+-   avro
+-   parquet
+-   orc
+-   raw
 
 format参数详情请参见[formats](https://ci.apache.org/projects/flink/flink-docs-master/zh/docs/connectors/table/formats/overview/)。 |
 |lookup.join.cache.ttl|重新读取数据的TTL时间|否|默认值为60分钟，即每隔60分钟重新读取数据。|
