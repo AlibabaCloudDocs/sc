@@ -12,6 +12,10 @@ keyword: Phoenix5结果表
 
 HBase SQL服务基于Phoenix 5.x为HBase 2.x提供SQL能力，通过轻客户端即可快速连接访问。SQL服务挂载了SLB负载均衡，通过round robin模式将请求均匀分发在每个query server节点。此外轻客户端还支持Python、Go等多语言访问。Phoenix5详情请参见[HBase SQL\(Phoenix\) 5.x 使用说明]()。
 
+## 前提条件
+
+已开通HBase SQL服务，详情请参见[HBase SQL\(Phoenix\) 5.x 使用说明]()。
+
 ## DDL定义
 
 ```
@@ -32,13 +36,13 @@ create table phoenix5_sink (
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|结果表类型|是|默认值为`phoenix5`。|
+|connector|结果表类型。|是|默认值为`phoenix5`。|
 |serverUrl|Phoenix5的Query Server地址：-   如果Phoenix5是在集群中创建的，则serverUrl是负载均衡服务的URL地址。
 -   如果Phoenix5是在单机中创建的，则serverUrl是单机的URL地址。
 
 |是|您需要在云数据库HBase实例中开启Hbase SQL服务，详情请参见[开启HBase](section_2nj_tsp_mbz)。|
-|tableName|Phoenix5表名|是|无。|
-|batchSize|一次批量写入的条数|否|默认值为20。|
+|tableName|Phoenix5表名。|是|无。|
+|batchSize|一次批量写入的条数。|否|默认值为20。|
 
 ## 代码示例
 
