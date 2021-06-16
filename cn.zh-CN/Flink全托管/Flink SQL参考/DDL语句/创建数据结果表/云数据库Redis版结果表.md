@@ -12,6 +12,10 @@ keyword: [Redis, 结果表]
 
 [阿里云数据库Redis版](/cn.zh-CN/产品简介/什么是云数据库Redis版.md)是兼容开源Redis协议标准、提供内存加硬盘混合存储的数据库服务，基于高可靠双机热备架构及可平滑扩展的集群架构，充分满足高吞吐、低延迟及弹性变配的业务需求。Flink支持将其作为流式数据的输出。
 
+## 前提条件
+
+已创建云数据库Redis实例，详情请参见[步骤1：创建实例](/cn.zh-CN/快速入门/步骤1：创建实例.md)。
+
 ## DDL定义
 
 云数据库Redis版结果表支持5种Redis数据结构，其DDL定义如下：
@@ -123,16 +127,16 @@ keyword: [Redis, 结果表]
 
 |参数|说明|是否必填|取值|
 |--|--|----|--|
-|connector|结果表类型|是|固定值为`redis`。|
-|mode|对应Redis的数据结构|取值如下： -   string
+|connector|结果表类型。|是|固定值为`redis`。|
+|mode|对应Redis的数据结构。|取值如下： -   string
 -   list
 -   set
 -   hashmap
 -   sortedset |
-|host|Redis Server连接地址|取值示例：`127.0.0.1`。|
-|port|Redis Server连接端口|否|默认值为6379。|
-|password|Redis密码|默认值为空，不进行权限验证。|
-|dbNum|选择操作的数据库|默认值为0。|
+|host|Redis Server连接地址。|取值示例：`127.0.0.1`。|
+|port|Redis Server连接端口。|否|默认值为6379。|
+|password|Redis密码。|默认值为空，不进行权限验证。|
+|dbNum|选择操作的数据库。|默认值为0。|
 |ignoreDelete|是否忽略Retraction消息。|默认值为false，可取值为true或false。如果设置为false，收到Retraction时，同时删除数据对应的key及已插入的数据。|
 |clusterMode|Redis集群是否为cluster模式。|默认值为false。|
 
