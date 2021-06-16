@@ -15,6 +15,10 @@ keyword: 创建交互式分析Hologres结果表
 
 [交互式分析Hologres](/cn.zh-CN/产品简介/什么是Hologres.md)兼容PostgreSQL协议，与大数据生态紧密连接，支持高并发、低延时实时分析处理PB级数据，让您轻松使用现有BI（Business Intelligence）工具对数据进行多维分析和业务探索。
 
+## 前提条件
+
+已创建Hologres外部表，详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
+
 ## DDL定义
 
 ```
@@ -37,14 +41,14 @@ create table hologres_sink(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|结果表类型|是|固定值为hologres。|
-|dbname|数据库名称|是|无|
-|tablename|表名称**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
+|connector|结果表类型。|是|固定值为hologres。|
+|dbname|数据库名称。|是|无。|
+|tablename|表名称。**说明：** 如果Schema不为Public时，则tableName需要填写为schema.tableName。
 
-|是|无|
-|username|用户名|是|无|
-|password|密码|是|无|
-|endpoint|Hologres端点|是|格式为<ip\>:<port\>。|
+|是|无。|
+|username|用户名。|是|无。|
+|password|密码。|是|无。|
+|endpoint|Hologres端点。|是|格式为<ip\>:<port\>。|
 |field\_delimiter|Hologres Sink支持将一个STRING字段按照field\_delimiter切分成数组导入Hologres。|否|默认值为"\\u0002"。|
 |mutatetype|数据写入模式，详情请参见[流式语义](#section_yce_507_nhr)。|否|默认值为insertorignore。|
 |partitionrouter|是否写入分区表。|否|默认值为false。|
