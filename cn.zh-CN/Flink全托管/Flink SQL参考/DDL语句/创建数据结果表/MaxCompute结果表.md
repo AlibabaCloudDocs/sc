@@ -12,6 +12,10 @@ keyword: [结果表, MaxCompute]
 
 大数据计算服务MaxCompute（原名ODPS）是一种快速、完全托管的EB级数据仓库解决方案，致力于批量结构化数据的存储和计算，提供海量数据仓库的解决方案及分析建模服务。MaxCompute详情请参见[什么是MaxCompute](/cn.zh-CN/产品简介/什么是MaxCompute.md)。
 
+## 前提条件
+
+已创建MaxCompute表，详情请参见[创建表](/cn.zh-CN/快速入门/通过MaxCompute客户端使用MaxCompute/创建表.md)。
+
 ## 实现原理
 
 MaxCompute Sink可以分为以下两个阶段：
