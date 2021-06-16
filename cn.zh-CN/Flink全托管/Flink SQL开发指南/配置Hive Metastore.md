@@ -1,6 +1,6 @@
 # 配置Hive Metastore
 
-本文为你介绍如何在Flink全托管模式下配置Hive Metastore功能。
+本文为您介绍如何在Flink全托管模式下配置Hive Metastore功能。
 
 您可以将Hive Metastore配置文件和Hadoop依赖存放至对象存储OSS控制台指定目录后，再在Flink全托管开发控制台上配置Hive Metastore功能。配置成功后，您就可以在Flink全托管开发控制台上直接使用DML创建业务逻辑，获取Hive中表的元数据信息，无需再使用DDL语句声明相应的表信息。Hive Metastore可以作为Stream作业和Batch作业的源表或结果表。
 
