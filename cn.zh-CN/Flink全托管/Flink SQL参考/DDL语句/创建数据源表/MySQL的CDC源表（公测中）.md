@@ -20,6 +20,10 @@ MySQL的CDC源表，即MySQL的流式源表，支持对MySQL数据库的全量�
 
 **说明：** MySQL的CDC源表需要一个有特定权限（包括SELECT、RELOAD、SHOW DATABASES、REPLICATION SLAVE和REPLICATION CLIENT）的MySQL用户，才能读取全量和增量数据。MySQL CDC Connector支持读取的MySQL版本为5.7和8.0。
 
+## 前提条件
+
+已创建MySQL数据库和表，RDS MySQL创建数据库和表详情请参见[创建数据库和账号](/cn.zh-CN/RDS MySQL 数据库/快速入门/创建数据库和账号.md)。
+
 ## 注意事项
 
 -   建议对MySQL用户授予RELOAD权限
@@ -93,9 +97,6 @@ CREATE TABLE mysqlcdc_source (
 |port|MySQL数据库服务的端口号。|否|INTEGER|默认值为3306。|
 |server-id|数据库客户端的一个ID。|否|STRING|该ID必须是MySQL集群中全局唯一的。建议针对同一个数据库的每个作业都设置一个不同的ID。默认会随机生成一个5400~6400的值。|
 |scan.startup.mode|消费者的启动模式。|否|STRING|详情请参见[启动模式](#section_l9e_7i8_wa4)。|
-|scan.startup.timestamp-millis|在timestamp启动模式下，指定启动位点时间戳。|否|LONG|单位为毫秒。|
-|scan.startup.specific-offset.file|在specific-offset启动模式下，指定读取的 binlog文件名。|否|STRING|需要与scan.startup.specific-offset.pos参数一起使用。|
-|scan.startup.specific-offset.pos|在specific-offset启动模式下，指定读取的binlog文件中的位点。|否|INTEGER|需要与scan.startup.specific-offset.file参数一起使用。|
 |server-time-zone|数据库在使用的会话时区。|否|STRING|例如Asia/Shanghai，该参数控制了MySQL中的TIMESTAMP类型如何转成STRING类型。|
 |debezium.min.row.count.to.stream.results|当表的条数大于该值时，会使用分批读取模式。|否|INTEGER|默认值为1000。Flink采用以下方式读取MySQL源表数据：-   全量读取：直接将整个表的数据读取到内存里。优点是速度快，缺点是会消耗对应大小的内存，如果源表数据量非常大，可能会有OOM风险。
 -   分批读取：分多次读取，每次读取一定数量的行数，直到读取完所有数据。优点是读取数据量比较大的表没有OOM风险，缺点是读取速度相对较慢。 |
@@ -109,35 +110,6 @@ CREATE TABLE mysqlcdc_source (
 -   initial（默认）：在第一次启动时，会先扫描历史全量数据，然后读取最新的binlog数据。
 -   earliest-offset：在第一次启动时，不会扫描历史全量数据，直接从binlog的起点开始读取。
 -   latest-offset：在第一次启动时，不会扫描历史全量数据，直接从binlog的末尾（最新的binlog处）开始读取，即只读取该Connector启动以后的最新变更。
--   timestamp：在第一次启动时，不会扫描历史全量数据，直接读取指定timestamp位点以后的binlog数据。CDC Source会遍历binlog文件中的数据，指定时间戳的位置要早于变更事件的时间，从该位置开始读取binlog数据。
-
-    如果您指定的启动模式为timestamp，则还需要配置scan.startup.timestamp-millis参数，指定一个启动时间戳的毫秒值，该值代表从1970-01-01 00:00:00 UTC到当前的毫秒数。
-
--   specific-offset：在第一次启动时，不会扫描历史全量数据，直接从指定的binlog文件和binlog文件中指定的位点开始读取binlog数据。
-
-    如果您指定的启动模式为specific-offset，则还需配置scan.startup.specific-offset.file（binlog文件名）和scan.startup.specific-offset.pos（binlog文件内的位点）两个参数。
-
-    配置信息示例如下：
-
-    ```
-    'scan.startup.specific-offset.file' = 'mysql-bin.000021'
-    'scan.startup.specific-offset.pos' = '30292'
-    ```
-
-    您可以使用MySQL SQL命令查询binlog文件名和binlog文件内的位点，具体命令如下：
-
-    -   查询binlog文件名
-
-        ```
-        show binary logs
-        ```
-
-    -   查询binlog文件内的位点
-
-        ```
-        show binlog events in 'mysql-bin.xxxx'
-        ```
-
 
 **说明：** scan.startup.mode底层利用了Debezium的snapshot.mode参数，因此请不要在DDL中混合使用scan.startup.mode和debezium.snapshot.mode两个参数，否则scan.startup.mode可能不会生效。
 
