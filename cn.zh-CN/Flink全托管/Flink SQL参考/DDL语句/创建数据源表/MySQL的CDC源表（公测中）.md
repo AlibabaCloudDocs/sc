@@ -108,12 +108,9 @@ CREATE TABLE mysqlcdc_source (
 配置参数scan.startup.mode指定了MySQL CDC消费者的启动模式，可选参数包括：
 
 -   initial（默认）：在第一次启动时，会先扫描历史全量数据，然后读取最新的binlog数据。
--   earliest-offset：在第一次启动时，不会扫描历史全量数据，直接从binlog的起点开始读取。
 -   latest-offset：在第一次启动时，不会扫描历史全量数据，直接从binlog的末尾（最新的binlog处）开始读取，即只读取该Connector启动以后的最新变更。
 
-**说明：** scan.startup.mode底层利用了Debezium的snapshot.mode参数，因此请不要在DDL中混合使用scan.startup.mode和debezium.snapshot.mode两个参数，否则scan.startup.mode可能不会生效。
-
-单独使用debezium.snapshot.mode参数，debezium.snapshot.mode参数仍然生效，scan.startup.mode和debezium.snapshot.mode两个参数一起使用，则只有scan.startup.mode生效。
+**说明：** scan.startup.mode底层利用了Debezium的snapshot.mode参数，因此请不要在DDL中混合使用scan.startup.mode和debezium.snapshot.mode两个参数，否则scan.startup.mode可能不会生效。单独使用debezium.snapshot.mode参数，debezium.snapshot.mode参数仍然生效。
 
 ## 类型映射
 
