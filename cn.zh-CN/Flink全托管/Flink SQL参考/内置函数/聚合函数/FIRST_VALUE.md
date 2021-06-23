@@ -16,7 +16,7 @@ FIRST_VALUE( T value, BIGINT order )
 |参数|数据类型|说明|
 |--|----|--|
 |value|任意参数类型|指定数据流。**说明：** 如果输入数据全为NULL，则返回NULL。 |
-|order|BIGINT|可选，根据order判定FIRST\_VALUE所在行，取order值最小的记录作为FIRST\_VALUE。如果没有填写该参数，则按系统。 |
+|order|BIGINT|根据order判定FIRST\_VALUE所在行，取order值最小的记录作为FIRST\_VALUE。|
 
 **说明：** 所有输入参数需要为相同的数据类型。
 
