@@ -12,25 +12,29 @@ keyword: [消息队列Kafka, 源表]
 
 [消息队列Kafka版](/cn.zh-CN/产品简介/什么是消息队列Kafka版？.md)是阿里云提供的分布式、高吞吐、可扩展的消息队列服务。消息队列Kafka版广泛用于日志收集、监控数据聚合、流式数据处理、在线和离线分析等大数据领域。
 
+## 前提条件
+
+已创建消息队列Kafka资源，详情请参见[步骤三：创建资源](/cn.zh-CN/快速入门/步骤三：创建资源.md)。
+
 ## DDL定义
 
 以下为创建Kafka源表的DDL示例，消息格式为CSV，包含5个字段。
 
 ```
 CREATE TABLE kafkaTable (
-    `user_id` BIGINT,
-    `item_id` BIGINT,
-    `category_id` BIGINT,
-    `behavior` STRING,
-    `topic` STRING METADATA VIRTUAL,
-    `partition` BIGINT METADATA VIRTUAL
+  `user_id` BIGINT,
+  `item_id` BIGINT,
+  `category_id` BIGINT,
+  `behavior` STRING,
+  `topic` STRING METADATA VIRTUAL,
+  `partition` BIGINT METADATA VIRTUAL
 ) WITH (
-    'connector' = 'kafka',
-    'topic' = 'my_excellent_topic',
-    'properties.bootstrap.servers' = 'mykafka:9092',
-    'properties.group.id' = 'my_excellent_group'
-    'format' = 'csv',
-    'scan.startup.mode' = 'earliest-offset'
+  'connector' = 'kafka',
+  'topic' = 'my_excellent_topic',
+  'properties.bootstrap.servers' = 'mykafka:9092',
+  'properties.group.id' = 'my_excellent_group'
+  'format' = 'csv',
+  'scan.startup.mode' = 'earliest-offset'
 )
 ```
 
@@ -127,7 +131,7 @@ CREATE TABLE kafkaTable (
 
 需要在WITH参数中指定scan.startup.timestamp-millis参数。
 
--   specific\_offsets：从Kafka指定分区指定偏移量读取。
+-   specific-offsets：从Kafka指定分区指定偏移量读取。
 
 需要在WITH参数中指定scan.startup.specific-offsets参数。 |
 |scan.startup.specific-offsets|在specific-offsets启动模式下，指定每个分区的启动偏移量。|否|String|例如：partition:0,offset:42;partition:1,offset:300|
