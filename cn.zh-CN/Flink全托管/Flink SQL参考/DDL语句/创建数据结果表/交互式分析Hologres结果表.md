@@ -17,7 +17,7 @@ keyword: 创建交互式分析Hologres结果表
 
 ## 前提条件
 
-已创建Hologres外部表，详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
+已创建Hologres表，详情请参见[表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/表.md)。
 
 ## DDL定义
 
