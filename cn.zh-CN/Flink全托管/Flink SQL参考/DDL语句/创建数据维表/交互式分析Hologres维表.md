@@ -14,7 +14,7 @@ keyword: [Hologres, 维表, 交互式分析]
 
 ## 前提条件
 
-已购买交互式分析Hologres，详情请参见[购买Hologres](/cn.zh-CN/准备工作/购买Hologres.md)。
+已创建Hologres表，详情请参见[表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/表.md)。
 
 ## 使用限制
 
@@ -37,9 +37,9 @@ keyword: [Hologres, 维表, 交互式分析]
 
 ```
 CREATE TABLE hologres_dim(
- id INT,
- len INT,
- content VARCHAR
+  id INT,
+  len INT,
+  content VARCHAR
 ) with (
   'connector'='hologres',
   'dbname'='<yourDbname>',
@@ -71,13 +71,13 @@ CREATE TABLE hologres_dim(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|cache|缓存策略|否|Hologres仅支持以下两种缓存策略：-   None（默认值）：无缓存。
+|cache|缓存策略。|否|Hologres仅支持以下两种缓存策略：-   None（默认值）：无缓存。
 -   LRU：缓存维表里的部分数据。源表的每条数据都会触发系统先在Cache中查找数据，如果没有找到，则去物理维表中查找。
 
 需要配置相关参数：缓存大小（cacheSize）和缓存更新时间间隔（cacheTTLMs）。 |
-|cacheSize|缓存大小|否|选择`LRU`缓存策略后，可以设置缓存大小，默认值为10000行。|
-|cacheTTLMs|缓存更新时间间隔|否|当选择LRU缓存策略后，可以设置缓存失效的超时时间，默认不过期。|
-|async|是否异步同步数据|否|取值如下：-   true：表示异步同步数据。
+|cacheSize|缓存大小。|否|选择`LRU`缓存策略后，可以设置缓存大小，默认值为10000行。|
+|cacheTTLMs|缓存更新时间间隔。|否|当选择LRU缓存策略后，可以设置缓存失效的超时时间，默认不过期。|
+|async|是否异步同步数据。|否|取值如下：-   true：表示异步同步数据。
 -   false（默认值）：表示不进行异步同步数据。 |
 
 ## 类型映射
