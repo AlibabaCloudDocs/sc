@@ -45,7 +45,7 @@ create table kafka_sink(
 -   avro |
 |sink.partitioner|从Flink分区到Kafka分区的映射模式。|否|STRING|映射模式取值如下：-   fixed：每个Flink分区对应至多一个Kafka分区。
 -   round-robin：Flink分区中的数据将被轮流分配至Kafka的各个分区。
--   自定义FlinkKafkaPartitioner的子类：如果fixed和round-robin不满足您的需求，您可以自定义映射模式到FlinkKafkaPartitioner的子类。例如`org.mycompany.MyPartitioner`。 |
+-   自定义分区映射模式：如果fixed和round-robin不满足您的需求，您可以创建一个FlinkKafkaPartitioner的子类来自定义分区映射模式。例如`org.mycompany.MyPartitioner`。 |
 
 如果您还需要直接配置Connector使用的Kafka Producer，可以在Kafka Producer配置参数前添加`properties`前缀，并将该Kafka Producer配置信息追加至WITH参数。例如Kafka集群需要SASL（Simple Authentication and Security Layer）认证。
 
