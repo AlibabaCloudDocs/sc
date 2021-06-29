@@ -26,7 +26,7 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
     ```
     execution.checkpointing.interval: 180s
     state.backend: com.alibaba.flink.statebackend.GeminiStateBackendFactory
-    state.backend.gemini.ttl.ms: 129600000
+    table.exec.state.ttl: 129600000
     table.exec.mini-batch.enabled: true
     table.exec.mini-batch.allow-latency: 5s
     table.optimizer.distinct-agg.split.enabled: true
@@ -37,9 +37,9 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
 
     |参数|说明|
     |--|--|
-    |execution.checkpointing.interval|checkpoint间隔时间，单位为毫秒。|
-    |state.backend|state backend的配置。|
-    |state.backend.gemini.ttl.ms|state数据生命周期，单位为毫秒。|
+    |execution.checkpointing.interval|Checkpoint间隔时间，单位为毫秒。|
+    |state.backend|State backend的配置。|
+    |table.exec.state.ttl|State数据的生命周期，单位为毫秒。|
     |table.exec.mini-batch.enabled|是否开启minibatch。|
     |table.exec.mini-batch.allow-latency|批量输出数据的时间间隔。|
     |table.optimizer.distinct-agg.split.enabled|是否开启PartialFina优化，解决COUNT DISTINCT热点问题。|
@@ -200,11 +200,11 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
                     GROUP
                       BY cate_name,
                       seller_id,
-                      stat_date
+                      stat_date,
+                      cate_id
                   ) a
-                WHERE
-                  rownum <= 100
-              );                           
+                ) WHERE
+                  rownum <= 100;                           
             ```
 
     -   UnaryUpdateRank：性能仅次于UpdateFastRank的算法。使用该算法需要具备的条件是输入流中存在PK信息。
