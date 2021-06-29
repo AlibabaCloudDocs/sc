@@ -10,6 +10,10 @@ keyword: [DataHub, 源表]
 
 [阿里云流数据处理平台DataHub](https://help.aliyun.com/document_detail/47439.html?spm=a2c4g.11174283.6.542.5e7b63efe2IHMj)是流式数据（Streaming Data）的处理平台，提供对流式数据的发布（Publish）、订阅（Subscribe）和分发功能，让您可以轻松构建基于流式数据的分析和应用。
 
+## 前提条件
+
+已创建DataHub的Project和Topic，详情请参见[创建Project和Topic]()。
+
 ## DDL定义
 
 ```
@@ -123,12 +127,6 @@ FROM datahub_input;
 
 ## 常见问题
 
--   Q：分裂或者缩容DataHub Topic后导致Flink作业失败，如何恢复？
-
-    A：如果分裂或者缩容了Flink正在读取的某个Topic，则会导致任务持续出错，无法自行恢复。该情况下需要重新启动（先停止再启动）来使任务恢复正常。
-
--   Q：可以删除正在消费的DataHub Topic吗？
-
-    A：不支持删除或重建正在消费的DataHub Topic。
-
+-   [分裂或者缩容DataHub Topic后导致Flink作业失败，如何恢复？](/cn.zh-CN/Flink全托管/常见问题.md)
+-   [可以删除正在消费的DataHub Topic吗？](/cn.zh-CN/Flink全托管/常见问题.md)
 
