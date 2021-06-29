@@ -186,24 +186,6 @@ INSERT INTO Kafka_sink SELECT id, name, age FROM Kafka_source;
 
 ## 常见问题
 
--   问题描述：Flink中的Commit Offset有什么作用？
-
-    解决方案：Flink在每次Checkpoint成功时，才会向Kafka提交当前读取Offset。如果未开启Checkpoint，或者Checkpoint设置的间隔过大，在Kafka端可能会查询不到当前读取的Offset。
-
--   问题描述：为什么Flink和Kafka之间的网络是连通的，但是依然会有timeout expired while fetching topic metadata的报错？
-
-    问题原因：Flink和Kafka之间的网络连通并不意味着能读取数据，只有Kafka Broker在bootstrap过程中返回的集群metadata中描述的Endpoint， 才可以连通Flink和Kafka，并读取到Kafka的数据，详情请参见[Flink-cannot-connect-to-Kafka](https://www.confluent.io/blog/kafka-client-cannot-connect-to-broker-on-aws-on-docker-etc/)。
-
-    检查方法：
-
-    1.  使用zkCli.sh或者zookeeper-shell.sh工具登录Kafka使用的Zookeeper。
-    2.  执行`ls /brokers/ids`命令列出所有的Kafka Broker ID。
-    3.  使用`get /brokers/ids/{your_broker_id}`命令查看Broker metadata信息。
-
-        Endpoint信息显示在listener\_security\_protocol\_map中。
-
-    4.  确认Flink是否可以连通该Endpoint。
-
-        如果该Endpoint中使用了域名，请为Flink配置对应的域名解析服务。
-
+-   [Flink中的Commit Offset有什么作用？](/cn.zh-CN/Flink全托管/常见问题.md)
+-   [为什么Flink和Kafka之间的网络是连通的，但是依然会有timeout expired while fetching topic metadata的报错？](/cn.zh-CN/Flink全托管/常见问题.md)
 
