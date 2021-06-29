@@ -98,7 +98,7 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
 
 -   开启PartialFinal（解决COUNT DISTINCT热点问题）
 
-    之前，为了解决COUNT DISTINCT的热点问题，通常需要手动改写为两层聚合（增加按Distinct Key取模的打散层）。目前，实时计算提供了COUNT DISTINCT自动打散，即PartialFinal优化，您无需自行改写为两层聚合。PartialFinal和LocalGlobal的原理对比参见下图。
+    为了解决COUNT DISTINCT的热点问题，通常需要手动改写为两层聚合（增加按Distinct Key取模的打散层）。目前，实时计算提供了COUNT DISTINCT自动打散，即PartialFinal优化，您无需自行改写为两层聚合。PartialFinal和LocalGlobal的原理对比参见下图。
 
     ![PartialFinal](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/zh-CN/5473738161/p262015.png)
 
