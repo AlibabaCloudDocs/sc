@@ -32,7 +32,7 @@
     您可以通过以下任何一种方式上传自定义Connectors JAR文件：
 
     -   **上传文件**：单击**选择文件**后，选择您的目标Connectors JAR文件。
-    -   **外部URL**：输入外部URL地址。
+    -   **外部URL**：输入外部URL地址。如果外部URL是OSS Bucket地址，则自定义Connectors文件必须位于sql-artifacts/namespaces/\{namespace\}目录下。
 6.  上传完成后，单击**继续**。
 
     系统会对您上传的自定义Connectors内容进行解析。如果解析成功，您可以继续下一步。如果解析失败，请确认您上传的自定义Connectors代码是否符合Flink社区标准。
@@ -59,7 +59,7 @@
     您可以通过以下任何一种方式上传自定义Connectors JAR文件：
 
     -   **上传文件**：单击**选择文件**后，选择您的目标Connectors JAR文件。
-    -   **外部URL**：输入外部URL地址。
+    -   **外部URL**：输入外部URL地址。如果外部URL是OSS Bucket地址，则自定义Connectors文件必须位于sql-artifacts/namespaces/\{namespace\}目录下。
 6.  上传完成后，单击**继续**。
 
     系统会对您上传的自定义Connectors内容进行解析。如果解析成功，您可以继续下一步。如果解析失败，请确认您上传的自定义Connectors代码是否符合Flink社区标准。
