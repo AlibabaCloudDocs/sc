@@ -12,6 +12,11 @@ keyword: [Elasticsearch, ES, 结果表]
 
 [阿里云Elasticsearch](/cn.zh-CN/产品简介/什么是阿里云Elasticsearch.md)兼容开源Elasticsearch的功能，以及Security、Machine Learning、Graph、APM等商业功能，致力于数据分析、数据搜索等场景服务。为您提供企业级权限管控、安全监控告警、自动报表生成等场景服务。
 
+## 前提条件
+
+-   已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/cn.zh-CN/Elasticsearch/快速开始.md)。
+-   已配置Elasticsearch公网或私网访问白名单，详情请参见[配置Elasticsearch公网或私网访问白名单](/cn.zh-CN/Elasticsearch/安全配置/配置Elasticsearch公网或私网访问白名单.md)。
+
 ## DDL定义
 
 ```
@@ -21,7 +26,7 @@ keyword: [Elasticsearch, ES, 结果表]
    uv BIGINT,
    pv BIGINT,
    PRIMARY KEY (user_id) NOT ENFORCED  -- 主键可选，如果定义了主键，则作为文档ID，否则文档ID将为随机值。
-) WITH (
+)  WITH (
    'connector' = 'elasticsearch-6',
    'hosts' = '<yourHosts>',
    'index' = '<yourIndex>',
@@ -40,16 +45,16 @@ keyword: [Elasticsearch, ES, 结果表]
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|结果表类型|是|固定值为`elasticsearch-6`或`elasticsearch-7`。|
-|hosts|Server地址|是|例如：127.0.0.1:9200。|
-|index|文档索引名称|是|默认为空，不进行权限验证。|
-|document-type|Type名称|-   `elasticsearch-6`：必填
+|connector|结果表类型。|是|固定值为`elasticsearch-6`或`elasticsearch-7`。|
+|hosts|Server地址。|是|例如：127.0.0.1:9200。|
+|index|索引名称。|是|默认为空，不进行权限验证。|
+|document-type|Type名称。|-   `elasticsearch-6`：必填
 -   `elasticsearch-7`：不支持
 
-|无|
-|username|访问实例ID|否|默认为空，不进行权限验证。|
-|password|访问实例密钥|否|如果定义了username，则必须定义非空的password。|
-|document-id.key-delimiter|文档ID的分隔符|否|默认值为`_`。|
+|无。|
+|username|访问实例ID。|否|默认为空，不进行权限验证。|
+|password|访问实例密钥。|否|如果定义了username，则必须定义非空的password。|
+|document-id.key-delimiter|文档ID的分隔符。|否|默认值为`_`。|
 |failure-handler|Elasticsearch请求失败时的故障处理策略。|否|可选策略如下：-   fail（默认值）：如果请求失败，则作业失败。
 -   ignore：忽略失败并删除请求。
 -   retry\_rejected：重新添加由于队列容量满而失败的请求。
@@ -95,17 +100,17 @@ CREATE TEMPORARY TABLE datagen_source (
 );
 
 CREATE TEMPORARY TABLE es_sink (
-   user_id STRING,
-   user_name STRING,
-   uv BIGINT,
-   PRIMARY KEY (user_id) NOT ENFORCED -- 主键可选，如果定义了主键，则作为文档ID，否则文档ID将为随机值。
+  user_id STRING,
+  user_name STRING,
+  uv BIGINT,
+  PRIMARY KEY (user_id) NOT ENFORCED -- 主键可选，如果定义了主键，则作为文档ID，否则文档ID将为随机值。
 ) WITH (
-   'connector' = 'elasticsearch-7',
-   'hosts' = '<yourHosts>',
-   'index' = '<yourIndex>',
-   'document-type' = '<yourElasticsearch.types>',
-   'username' ='<yourElasticsearch.accessId>',
-   'password' ='<yourElasticsearch.accessKey>'
+  'connector' = 'elasticsearch-7',
+  'hosts' = '<yourHosts>',
+  'index' = '<yourIndex>',
+  'document-type' = '<yourElasticsearch.types>',
+  'username' ='<yourElasticsearch.accessId>',
+  'password' ='<yourElasticsearch.accessKey>'
 );
 
 INSERT INTO es_sink
