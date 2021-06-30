@@ -12,6 +12,14 @@ keyword: [创建ClickHouse结果表, ClickHouse]
 
 ClickHouse是一个用于联机分析（OLAP）的列式数据库管理系统，详情请参见[什么是ClickHouse](https://clickhouse.tech/docs/zh/)。
 
+## 前提条件
+
+-   已创建ClickHouse表，详情请参见[创建表](https://clickhouse.tech/docs/zh/getting-started/tutorial/#create-tables)
+-   已配置白名单。
+    -   如果您使用的是阿里云数据库ClickHouse，配置白名单详情请参见[设置白名单]()
+    -   如果您使用的是阿里云E-MapReduce的ClickHouse，配置白名单详情请参见[管理安全组](/cn.zh-CN/集群管理/集群配置/安全组.md)。
+    -   如果您使用的是阿里云ES上自建的ClickHouse，配置白名单详情请参见[安全组概述](/cn.zh-CN/安全/安全组/安全组概述.md)。
+
 ## DDL定义
 
 ```
@@ -109,7 +117,5 @@ FROM clickhouse_source;
 
 ## 常见问题
 
-Q：是否支持回撤更新数据？
-
-A：当Flink结果表的DDL上指定了Primary Key时，则支持回撤更新数据。因为ClickHouse是一个用于联机分析（OLAP）的列式数据库管理系统，对UPDATE和DELETE的支持不够完善。如果在Flink DDL上指定了Primary Key，则会尝试使用DELETE和ALTER TABLE UPDATE来更新和删除数据，因此会造成性能将显著下降。
+[ClickHouse结果表是否支持回撤更新数据？](/cn.zh-CN/Flink全托管/常见问题.md)
 
