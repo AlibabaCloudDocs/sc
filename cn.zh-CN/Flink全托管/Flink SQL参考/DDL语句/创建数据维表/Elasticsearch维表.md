@@ -14,7 +14,8 @@ keyword: [Elasticsearch, ES, 维表]
 
 ## 前提条件
 
-已创建阿里云Elasticsearch实例，详情请参见[创建阿里云Elasticsearch实例](/cn.zh-CN/Elasticsearch/实例管理/创建阿里云Elasticsearch实例.md)。
+-   已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/cn.zh-CN/Elasticsearch/快速开始.md)。
+-   已配置Elasticsearch公网或私网访问白名单，详情请参见[配置Elasticsearch公网或私网访问白名单](/cn.zh-CN/Elasticsearch/安全配置/配置Elasticsearch公网或私网访问白名单.md)。
 
 ## DDL定义
 
@@ -46,7 +47,7 @@ CREATE TABLE es_dim(
 |endPoint|服务地址|是|例如：http://127.0.0.1:9200。|
 |accessId|Elasticsearch实例的用户名|否|无。|
 |accessKey|Elasticsearch实例的密码|否|无。|
-|indexName|文档索引名称|是|无。|
+|indexName|索引名称|是|无。|
 |typeNames|Type名称|否|默认值为`_doc`。**说明：** Elasticsearch 7.0以上版本不建议设置该参数。 |
 
 ## CACHE参数
