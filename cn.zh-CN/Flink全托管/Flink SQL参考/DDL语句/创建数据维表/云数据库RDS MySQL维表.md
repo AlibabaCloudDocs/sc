@@ -12,7 +12,8 @@ RDS MySQL基于阿里巴巴的MySQL源码分支，经过双十一高并发、大
 
 ## 前提条件
 
-已创建云数据库RDS MySQL实例，详情请参见[创建RDS MySQL实例](/cn.zh-CN/RDS MySQL 数据库/快速入门/创建RDS MySQL实例.md)。
+-   已创建RDS MySQL数据库和表，详情请参见[创建数据库和账号](/cn.zh-CN/RDS MySQL 数据库/快速入门/创建数据库和账号.md)。
+-   已设置IP白名单，详情请参见[设置IP白名单](/cn.zh-CN/RDS MySQL 数据库/快速入门/设置白名单/设置IP白名单.md)。
 
 ## 语法示例
 
