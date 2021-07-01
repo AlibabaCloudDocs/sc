@@ -105,33 +105,6 @@ create table odps_dim(
 
 ## 常见问题
 
--   `max_pt()`和`max_pt_with_done()`的区别是什么？
-
-    `max_pt()`仅仅是选取的是所有分区中字典序最大的分区。`max_pt_with_done()`选取的是所有分区中字典序最大，且伴随有`.done`分区的分区。
-
-    |分区列表|
-    |----|
-    |ds=20190101|
-    |ds=20190101.done|
-    |ds=20190102|
-    |ds=20190102.done|
-    |ds=20190103|
-
-    示例中`max_pt()`和`max_pt_with_done()`的区别如下：
-
-    -   ``partition`='max_pt_with_done()'`匹配的分区是`ds=20190102`。
-    -   ``partition`='max_pt()'`，匹配的分区是`ds=20190103`。
--   Q：如何查看MaxCompute分区名？
-
-    A：查看MaxCompute分区名步骤如下：
-
-    1.  在[数据地图](https://meta.dw.alibaba-inc.com/store/index.html)，搜索表名称。
-    2.  单击目标表名。
-    3.  在数据表详情页面，右侧**明细信息** \> **分区信息** \> **分区名**查看MaxCompute分区名。
--   Q：endPoint和tunnelEndpoint是指什么？如果配置错误会产生什么结果？
-
-    A：endPoint和tunnelEndpoint参数说明参见[配置Endpoint](/cn.zh-CN/准备工作/配置Endpoint.md)。VPC环境中这两个参数如果配置错误可能会导致任务异常。
-
-    -   endPoint配置错误：任务上线停滞在91%的进度。
-    -   tunnelEndpoint配置错误：任务运行失败。
+-   [max\_pt\(\)和max\_pt\_with\_done\(\)的区别是什么？](/cn.zh-CN/Flink全托管/常见问题.md)
+-   [endPoint和tunnelEndpoint是指什么？如果配置错误会产生什么结果？](/cn.zh-CN/Flink全托管/常见问题.md)
 
