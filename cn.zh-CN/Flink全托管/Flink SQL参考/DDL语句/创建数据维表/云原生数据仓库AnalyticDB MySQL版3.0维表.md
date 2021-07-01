@@ -12,7 +12,8 @@ keyword: [云原生数据仓库AnalyticDB MySQL版, 3.0, 云原生数据仓库An
 
 ## 前提条件
 
-已创建云原生数据仓库AnalyticDB MySQL版集群，详情请参见[创建集群]()。
+-   已创建AnalyticDB MySQL集群并创建表，详情请参见[创建集群]()和[CREATE TABLE]()。
+-   已设置白名单，详情请参见[设置白名单]()。
 
 ## DDL定义
 
@@ -47,7 +48,7 @@ CREATE TABLE adb30_dim (
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|cache|缓存策略|否|云原生数据仓库AnalyticDB MySQL版3.0维表支持以下三种缓存策略： -   None（默认值）：无缓存。
+|cache|缓存策略。|否|云原生数据仓库AnalyticDB MySQL版3.0维表支持以下三种缓存策略： -   None（默认值）：无缓存。
 -   LRU：缓存维表里的部分数据。源表的每条数据都会触发系统先在Cache中查找数据，如果没有找到，则去物理维表中查找。
 -   ALL：缓存维表里的所有数据。在Job运行前，系统会将维表中所有数据加载到Cache中，之后所有的维表查找数据都会通过Cache进行。如果在Cache中无法找到数据，则KEY不存在，并在Cache过期后重新加载一遍全量Cache。
 
