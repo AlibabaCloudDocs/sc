@@ -10,6 +10,11 @@ keyword: [HBase, 结果表]
 
 [云数据库HBase]()是低成本、高扩展、云智能的大数据NoSQL，兼容标准HBase访问协议，提供低成本存储、高扩展吞吐、智能数据处理等核心优势，是为淘宝推荐、花呗风控、广告投放、监控大屏、菜鸟物流轨迹、支付宝账单、手淘消息等众多阿里巴巴核心服务提供支撑的数据库，具备PB规模、千万级并发、秒级伸缩、毫秒响应、跨机房高可用、全托管、全球分布等企业能力。
 
+## 前提条件
+
+-   已购买HBase集群并创建表，详情请参见[购买集群]()。
+-   已设置白名单，详情请参见[设置白名单]()。
+
 ## DDL定义
 
 ```
@@ -35,14 +40,14 @@ CREATE TABLE hbase_sink(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|结果表类型|是|固定值为`cloudhbase`。|
-|table-name|HBase表名|是|无|
-|zookeeper.quorum|HBase的zookeeper地址|是|无|
-|zookeeper.znode.parent|HBase在zookeeper中的根目录|否|默认值为`/hbase`。 **说明：** 仅在HBase标准版中生效。 |
-|userName|用户名|否|**说明：** 仅在HBase增强版中生效。 |
-|password|密码|否|**说明：** 仅在HBase增强版中生效。 |
-|haclient.cluster.id|HBase高可用实例ID|否|只有访问同城主备实例时才需要配置。**说明：** 仅在HBase增强版中生效。 |
-|retries.number|连接HBase客户端的重试次数|否|默认值为31。|
+|connector|结果表类型。|是|固定值为`cloudhbase`。|
+|table-name|HBase表名。|是|无。|
+|zookeeper.quorum|HBase的zookeeper地址。|是|无。|
+|zookeeper.znode.parent|HBase在zookeeper中的根目录。|否|默认值为`/hbase`。 **说明：** 仅在HBase标准版中生效。 |
+|userName|用户名。|否|**说明：** 仅在HBase增强版中生效。 |
+|password|密码。|否|**说明：** 仅在HBase增强版中生效。 |
+|haclient.cluster.id|HBase高可用实例ID。|否|只有访问同城主备实例时才需要配置。**说明：** 仅在HBase增强版中生效。 |
+|retries.number|连接HBase客户端的重试次数。|否|默认值为31。|
 |null-string-literal|HBase字段类型为字符串时，如果Flink字段数据为null，则将该字段赋值为null-string-literal，并写入Hbase。|否|默认值为null。|
 |sink.buffer-flush.max-size|写入HBase前，内存中缓存的数据量（字节）大小。调大该值有利于提高HBase写入性能，但会增加写入延迟和内存使用。|否|默认值为2 MB，支持字节单位B、KB、MB和GB，不区分大小写。设置为0表示不进行缓存。|
 |sink.buffer-flush.max-rows|写入HBase前，内存中缓存的数据条数。调大该值有利于提高HBase写入性能，但会增加写入延迟和内存使用。|否|默认值为1000，设置为0表示不进行缓存。|
@@ -75,10 +80,10 @@ Flink与HBase的数据转换关系如下。
 |DATE|将日期转换成自1970.01.01以来的天数，用int表示，并通过byte\[\] toBytes\(int val\) 转换成字节数组。|
 |TIME|将时间转换成自00:00:00以来的毫秒数，用int表示，并通过byte\[\] toBytes\(int val\) 转换成字节数组。|
 |TIMESTAMP|将时间戳转换成自1970-01-01 00:00:00以来的毫秒数，用long表示，并通过byte\[\] toBytes\(long val\) 转换成字节数组。|
-|ARRAY|不支持|
-|MAP|不支持|
+|ARRAY|不支持。|
+|MAP|不支持。|
 |MULTISET|
-|ROW|不支持|
+|ROW|不支持。|
 
 ## 动态表
 
@@ -86,24 +91,24 @@ Flink部分结果数据需要按某列的值，作为动态列输入HBase。例�
 
 ```
 CREATE TEMPORARY TABLE datagen_source (
-    id INT,
-    f1hour STRING,
-    f1deal BIGINT,
-    f2day STRING,
-    f2deal BIGINT
+  id INT,
+  f1hour STRING,
+  f1deal BIGINT,
+  f2day STRING,
+  f2deal BIGINT
 ) with (
-    'connector'='datagen'
+  'connector'='datagen'
 );
 
 CREATE TEMPORARY TABLE hbase_sink (
-    rowkey INT,
-    f1 ROW<`hour` STRING, deal BIGINT>,
-    f2 ROW<`day` STRING, deal BIGINT>
+  rowkey INT,
+  f1 ROW<`hour` STRING, deal BIGINT>,
+  f2 ROW<`day` STRING, deal BIGINT>
 ) with (
-    'connector'='cloudhbase',
-    'table-name'='<yourTableName>',
-    'zookeeper.quorum'='<yourZookeeperQuorum>',
-    'dynamic.table'='true'
+  'connector'='cloudhbase',
+  'table-name'='<yourTableName>',
+  'zookeeper.quorum'='<yourZookeeperQuorum>',
+  'dynamic.table'='true'
 );
 
 INSERT INTO hbase_sink
@@ -120,27 +125,27 @@ SELECT id, ROW(f1hour, f1deal), ROW(f2day, f2deal) FROM datagen_source;
 
 ```
 CREATE TEMPORARY TABLE datagen_source (
-   rowkey INT,
-   f1q1 INT,
-   f2q1 STRING,
-   f2q2 BIGINT,
-   f3q1 DOUBLE,
-   f3q2 BOOLEAN,
-   f3q3 STRING
+  rowkey INT,
+  f1q1 INT,
+  f2q1 STRING,
+  f2q2 BIGINT,
+  f3q1 DOUBLE,
+  f3q2 BOOLEAN,
+  f3q3 STRING
 ) with (
-   'connector'='datagen'
+  'connector'='datagen'
 );
 
 CREATE TEMPORARY TABLE hbase_sink (
-   rowkey INT,
-   family1 ROW<q1 INT>,
-   family2 ROW<q1 STRING, q2 BIGINT>,
-   family3 ROW<q1 DOUBLE, q2 BOOLEAN, q3 STRING>,
-   PRIMARY KEY (rowkey) NOT ENFORCE
+  rowkey INT,
+  family1 ROW<q1 INT>,
+  family2 ROW<q1 STRING, q2 BIGINT>,
+  family3 ROW<q1 DOUBLE, q2 BOOLEAN, q3 STRING>,
+  PRIMARY KEY (rowkey) NOT ENFORCE
 ) with (
-   'connector'='cloudhbase',
-   'table-name'='<yourTableName>',
-   'zookeeper.quorum'='<yourZookeeperQuorum>'
+  'connector'='cloudhbase',
+  'table-name'='<yourTableName>',
+  'zookeeper.quorum'='<yourZookeeperQuorum>'
 );
  
 INSERT INTO hbase_sink
