@@ -12,7 +12,8 @@ keyword: [云原生数据仓库AnalyticDB MySQL版, 3.0, 云原生数据仓库An
 
 ## 前提条件
 
-已创建AnalyticDB MySQL集群并创建表，详情请参见[创建集群]()和[CREATE TABLE]()。
+-   已创建AnalyticDB MySQL集群并创建表，详情请参见[创建集群]()和[CREATE TABLE]()。
+-   已设置白名单，详情请参见[设置白名单]()。
 
 ## DDL定义
 
@@ -36,7 +37,7 @@ CREATE TABLE adb_sink (
 |connector|结果表类型。|是|固定值为`adb3.0`。|
 |password|密码。|是|无。|
 |tableName|表名。|是|无。|
-|url|JDBC连接地址。|是|云原生数据仓库AnalyticDB MySQL版数据库地址。示例：`url='jdbc:mysql://databaseName****-cn-shenzhen-a.ads.aliyuncs.com:10014/databaseName'`。 **说明：**
+|url|JDBC连接地址。|是|云原生数据仓库AnalyticDB MySQL版数据库地址。示例：`url='jdbc:mysql://databaseName****-cn-shenzhen-a.ads.aliyuncs.com:10014/databaseName'`。**说明：**
 
 -   云原生数据仓库AnalyticDB MySQL版数据库连接信息，请参见[URL地址查询](/cn.zh-CN/Blink独享/共享集群（原产品线）/Flink SQL开发指南/数据存储/注册数据存储/注册云原生数据仓库AnalyticDB MySQL版.md)。
 -   databaseName为云原生数据仓库AnalyticDB MySQL版数据库名称。 |
