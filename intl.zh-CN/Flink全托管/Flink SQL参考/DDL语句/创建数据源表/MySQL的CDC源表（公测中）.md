@@ -106,7 +106,7 @@ CREATE TABLE mysqlcdc_source (
 
 配置参数scan.startup.mode指定了MySQL CDC消费者的启动模式，可选参数包括：
 
--   initial（默认）：在第一次启动时，会先扫描历史全量数据，然后读取最新的binlog数据。
+-   initial \(默认\)：在第一次启动时，会先扫描历史全量数据，然后读取最新的binlog数据。
 -   earliest-offset：在第一次启动时，不会扫描历史全量数据，直接从binlog的起点开始读取。
 -   latest-offset：在第一次启动时，不会扫描历史全量数据，直接从binlog的末尾（最新的binlog处）开始读取，即只读取该Connector启动以后的最新变更。
 -   timestamp：在第一次启动时，不会扫描历史全量数据，直接读取指定timestamp位点以后的binlog数据。CDC Source会遍历binlog文件中的数据，指定时间戳的位置要早于变更事件的时间，从该位置开始读取binlog数据。
