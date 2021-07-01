@@ -149,24 +149,8 @@ MySQL的CDC和Flink字段类型对应关系如下。
 
 ## 常见问题
 
--   问题：不支持定义Watermark，那如何进行窗口聚合？
-
-    解决方案：如果您需要在MySQL CDC源表上进行窗口聚合，可以考虑采用非窗口聚合的方式，即将时间字段转换成窗口值，然后根据窗口值进行GROUP BY聚合。例如，统计每个店铺每分钟的订单数和销量，代码为`SELECT shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm'), COUNT(*), SUM(price) FROM order_mysql_cdc GROUP BY shop_id, DATE_FORMAT(order_ts, 'yyyy-MM-dd HH:mm')`。
-
--   问题：如何跳过Snapshot阶段，只从变更数据开始读取？
-
-    解决方案：可以通过WITH参数debezium.snapshot.mode来控制，您可以设置为：
-
-    -   never：在启动时，不读取数据库的快照，而是直接从变更的最开始位置读取。但需要注意MySQL的变更旧数据可能会被自动清理，因此不能保证变更数据中包含了全量的数据，读取的数据不完整。
-    -   schema\_only：如果你不需要保证数据的一致性，只关心作业启动后数据库的新增变更，则可以设置为schema\_only，仅快照schema，不快照数据，从变更的最新数据开始读取。
--   问题：如何读取一个分库分表的MySQL数据库？
-
-    解决方案：如果MySQL是一个分库分表的数据库，分成了user\_00、user\_02和user\_99等多个表，且所有表的schema一致。则可以通过table-name选项，指定一个正则表达式来匹配读取多张表，例如设置table-name为user\_.\*，监控所有user\_前缀的表。database-name选项也支持该功能，但需要所有的表schema一致。
-
--   问题：全表读取阶段效率慢、存在反压，应该如何解决？
-
-    解决方案：可能是下游节点处理太慢导致反压了。因此您需要先排查下游节点是否存在反压。如果存在，则需要先解决下游节点的反压问题。您可以通过以下方式处理：
-
-    -   增加并发度。
-    -   开启minibatch等聚合优化参数（下游聚合节点）。
+-   [不支持定义Watermark，那如何进行窗口聚合？](/cn.zh-CN/Flink全托管/常见问题.md)
+-   [如何跳过Snapshot阶段，只从变更数据开始读取？](/cn.zh-CN/Flink全托管/常见问题.md)
+-   [如何读取一个分库分表的MySQL数据库？](/cn.zh-CN/Flink全托管/常见问题.md)
+-   [全表读取阶段效率慢、存在反压，应该如何解决？](/cn.zh-CN/Flink全托管/常见问题.md)
 
