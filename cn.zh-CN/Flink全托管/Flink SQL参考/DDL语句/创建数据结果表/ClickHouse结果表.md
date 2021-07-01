@@ -16,9 +16,10 @@ ClickHouse是一个用于联机分析（OLAP）的列式数据库管理系统，
 
 -   已创建ClickHouse表，详情请参见[创建表](https://clickhouse.tech/docs/zh/getting-started/tutorial/#create-tables)
 -   已配置白名单。
-    -   如果您使用的是阿里云数据库ClickHouse，配置白名单详情请参见[设置白名单]()
-    -   如果您使用的是阿里云E-MapReduce的ClickHouse，配置白名单详情请参见[管理安全组](/cn.zh-CN/集群管理/集群配置/安全组.md)。
+    -   如果您使用的是阿里云数据库ClickHouse，配置白名单详情请参见[设置白名单]()。
+    -   如果您使用的是阿里云E-MapReduce的ClickHouse，配置白名单详情请参见[管理安全组](/cn.zh-CN/集群管理/集群配置/管理安全组.md)。
     -   如果您使用的是阿里云ES上自建的ClickHouse，配置白名单详情请参见[安全组概述](/cn.zh-CN/安全/安全组/安全组概述.md)。
+    -   如果为其他情况，请您自行配置ClickHouse所在机器的白名单让其可被Flink所在机器访问即可。
 
 ## DDL定义
 
@@ -45,7 +46,7 @@ CREATE TABLE clickhouse_sink (
 |参数|说明|是否必选|备注|
 |--|--|----|--|
 |connector|结果表类型|是|固定值为clickhouse。|
-|url|ClickHouse的JDBC连接地址|是|URL格式为`jdbc:clickhouse://<yourNetworAddress>:<PortId>/<yourDatabaseName>`如果不写数据库名称，则使用默认的default数据库。 |
+|url|ClickHouse的JDBC连接地址|是|URL格式为`jdbc:clickhouse://<yourNetworAddress>:<PortId>/<yourDatabaseName>` 如果不写数据库名称，则使用默认的default数据库。 |
 |userName|ClickHouse的用户名|是|无。|
 |password|ClickHouse的密码|是|无。|
 |tableName|ClickHouse的表名称|是|无。|
