@@ -187,6 +187,7 @@ INSERT INTO Kafka_sink SELECT id, name, age FROM Kafka_source;
 
 ## 常见问题
 
+-   [Flink如何获取JSON数据？](/cn.zh-CN/Flink全托管/常见问题.md)
 -   [Flink中的Commit Offset有什么作用？](/cn.zh-CN/Flink全托管/常见问题.md)
 -   [为什么Flink和Kafka之间的网络是连通的，但是依然会有timeout expired while fetching topic metadata的报错？](/cn.zh-CN/Flink全托管/常见问题.md)
 
