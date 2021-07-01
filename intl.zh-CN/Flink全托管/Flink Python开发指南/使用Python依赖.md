@@ -97,7 +97,7 @@
     如果您的第三方Python包是[Zip Safe](https://setuptools.readthedocs.io/en/latest/userguide/miscellaneous.html?highlight=zip_safe#setting-the-zip-safe-flag)的，即不需要安装即可直接在Python作业中使用。操作步骤如下：
 
     1.  下载可直接Import的第三方Python包。
-        1.  在浏览器上打开[PyPI](https://pypi.org/project/)页面。
+        1.  在浏览器上打开[PyPI](https://pypi.org/)页面。
         2.  在搜索框中输入目标第三方Python包名称，例如apache-flink 1.12.2。
         3.  在搜索结果中，单击目标结果名称。
         4.  在左侧导航栏，单击Download files。
