@@ -6,6 +6,10 @@ keyword: [增量MaxCompute, 源表]
 
 本文为您介绍增量MaxCompute源表DDL定义、WITH参数、类型映射和常见问题。
 
+## 什么是MaxCompute
+
+大数据计算服务MaxCompute（原名ODPS）是一种快速、完全托管的EB级数据仓库解决方案，致力于批量结构化数据的存储和计算，提供海量数据仓库的解决方案及分析建模服务。MaxCompute详情请参见[什么是MaxCompute](/intl.zh-CN/产品简介/什么是MaxCompute.md)。
+
 ## DDL定义
 
 ```
