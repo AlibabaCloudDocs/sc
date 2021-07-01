@@ -12,7 +12,7 @@ keyword: [表格存储Tablestore, 维表]
 
 ## 前提条件
 
-已开通表格存储Tablestore，详情请参见[开通表格存储服务](/cn.zh-CN/快速入门/开通表格存储服务.md)。
+已创建Tablestore数据表，详情请参见[创建数据表](/cn.zh-CN/快速入门/创建数据表.md)。
 
 ## DDL定义
 
@@ -59,7 +59,5 @@ CREATE TABLE ots_dim (
 
 ## 常见问题
 
-Q：维表进行JOIN时，查询不到数据，应该如何处理？
-
-A：检查DDL语句和物理表中的Schema类型和名称是否一致。
+[维表进行JOIN时，如果查询不到数据，应该如何处理？](/cn.zh-CN/Flink全托管/常见问题.md)
 
