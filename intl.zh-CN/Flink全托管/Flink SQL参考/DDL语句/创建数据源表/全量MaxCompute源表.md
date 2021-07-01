@@ -6,6 +6,12 @@ keyword: [源表, MaxCompute]
 
 本文为您介绍全量MaxCompute源表DDL定义、WITH参数、类型映射和常见问题。
 
+**说明：** MaxCompute Connector可以作为Stream作业和Batch作业的源表使用。
+
+## 什么是MaxCompute
+
+大数据计算服务MaxCompute（原名ODPS）是一种快速、完全托管的EB级数据仓库解决方案，致力于批量结构化数据的存储和计算，提供海量数据仓库的解决方案及分析建模服务。MaxCompute详情请参见[什么是MaxCompute](/intl.zh-CN/产品简介/什么是MaxCompute.md)。
+
 ## DDL定义
 
 ```
@@ -33,7 +39,7 @@ create table odps_source(
 |--|--|----|--|
 |connector|源表类型|是|固定值为`odps`。|
 |endPoint|MaxCompute服务地址|是|参见[开通MaxCompute服务的Region和服务连接对照表](/intl.zh-CN/准备工作/配置Endpoint.md)。|
-|tunnelEndpoint|MaxCompute Tunnel服务的连接地址|否|参见[开通MaxCompute服务的Region和服务连接对照表](/intl.zh-CN/准备工作/配置Endpoint.md)。 **说明：** VPC环境下为必填。 |
+|tunnelEndpoint|MaxCompute Tunnel服务的连接地址|否|参见[开通MaxCompute服务的Region和服务连接对照表](/intl.zh-CN/准备工作/配置Endpoint.md)。**说明：** VPC环境下为必填。 |
 |project|MaxCompute项目名称|是|无|
 |tableName|MaxCompute表名|是|无|
 |accessId|AccessKey ID|是|无|
