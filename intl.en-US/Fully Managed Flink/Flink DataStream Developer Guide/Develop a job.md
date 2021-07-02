@@ -19,15 +19,15 @@ Services provided by fully managed Flink are subject to deployment environments 
 
 ## Usage notes
 
-To avoid JAR dependency conflicts, take note of the following points:
+To avoid JAR package dependency conflicts, take note of the following points:
 
 -   Make sure that the Flink versions of Flink images and Project Object Model \(POM\) dependencies are the same.
--   Do not upload JAR files at the runtime layer. You must add `<scope>provided</scope>` to dependencies.
--   Use the Shade plug-in to package other third-party dependencies. For more information, see [Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/index.html).
+-   Do not upload JAR files at the runtime layer. This indicates that you need to add `<scope>provided</scope>` to the dependencies.
+-   Use the Shade plug-in to package other third-party dependencies. For more information, see [Apache Maven Shade plug-in](https://maven.apache.org/plugins/maven-shade-plugin/index.html).
 
 ## Develop a job
 
-Before you publish jobs to clusters for running in the development console of fully managed Flink, develop the jobs in your on-premises environment. When you write business code of fully managed Flink, see the following references:
+Before you publish jobs to clusters for running in the console of fully managed Flink, develop the jobs in your on-premises environment. When you write business code of fully managed Flink, see the following references:
 
 -   For more information about the Flink DataStream and Table API connector dependencies, see [Connector dependencies](http://oss.sonatype.org/).
 -   For more information about how to use connectors, see [Use a connector](#section_x4p_87g_as0).
@@ -38,21 +38,45 @@ Before you publish jobs to clusters for running in the development console of fu
 
 ## Use a connector
 
-The Ververica Runtime \(VVR\) connector is placed in the Maven central repository for you to use during job development. You must add the connector that you want to use to the Maven POM file that is a dependency for your project. The following example shows the sample code:
+The Ververica Runtime \(VVR\) connector is placed in the Maven central repository for you to use during job development. You can use a connector by using one of the following methods:
 
-```
-<dependencies>
-    <dependency>
-        <groupId>com.alibaba.ververica</groupId>
-        <artifactId>${connector.type}</artifactId>
-        <version>${connector.version}</version>
-    </dependency>
-</dependencies>
-```
+-   Package the connector as a dependency of your project into a JAR file of a job.
 
-Different connector versions may correspond to different connector types. We recommend that you use the latest version. The following table lists the mappings among connector versions, VVR or Flink versions, and connector types. You can view the release notes for the new features of different versions to obtain details.
+    You must add the connector that you want to use to the Maven POM file that is a dependency for your project. The following example shows the sample code:
 
-**Note:** You must search for the connector versions that contain the SNAPSHOT keyword from the SNAPSHOT repository oss.sonatype.org. You cannot search for the versions in the Maven central repository search.maven.org.
+    ```
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba.ververica</groupId>
+            <artifactId>${connector.type}</artifactId>
+            <version>${connector.version}</version>
+        </dependency>
+    </dependencies>
+    ```
+
+    Different connector versions may correspond to different connector types. We recommend that you use the latest version. For more information about the mappings between connector versions, VVR or Flink versions, and connector types, see [DataStream connectors](#section_nqp_8t8_3cb).
+
+    **Note:** You must search for the connector versions that contain the SNAPSHOT keyword from the SNAPSHOT repository oss.sonatype.org. You cannot search for the versions in the Maven central repository search.maven.org.
+
+-   After you upload the JAR package of the connector to the console of fully managed Flink, enter the configuration information.
+    1.  Log on to the [Realtime Compute for Apache Flink console](https://realtime-compute.console.aliyun.com/regions/cn-shanghai).
+    2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Console** in the **Actions** column.
+    3.  In the left-side navigation pane, click **Artifacts**.
+    4.  Click **Upload Artifact** and select the JAR package of the connector that you want to use.
+
+        You can upload the JAR package of your self-managed connector or the JAR package of a connector provided by fully managed Flink. For the download links of the official JAR packages provided by fully managed Flink, see [Connectors](https://repo1.maven.org/maven2/com/alibaba/ververica/).
+
+    5.  In the **Additional Dependencies** section of the Drafts page, select the JAR package of the connector that you want to use.
+    6.  On the right side of the Drafts page, click the **Advanced** tab and enter the relevant configurations in the **Additional Configuration** section.
+
+        For example, if the job depends on the two JAR packages of a connector that are named connector-1.jar and connector-2.jar, add the following configuration information:
+
+        ```
+        pipeline.classpaths: 'file:///flink/usrlib/connector-1.jar;file:///flink/usrlib/connector-2.jar'
+        ```
+
+
+## DataStream connectors
 
 |Connector version|VVR or Flink version|Connector type|
 |-----------------|--------------------|--------------|
