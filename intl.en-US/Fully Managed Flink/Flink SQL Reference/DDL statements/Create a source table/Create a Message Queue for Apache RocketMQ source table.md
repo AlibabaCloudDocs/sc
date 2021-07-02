@@ -50,13 +50,7 @@ create table mq_source(
         -   UAE \(Dubai\): `ons-me-east-1-internal.aliyuncs.com:8080`.
         -   India \(Mumbai\): `ons-ap-south-1-internal.aliyuncs.com:8080`.
         -   Malaysia \(Kuala Lumpur\): `ons-ap-southeast-3-internal.aliyun.com:8080`.
-    -   Public endpoint for Message Queue for Apache RocketMQ: `onsaddr-internet.aliyun.com:80`.
-
-**Note:**
-
--   If you have used the Message Queue for Apache RocketMQ connector in VVR of a version earlier than 3.0.1, you must update your Realtime Compute for Apache Flink job to VVR 3.0.1 or later and change the value of the endpoint parameter to the new endpoint of Message Queue for Apache RocketMQ. This helps prevent stability risks or unavailability issues caused by the old endpoint of Message Queue for Apache RocketMQ. For more information, see [Announcement on the upgrade of Realtime Compute for Apache Flink jobs due to the change of endpoints of Message Queue for Apache RocketMQ]().
--   Internal Message Queue for Apache RocketMQ service does not support cross-origin access. For example, if your Realtime Compute for Apache Flink service is located in the China \(Hangzhou\) region but your Message Queue for Apache RocketMQ service is located in the China \(Shanghai\) region, Realtime Compute for Apache Flink cannot access Message Queue for Apache RocketMQ.
--   Due to changes in the network security policies of Alibaba Cloud, connection issues may occur when Realtime Compute for Apache Flink connects to the Internet Message Queue for Apache RocketMQ service. We recommend that you use the internal Message Queue for Apache RocketMQ service. If an exception occurs when you use the Internet Message Queue for Apache RocketMQ service,[submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23). |
+    -   Public endpoint for Message Queue for Apache RocketMQ: `onsaddr-internet.aliyun.com:80`. |
 |accessId|AccessKey ID|Yes|None.|
 |accessKey|AccessKey Secret|Yes|None.|
 |consumerGroup|The name of a consumer group.|Yes|None.|
