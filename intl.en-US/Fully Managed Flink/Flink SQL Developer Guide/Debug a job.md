@@ -4,13 +4,13 @@ This topic describes how to enable job debugging to simulate job running, check 
 
 A session cluster for SQL preview is created. Before you debug a job, the system checks whether a session cluster that allows SQL preview exists. If such a session cluster does not exist, the system prompts you to create a session cluster and guides you through the configuration of a session cluster that allows SQL preview. For more information about how to configure a session cluster, see [Configure a session cluster](/intl.en-US/Fully Managed Flink/Configure a session cluster.md).
 
-When you use the SQL preview feature, you can use online data or specify test data. You can debug complex jobs that include multiple SELECT or INSERT statements. SQL statements allow you to use UPSERT statements to execute statements that contain update operations, such as count\(\*\).
+When you use the SQL preview feature, you can use online data or specify debugging data. You can debug complex jobs that include multiple SELECT or INSERT statements. SQL statements allow you to use UPSERT statements to execute statements that contain update operations, such as count\(\*\).
 
 1.  Go to the Draft Editor page and create an SQL job.
 
     1.  Log on to the [Realtime Compute for Apache Flink console](https://realtime-compute.console.aliyun.com/regions/cn-shanghai).
 
-    2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Development Console** in the **Actions** column.
+    2.  On the **Fully Managed Flink** tab, find the workspace that you want to manage, and click **Console** in the **Actions** column.
 
     3.  In the left-side navigation pane, click **Draft Editor**.
 
@@ -18,13 +18,13 @@ When you use the SQL preview feature, you can use online data or specify test da
 
     5.  In the dialog box that appears, enter the job configuration information and click **OK**.
 
-        You must select STREAM/SQL for Type and Per-Job Clusters for Deployment Target.
+        You must select STREAM / SQL for Type and Per-Job Clusters for Deployment Target.
 
 2.  Create a source table and a result table separately.
 
-    Write SQL code for the source table and the result table and click **Execute**. The created tables appear in the Tables list of the Schemas tab. You can click the name of a specific table to view the table fields and data types. For example, you can execute the following statements to create a datagen source table, a blackhole result table, and a blackhole\_cnt result table.
+    Write SQL code for the source table and the result table and click **Execute**. The created tables appear in the Tables list of the Schemas tab. You can click the name of a specific table to view the table fields and data types. For example, you can execute the following statements to create the datagen source table, blackhole result table, and blackhole\_cnt result table.
 
-    -   Create a datagen source table
+    -   Create the datagen source table
 
         ```
         CREATE TABLE `vvp`.`default`.`datagen` (
@@ -36,7 +36,7 @@ When you use the SQL preview feature, you can use online data or specify test da
         );                        
         ```
 
-    -   Create a blackhole result table
+    -   Create the blackhole result table
 
         ```
         CREATE TABLE `vvp`.`default`.`blackhole` (
@@ -47,7 +47,7 @@ When you use the SQL preview feature, you can use online data or specify test da
         );                        
         ```
 
-    -   Create a blackhole\_cnt result table
+    -   Create the blackhole\_cnt result table
 
         ```
         CREATE TABLE `vvp`.`default`.`blackhole_cnt` (
@@ -83,7 +83,7 @@ When you use the SQL preview feature, you can use online data or specify test da
 
 6.  Configure debugging data.
 
-    If you use online data for debugging, click **Execute**. If you need to use test data for debugging, you must upload it first.
+    If you use online data, click **Execute**. If you need to use debugging data, you must upload it first.
 
     ![Configure debugging data](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8764481261/p245526.png)
 
@@ -92,20 +92,20 @@ When you use the SQL preview feature, you can use online data or specify test da
     |Parameter|Description|
     |---------|-----------|
     |**Download Mock Data Template**|You can download the debugging data template to edit data. The template is adapted to the data structure of the source table.|
-    |**Upload mock data**|If you need to debug a job by using local test data, you can download the debugging data template, upload the local data after you edit it, and then select **Use Mock data**. Limits on test data files:
+    |**Upload mock data**|If you need to debug a job by using local debugging data, you can download the debugging data template, upload your on-premises data after you edit it, and then select **Use Mock data**. Limits on debugging data files:
 
-    -   Only a CSV file is supported.
+    -   Only CSV files can be uploaded for debugging.
     -   A CSV file must contain a table header, for example, id\(INT\).
-    -   A CSV file cannot be greater than 1 MB or can contain a maximum of 1,000 records of data. |
-    |**Preview data**|After you upload the test data, click the ![Plus sign](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8764481261/p245558.png) icon on the left side of the source table name to preview the data and download the debugging data.|
-    |**Execution Code Preview**|The job debugging feature automatically changes the Data Definition Language \(DDL\) code in source tables and result tables. However, this feature does not change the actual code in jobs. You can preview code details in the lower part of Execution Code Preview.|
+    -   A CSV file cannot be greater than 1 MB or can contain a maximum of 1,000 data records. |
+    |**Preview data**|After you upload the debugging data, click the ![Plus sign](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/8764481261/p245558.png) icon on the left side of the source table name to preview the data and download the debugging data.|
+    |**Execution Code Preview**|The job debugging feature automatically modifies the Data Definition Language \(DDL\) code in source tables and result tables. However, this feature does not change the actual code in jobs. You can preview code details in the lower part of Execution Code Preview.|
 
 7.  Click **Execute**.
 
-    The debugging result appears in the lower part of the SQL script editor.
+    The debugging results appear in the lower part of the SQL script editor.
 
     ![Results](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/7007604161/p187809.png)
 
-    **Note:** By default, fully managed Flink reads a maximum of 1,000 records of data. If the maximum value is reached, the system stops reading data.
+    **Note:** By default, fully managed Flink reads a maximum of 1,000 data records. If the maximum value is reached, fully managed Flink stops reading data.
 
 
