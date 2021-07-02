@@ -11,6 +11,11 @@ keyword: [Elasticsearch, ES, 源表]
 -   仅支持Elasticsearch 5.5及以上版本。
 -   仅支持全量Elasticsearch源表，不支持增量Elasticsearch源表。
 -   DDL中的字段均对应Elasticsearch文档中的字段，不支持将文档ID写入表中。
+-   Elasticsearch Connector可以作为Stream作业和Batch作业的源表使用。
+
+## 什么是云数据库Elasticsearch
+
+[阿里云Elasticsearch](/intl.zh-CN/产品简介/什么是阿里云Elasticsearch.md)兼容开源Elasticsearch的功能，以及Security、Machine Learning、Graph、APM等商业功能，致力于数据分析、数据搜索等场景服务。为您提供企业级权限管控、安全监控告警、自动报表生成等场景服务。
 
 ## DDL定义
 
