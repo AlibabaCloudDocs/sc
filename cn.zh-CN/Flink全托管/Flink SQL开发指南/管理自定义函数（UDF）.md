@@ -4,11 +4,13 @@
 
 ## 注意事项
 
-为了避免JAR包依赖冲突，您需要注意以下几点：
+为了避免JAR包依赖冲突，在开发自定义函数时您需要注意以下几点：
 
--   Flink镜像的版本请与Pom依赖中的Flink版本保持一致。
--   请不要上传Runtime层的JAR包，即在依赖中添加`<scope>provided</scope>`。
--   其他第三方依赖请采用Shade方式打包，Shade打包详情参见[Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/index.html)。
+-   作业开发页面选择的Flink版本，请和Pom依赖中的Flink版本保持一致。
+-   Flink相关依赖，scope请使用provided，即在依赖中添加`<scope>provided</scope>`。
+-   其他第三方依赖请采用Shade方式打包，Shade打包详情请参见[Apache Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/index.html)。
+
+Flink 依赖冲突问题，详情请参见[如何解决Flink依赖冲突问题？](/cn.zh-CN/Flink全托管/常见问题.md)
 
 ## 注册UDF
 
