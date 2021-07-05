@@ -16,7 +16,7 @@ If the following cases occur, you must specify that the operational logs of jobs
     **Note:**
 
     -   If the TaskManager or JobManager is started, logs are written to Log Service or OSS. However, if the TaskManager and JobManager are not started as expected, logs are not written to Log Service or OSS.
-    -   If you cannot find the relevant log file on OSS because the JobManager and TaskManger are not started as expected,[submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23).
+    -   If you cannot find the relevant log file on OSS because the JobManager and TaskManager are not started as expected,[submit a ticket](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A//ticket-intl.console.aliyun.com/%23).
 
 This topic describes how to configure job logs in the following scenarios:
 
