@@ -1,16 +1,16 @@
 ---
-keyword: [, ]
+keyword: create a Hologres source table
 ---
 
 # Create a Hologres source table
 
-取消交付
+This topic describes how to create a Hologres source table. It also describes the data definition language \(DDL\) statements, parameters in the WITH clause, field type mappings, and sample code used when you create a Hologres source table.
 
-**Note:**
+## Introduction to Hologres
 
--   [Manage a foreign table](/intl.en-US/Common Development Tools/HoloWeb/Connection Management/MaxCompute Acceleration/Manage a foreign table.md)
--   
-[What is Hologres?](/intl.en-US/Product Introduction/What is Hologres?.md)
+Hologres is compatible with the PostgreSQL protocol and closely connected to the big data ecosystem. Hologres allows you to analyze and process petabytes of data in high concurrency and low latency scenarios. Hologres provides an easy method for you to use the existing business intelligence \(BI\) tools to perform multidimensional analysis and explore your business.
+
+## DDL syntax
 
 ```
 create table hologres_source(
@@ -24,34 +24,30 @@ create table hologres_source(
   'username'='<yourAccessID>',
   'password'='<yourAccessSecret>',
   'endpoint'='<yourEndpoint>',
-   
+  'field_delimiter'='|' -- This parameter is optional.
 );
 ```
 
 **Note:**
 
--   -   [\#section\_lih\_mxx\_vik](#section_lih_mxx_vik)
+-   Flink does not allow you to define computed columns in source tables.
+-   Flink performs a full table scan once only to read all data from a Hologres source table at a time. Data consumption is complete when data scanning ends. Flink does not read the data that is appended to the Hologres source table.
 
-| | | | |
-|--|--|--|--|
-|connector| | ||
-|dbname| | | |
-|tablename|**Note:** 
+## Parameters in the WITH clause
 
-| | |
-|username| | | |
-|password| | | |
-|endpoint| | |[Endpoints for connecting to Hologres](/intl.en-US/Manage Instances/Endpoints for connecting to Hologres.md)|
-|field\_delimiter|**Note:** 
+|Parameter|Description|Required|Remarks|
+|---------|-----------|--------|-------|
+|connector|The type of the source table.|Yes|Set the value to hologres.|
+|dbname|The name of the database.|Yes|None.|
+|tablename|The name of the table.|Yes|None.|
+|username|The username that is used to log on to the database. You must enter the AccessKey ID of your Alibaba Cloud account.|Yes|None.|
+|password|The password that is used to log on to the database. You must enter the AccessKey secret of your Alibaba Cloud account.|Yes|None.|
+|endpoint|The endpoint of Hologres.|Yes|For more information, see [Endpoints for connecting to Hologres](/intl.en-US/Manage Instances/Endpoints for connecting to Hologres.md).|
+|field\_delimiter|The delimiter used between rows when data is being exported.**Note:** This parameter is valid only when bulkread is set to true.
 
-| ||
-|binlog| | |-   -   
-**Note:** |
-|binlogMaxRetryTimes| | |**Note:** |
-|binlogRetryIntervalMs| | |**Note:** |
-|binlogBatchReadSize| | |**Note:** |
-|cdcMode| | |-   -   
-**Note:** |
+|No|Default value: \\u0002.|
+
+## Sample code
 
 ```
 CREATE TEMPORARY TABLE hologres_source (
@@ -65,7 +61,7 @@ CREATE TEMPORARY TABLE hologres_source (
   'username'='<yourAccessID>',
   'password'='<yourAccessSecret>',
   'endpoint'='<yourEndpoint>',
-   
+  'field_delimiter'='|' -- This parameter is optional.
 );
 
 CREATE TEMPORARY TABLE blackhole_sink(
@@ -82,8 +78,12 @@ SELECT
 from hologres_source;
 ```
 
-| | |
-|--|--|
+## Field type mapping
+
+The following table lists the data type mappings between Hologres and Flink fields. We recommend that you declare the mappings in a DDL statement.
+
+|Data type of Hologres|Data type of Flink|
+|---------------------|------------------|
 |INT|INT|
 |INT\[\]|ARRAY|
 |BIGINT|BIGINT|
@@ -98,77 +98,5 @@ from hologres_source;
 |TEXT\[\]|ARRAY|
 |NUMERIC|DECIMAL|
 |DATE|DATE|
-| |TIMESTAMP|
-
--   -   -   -   -   -   
-
-```
-begin;
-create table test_message_src(
- id int primary key, 
- title text not null, 
- body text
-);
-call set_table_property('test_message_src', 'orientation', 'row');
-call set_table_property('test_message_src', 'clustering_key', 'id');
-call set_table_property('test_message_src', 'binlog.level', 'replica'); 
-call set_table_property('test_message_src', 'binlog.ttl', '86400'); 
-commit;
-```
-
--   -   -   ```
-select tg.property_value from hologres.hg_table_properties tb join hologres.hg_table_group_properties tg on tb.property_value = tg.tablegroup_name where tb.property_key = 'table_group' and tg.property_key = 'shard_count' and table_name = '<tablename>';
-```
-
--   -   ```
-create table test_message_src_binlog_table(
-  hg_binlog_lsn BIGINT,
-  hg_binlog_event_type BIGINT,
-  hg_binlog_timestamp_us BIGINT,
-  id INTEGER,
-  title VARCHAR,
-  body VARCHAR
-) with (
-  'connector'='hologres',
-  'dbname'='<yourDbname>',
-  'tablename'='<yourTablename>',
-  'username'='<yourAccessID>',
-  'password'='<yourAccessSecret>',
-  'endpoint'='<yourEndpoint>',
-  'binlog' = 'true',
-  'binlogMaxRetryTimes' = '10',
-  'binlogRetryIntervalMs' = '500',
-  'binlogBatchReadSize' = '100'
-);
-```
-
--   ```
-create table test_message_src_binlog_table(
-  id INTEGER,
-  title VARCHAR,
-  body VARCHAR
-) with (
-  'connector'='hologres',
-  'dbname'='<yourDbname>',
-  'tablename'='<yourTablename>',
-  'username'='<yourAccessID>',
-  'password'='<yourAccessSecret>',
-  'endpoint'='<yourEndpoint>',
-  'binlog' = 'true',
-  'cdcMode' = 'true',
-  'binlogMaxRetryTimes' = '10',
-  'binlogRetryIntervalMs' = '500',
-  'binlogBatchReadSize' = '100'
-);
-```
-
--   | | | |
-|--|--|--|
-|hg\_binlog\_lsn|BIGINT| |
-|hg\_binlog\_event\_type|BIGINT|-   -   -   -   |
-|hg\_binlog\_timestamp\_us|BIGINT| |
-|user\_table\_column\_1| | |
-|...|...| |
-|user\_table\_column\_n| | |
-
+|TIMESTAMP WITH TIMEZONE|TIMESTAMP|
 
