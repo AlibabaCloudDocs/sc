@@ -35,30 +35,30 @@
 
 ## WITH参数（通用配置）
 
-|参数|说明|默认值|是否必选|
-|--|--|---|----|
-|type|connector类型|elasticsearch|是|
-|endPoint|Server地址，例入：http://127.0.0.1:9211。|无|是|
+|参数|说明|是否必选|默认值|
+|--|--|----|---|
+|type|connector类型|是|elasticsearch|
+|endPoint|Server地址，例入：http://127.0.0.1:9211。|是|无|
 |accessId|创建ES时的登录名**说明：** 如果您通过Kibana插件操作ES，请填写Kibana登录ID。
 
-|无|是|
+|是|无|
 |accessKey|创建ES时的登录密码 **说明：** 如果您通过Kibana插件操作ES，请填写Kibana登录密码。
 
-|无|是|
-|index|索引名称，类似于数据库Database的名称。|无|是|
-|typeName|Type名称，类似于数据库的Table名称。|无|是|
-|bufferSize|流入多少条数据后开始去重。|1000|否|
-|maxRetryTimes|异常重试次数。|30|否|
-|timeout|读超时，单位为毫秒。|600000|否|
-|discovery|是否开启节点发现。如果开启，客户端每5分钟刷新一次Server List。|false|否|
-|compression|是否使用GZIP压缩Request Bodies。|true|否|
-|multiThread|是否开启JestClient多线程。|true|否|
-|ignoreWriteError|是否忽略写入异常。|false|否|
-|settings|创建Index的Settings配置。|无|否|
+|是|无|
+|index|索引名称。|是|无|
+|typeName|文档类型。|是|`_doc`|
+|bufferSize|流入多少条数据后开始去重。|否|1000|
+|maxRetryTimes|异常重试次数。|否|30|
+|timeout|读超时，单位为毫秒。|否|600000|
+|discovery|是否开启节点发现。如果开启，客户端每5分钟刷新一次Server List。|否|false|
+|compression|是否使用GZIP压缩Request Bodies。|否|true|
+|multiThread|是否开启JestClient多线程。|否|true|
+|ignoreWriteError|是否忽略写入异常。|否|false|
+|settings|创建Index的Settings配置。|否|无|
 |updateMode|指定主键（PRIMARY KEY）后的更新模式：-   full：全量覆盖
 -   inc：增量更新
 
-|full|否|
+|否|full|
 
 ## WITH参数（动态索引相关）
 
