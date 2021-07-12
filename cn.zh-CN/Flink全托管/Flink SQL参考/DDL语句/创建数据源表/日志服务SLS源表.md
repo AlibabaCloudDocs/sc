@@ -10,6 +10,14 @@ keyword: [日志服务, 源表]
 
 [日志服务SLS](/cn.zh-CN/产品简介/什么是日志服务.md)是针对日志类数据的一站式服务。日志服务可以帮助您快捷地完成数据采集、消费、投递以及查询分析，提升运维和运营效率，建立海量日志处理能力。
 
+## 前提条件
+
+已创建日志服务Project和Logstore，详情请参见[步骤二：创建Project和Logstore](/cn.zh-CN/.md)。
+
+## 使用限制
+
+仅VVR 2.0.0及以上版本支持日志服务SLS Connector。
+
 ## DDL定义
 
 ```
@@ -40,7 +48,7 @@ create table sls_source(
 |参数|说明|是否必选|备注|
 |--|--|----|--|
 |connector|源表类型。|是|固定值为`sls`。|
-|endPoint|消费端点信息。|是|[服务入口](/cn.zh-CN/开发指南/API 参考/服务入口.md)。|
+|endPoint|消费端点信息。|是|[服务入口](/cn.zh-CN/开发指南/API参考/服务入口.md)。|
 |accessId|AccessKey ID。|是|无。|
 |accessKey|AccessKey Secret。|是|无。|
 |project|SLS项目名称。|是|无。|
