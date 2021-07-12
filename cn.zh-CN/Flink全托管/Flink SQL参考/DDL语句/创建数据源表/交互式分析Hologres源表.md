@@ -6,10 +6,7 @@ keyword: [创建交互式分析Hologres源表, Hologres源表]
 
 本文为您介绍交互式分析Hologres源表DDL定义、WITH参数、代码示例和类型映射。
 
-**说明：**
-
--   Hologres Connector不支持访问Hologres外部表。Hologres外部表详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
--   Hologres Connector可以作为Stream作业和Batch作业的源表使用。
+**说明：** Hologres Connector可以作为Stream作业和Batch作业的源表使用。
 
 ## 什么是交互式分析Hologres
 
@@ -18,6 +15,12 @@ keyword: [创建交互式分析Hologres源表, Hologres源表]
 ## 前提条件
 
 已创建Hologres表，详情请参见[表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/表.md)。
+
+## 使用限制
+
+-   仅VVR 2.0.0及以上版本支持交互式分析Hologres Connector。
+-   Hologres Connector不支持访问Hologres外部表。Hologres外部表详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
+-   Flink默认以批模式读取Hologres源表数据，即只扫描一次Hologres全表，扫描结束，消费结束，新到Hologres源表的数据不会被读取。从VVR 3.0.0版本开始，支持实时消费Hologres数据。如何实时消费Hologres数据，请参见[Flink实时消费Hologres](#section_lih_mxx_vik)。
 
 ## DDL定义
 
@@ -37,10 +40,7 @@ create table hologres_source(
 );
 ```
 
-**说明：**
-
--   Flink不支持在源表中定义计算列。
--   Flink默认以批模式读取Hologres源表数据，即只扫描一次Hologres全表，扫描结束，消费结束，新到Hologres源表的数据不会被读取。从VVP 2.4.0版本开始，支持实时消费Hologres数据。如何实时消费Hologres数据，请参见[Flink实时消费Hologres](#section_lih_mxx_vik)。
+**说明：** Flink不支持在源表中定义计算列。
 
 ## WITH参数
 
