@@ -75,6 +75,7 @@ create table sls_source(
 |`__source__`|STRING METADATA VIRTUAL|消息源。|
 |`__topic__`|STRING METADATA VIRTUAL|消息主题。|
 |`__timestamp__`|BIGINT METADATA VIRTUAL|日志时间。|
+|`__tag__`|MAP<VARCHAR, VARCHAR\> METADATA VIRTUAL|消息TAG。对于属性"\_\_tag\_\_:\_\_receive\_time\_\_":"1616742274"，'\_\_receive\_time\_\_'和'1616742274'会被作为KV对，记录在Map中，在SQL中通过\_\_tag\_\_\['\_\_receive\_time\_\_'\]的方式访问。|
 
 **说明：** 仅在VVR 3.0.1版本及以后版本支持获取以上SLS属性字段。
 
