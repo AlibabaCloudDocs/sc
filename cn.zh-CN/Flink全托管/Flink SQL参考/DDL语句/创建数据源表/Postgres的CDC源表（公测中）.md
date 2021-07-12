@@ -14,6 +14,14 @@ Postgres的CDC源表，即Postgres的流式源表，用于依次读取PostgreSQL
 
 **说明：** 如果您使用的是开源的PostgreSQL数据库，Postgres CDC connector支持读取的Postgres版本为9.6及以上版本。
 
+## 前提条件
+
+已创建Postgres数据库和表，创建RDS Postgres数据库和表的详情请参见[创建数据库和账号](/cn.zh-CN/RDS PostgreSQL 数据库/快速入门/创建数据库和账号.md)。
+
+## 使用限制
+
+仅VVR 2.1.2及以上版本支持Postgres的CDC Connector。
+
 ## DDL定义
 
 ```
