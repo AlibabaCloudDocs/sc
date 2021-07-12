@@ -14,6 +14,10 @@ keyword: [DataHub, 源表]
 
 已创建DataHub的Project和Topic，详情请参见[创建Project和Topic]()。
 
+## 使用限制
+
+仅VVR 2.0.0及以上版本支持数据总线DataHub Connector。
+
 ## DDL定义
 
 ```
