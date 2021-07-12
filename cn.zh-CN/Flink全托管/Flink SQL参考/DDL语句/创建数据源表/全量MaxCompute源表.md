@@ -16,6 +16,10 @@ keyword: [源表, MaxCompute]
 
 已创建MaxCompute表，详情请参见[创建表](/cn.zh-CN/快速入门/通过MaxCompute客户端使用MaxCompute/创建表.md)。
 
+## 使用限制
+
+仅VVR 2.0.0及以上版本支持全量MaxCompute Connector。
+
 ## DDL定义
 
 ```
@@ -42,8 +46,8 @@ create table odps_source(
 |参数|说明|是否必填|备注|
 |--|--|----|--|
 |connector|源表类型。|是|固定值为`odps`。|
-|endPoint|MaxCompute服务地址。|是|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
-|tunnelEndpoint|MaxCompute Tunnel服务的连接地址。|否|参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。**说明：** VPC环境下为必填。 |
+|endPoint|MaxCompute服务地址。|是|参见[各地域Endpoint对照表（外网连接方式）](/cn.zh-CN/准备工作/Endpoint.md)。|
+|tunnelEndpoint|MaxCompute Tunnel服务的连接地址。|否|参见[各地域Endpoint对照表（外网连接方式）](/cn.zh-CN/准备工作/Endpoint.md)。**说明：** VPC环境下为必填。 |
 |project|MaxCompute项目名称。|是|无|
 |tableName|MaxCompute表名。|是|无|
 |accessId|AccessKey ID。|是|无|
