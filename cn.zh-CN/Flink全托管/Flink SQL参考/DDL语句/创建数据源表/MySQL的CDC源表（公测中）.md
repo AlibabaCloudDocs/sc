@@ -6,26 +6,26 @@ keyword: [MySQL的CDC, CDC]
 
 本文为您介绍MySQL的CDC（Change Data Capture）源表DDL定义、WITH参数、类型映射和代码示例。
 
-**说明：**
-
--   MySQL的CDC源表正处于公测中，如果您对作业稳定性要求较高时，建议不要使用MySQL的CDC源表。
--   本文仅适用于VVP 2.3.0及以上版本。
--   仅支持单并发消费CDC-MySQL数据。
--   在全量读取MYSQL CDC源表时，Checkpoint不生效，因此读取全量MYSQL CDC源表时，不建议开启自动调优。
--   MySQL CDC 源表目前不支持定义Watermark。如果您需要进行窗口聚合，您可以采用非窗口聚合的方式，详情请参见[不支持定义Watermark，那如何进行窗口聚合？](#section_y6t_st6_f0a)
+**说明：** MySQL的CDC源表正处于公测中，如果您对作业稳定性要求较高时，建议不要使用MySQL的CDC源表。
 
 ## 什么是MySQL的CDC源表
 
 MySQL的CDC源表，即MySQL的流式源表，支持对MySQL数据库的全量和增量读取，并保证Exactly Once，不多读一条也不少读一条数据。其工作机制是，在启动扫描全表前，先加一个全局读锁（FLUSH TABLES WITH READ LOCK），然后获取此时的Binlog位点以及表的schema，紧接着释放全局读锁。随后开始扫描全表，当全表数据读取完后，会从之前获取的Binlog位点获取增量的变更记录。在Flink作业运行期间会周期性执行checkpoint，记录下Binlog位点，当作业发生Failover，便会从之前记录的Binlog位点继续处理，从而实现Exactly Once语义。
 
-**说明：** MySQL的CDC源表需要一个有特定权限（包括SELECT、RELOAD、SHOW DATABASES、REPLICATION SLAVE和REPLICATION CLIENT）的MySQL用户，才能读取全量和增量数据。MySQL CDC Connector支持读取的MySQL版本为5.7和8.0。
-
 ## 前提条件
 
 已创建MySQL数据库和表，RDS MySQL创建数据库和表详情请参见[创建数据库和账号](/cn.zh-CN/RDS MySQL 数据库/快速入门/创建数据库和账号.md)。
 
+## 使用限制
+
+-   仅VVR 2.1.2及以上版本支持MySQL的CDC Connector。
+-   仅支持单并发消费CDC-MySQL数据。
+-   MySQL CDC 源表暂不支持定义Watermark。如果您需要进行窗口聚合，您可以采用非窗口聚合的方式，详情请参见[不支持定义Watermark，那如何进行窗口聚合？](#section_y6t_st6_f0a)
+-   MySQL的CDC源表需要一个有特定权限（包括SELECT、RELOAD、SHOW DATABASES、REPLICATION SLAVE和REPLICATION CLIENT）的MySQL用户，才能读取全量和增量数据。MySQL CDC Connector支持读取的MySQL版本为5.7和8.0。
+
 ## 注意事项
 
+-   在全量读取MYSQL CDC源表时，Checkpoint不生效，因此读取全量MYSQL CDC源表时，不建议开启自动调优。
 -   建议对MySQL用户授予RELOAD权限
 
     如果您未对MySQL用户授予RELOAD权限，则全局读锁会降级为表级读锁，而使用表级读锁需要等到全表扫描完成，才能释放锁，所以持锁时间会较长，而读锁会阻塞往表内写入数据，影响线上业务。
