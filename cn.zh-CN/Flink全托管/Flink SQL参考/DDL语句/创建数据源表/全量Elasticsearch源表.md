@@ -6,12 +6,7 @@ keyword: [Elasticsearch, ES, 源表]
 
 本文为您介绍全量Elasticsearch（ES）源表DDL定义、WITH参数、类型映射和代码示例。
 
-**说明：**
-
--   仅支持Elasticsearch 5.5及以上版本。
--   仅支持全量Elasticsearch源表，不支持增量Elasticsearch源表。
--   DDL中的字段均对应Elasticsearch文档中的字段，不支持将文档ID写入表中。
--   Elasticsearch Connector可以作为Stream作业和Batch作业的源表使用。
+**说明：** Elasticsearch Connector可以作为Stream作业和Batch作业的源表使用。
 
 ## 什么是云数据库Elasticsearch
 
@@ -19,7 +14,13 @@ keyword: [Elasticsearch, ES, 源表]
 
 ## 前提条件
 
-已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/cn.zh-CN/Elasticsearch/快速开始.md)。
+已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/cn.zh-CN/Elasticsearch/快速入门.md)。
+
+## 使用限制
+
+-   仅支持Elasticsearch 5.5及以上版本。
+-   仅VVR 2.0.0及以上版本支持全量Elasticsearch Connector。
+-   仅支持全量Elasticsearch源表，不支持增量Elasticsearch源表。
 
 ## DDL定义
 
@@ -37,6 +38,8 @@ keyword: [Elasticsearch, ES, 源表]
   'typeNames' = '<yourTypeName>'
 );
 ```
+
+**说明：** DDL中的字段均对应Elasticsearch文档中的字段，不支持将文档ID写入表中。
 
 ## WITH参数
 
