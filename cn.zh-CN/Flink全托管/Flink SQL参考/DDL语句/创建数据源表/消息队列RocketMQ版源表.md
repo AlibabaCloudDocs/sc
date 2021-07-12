@@ -16,6 +16,10 @@ keyword: [消息队列, 源表, RocketMQ]
 
 已创建了RocketMQ资源，详情请参见[创建资源]()。
 
+## 使用限制
+
+仅VVR 2.0.0及以上版本支持消息队列RocketMQ Connector。
+
 ## DDL定义
 
 ```
