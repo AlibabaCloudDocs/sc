@@ -18,6 +18,10 @@ Upsert Kafka基于开源Flink社区的Upsert-Kafka版本实现，详情请参见
 
 已创建消息队列Kafka资源，详情请参见[步骤三：创建资源](/cn.zh-CN/快速入门/步骤三：创建资源.md)。
 
+## 使用限制
+
+仅VVR 3.0.1及以上版本支持Upsert Kafka Connector。
+
 ## DDL定义
 
 以表名pageviews\_per\_region为例介绍DDL定义。
