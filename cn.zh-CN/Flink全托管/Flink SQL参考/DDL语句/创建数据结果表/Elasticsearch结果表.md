@@ -14,8 +14,12 @@ keyword: [Elasticsearch, ES, 结果表]
 
 ## 前提条件
 
--   已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/cn.zh-CN/Elasticsearch/快速开始.md)。
+-   已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/cn.zh-CN/Elasticsearch/快速入门.md)。
 -   已配置Elasticsearch公网或私网访问白名单，详情请参见[配置Elasticsearch公网或私网访问白名单](/cn.zh-CN/Elasticsearch/安全配置/配置Elasticsearch公网或私网访问白名单.md)。
+
+## 使用限制
+
+仅Flink计算引擎VVR 2.0.0及以上版本支持Elasticsearch Connector。
 
 ## DDL定义
 
@@ -48,12 +52,12 @@ keyword: [Elasticsearch, ES, 结果表]
 |connector|结果表类型。|是|固定值为`elasticsearch-6`或`elasticsearch-7`。|
 |hosts|Server地址。|是|例如：127.0.0.1:9200。|
 |index|索引名称。|是|默认为空，不进行权限验证。|
-|document-type|Type名称。|-   `elasticsearch-6`：必填
+|document-type|文档类型。|-   `elasticsearch-6`：必填
 -   `elasticsearch-7`：不支持
 
 |无。|
-|username|访问实例ID。|否|默认为空，不进行权限验证。|
-|password|访问实例密钥。|否|如果定义了username，则必须定义非空的password。|
+|username|用户名。|否|默认为空，不进行权限验证。|
+|password|密码。|否|如果定义了username，则必须定义非空的password。|
 |document-id.key-delimiter|文档ID的分隔符。|否|默认值为`_`。|
 |failure-handler|Elasticsearch请求失败时的故障处理策略。|否|可选策略如下：-   fail（默认值）：如果请求失败，则作业失败。
 -   ignore：忽略失败并删除请求。
