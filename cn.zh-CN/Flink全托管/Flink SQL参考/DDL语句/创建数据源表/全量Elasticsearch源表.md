@@ -19,7 +19,7 @@ keyword: [Elasticsearch, ES, 源表]
 ## 使用限制
 
 -   仅支持Elasticsearch 5.5及以上版本。
--   仅VVR 2.0.0及以上版本支持全量Elasticsearch Connector。
+-   仅Flink计算引擎VVR 2.0.0及以上版本支持全量Elasticsearch Connector。
 -   仅支持全量Elasticsearch源表，不支持增量Elasticsearch源表。
 
 ## DDL定义
