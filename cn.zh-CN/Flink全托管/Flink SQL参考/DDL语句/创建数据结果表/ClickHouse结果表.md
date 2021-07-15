@@ -6,8 +6,6 @@ keyword: [创建ClickHouse结果表, ClickHouse]
 
 本文为您介绍ClickHouse结果表的DDL定义，以及创建结果表时使用的WITH参数、类型映射和代码示例。
 
-**说明：** 本文仅适用VVP 2.4.2且VVR 3.0.2及以上版本。
-
 ## 什么是ClickHouse
 
 ClickHouse是一个用于联机分析（OLAP）的列式数据库管理系统，详情请参见[什么是ClickHouse](https://clickhouse.tech/docs/zh/)。
@@ -20,6 +18,10 @@ ClickHouse是一个用于联机分析（OLAP）的列式数据库管理系统，
     -   如果您使用的是阿里云E-MapReduce的ClickHouse，配置白名单详情请参见[管理安全组](/cn.zh-CN/集群管理/集群配置/管理安全组.md)。
     -   如果您使用的是阿里云ES上自建的ClickHouse，配置白名单详情请参见[安全组概述](/cn.zh-CN/安全/安全组/安全组概述.md)。
     -   如果为其他情况，请您自行配置ClickHouse所在机器的白名单让其可被Flink所在机器访问即可。
+
+## 使用限制
+
+仅Flink计算引擎VVR 3.0.2及以上版本支持ClickHouse Connector。
 
 ## DDL定义
 
@@ -46,7 +48,7 @@ CREATE TABLE clickhouse_sink (
 |参数|说明|是否必选|备注|
 |--|--|----|--|
 |connector|结果表类型|是|固定值为clickhouse。|
-|url|ClickHouse的JDBC连接地址|是|URL格式为`jdbc:clickhouse://<yourNetworAddress>:<PortId>/<yourDatabaseName>` 如果不写数据库名称，则使用默认的default数据库。 |
+|url|ClickHouse的JDBC连接地址|是|URL格式为`jdbc:clickhouse://<yourNetworAddress>:<PortId>/<yourDatabaseName>`如果不写数据库名称，则使用默认的default数据库。 |
 |userName|ClickHouse的用户名|是|无。|
 |password|ClickHouse的密码|是|无。|
 |tableName|ClickHouse的表名称|是|无。|
