@@ -16,6 +16,10 @@ keyword: [消息队列, 结果表, MQ]
 
 已创建了RocketMQ资源，详情请参见[创建资源]()。
 
+## 使用限制
+
+仅Flink计算引擎VVR 2.0.0及以上版本支持消息队列RocketMQ Connector。
+
 ## DDL定义
 
 ```
@@ -38,9 +42,9 @@ create table mq_sink(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|结果表类型|是|固定值为`mq`。|
-|topic|topic名称|是|无。|
-|endpoint|地址|是|阿里云消息队列RocketMQ版接入地址支持以下两种类型： -   VVR 3.0.1及以上版本的作业，需要使用TCP协议客户端接入点，详情请参见 [关于TCP内网接入点设置的公告]()。接入点获取方式如下：
+|connector|结果表类型。|是|固定值为`mq`。|
+|topic|topic名称。|是|无。|
+|endpoint|地址。|是|阿里云消息队列RocketMQ版接入地址支持以下两种类型：-   VVR 3.0.1及以上版本的作业，需要使用TCP协议客户端接入点，详情请参见 [关于TCP内网接入点设置的公告]()。接入点获取方式如下：
     -   内网服务MQ（阿里云经典网络/VPC）接入地址：在MQ控制台目标实例详情中，选择**接入点** \> **TCP协议客户端接入点** \> **内网访问**，获取对应的endPoint。
     -   公网服务MQ接入地址：在MQ控制台目标实例详情中，选择**接入点** \> **TCP协议客户端接入点** \> **公网访问**，获取对应的endPoint。
 -   VVR 3.0.1（不含）以下版本的作业，使用如下接入点：
@@ -52,23 +56,23 @@ create table mq_sink(
         -   亚太东南3（吉隆坡）：`ons-ap-southeast-3-internal.aliyun.com:8080`。
     -   公网服务MQ接入地址：`onsaddr-internet.aliyun.com:80`。
 
- **说明：**
+**说明：**
 
 -   如果您已使用了VVR 3.0.1（不含）以下版本的RocketMQ Connector，则您需要将您的实时计算作业升级至VVR 3.0.1及以上版本，并将作业中EndPoint参数取值更改为新的RocketMQ接入点，旧的RocketMQ接入点存在稳定性风险或不可用的问题，详情请参见[RocketMQ接入点变更导致实时计算作业适配升级公告](/cn.zh-CN/Flink全托管/产品公告.md)。
 -   内网服务无法跨域访问。例如，您所购买的实时计算服务的地域为华东1，但是购买的消息队列MQ服务的地域为华东2，则无法访问。
 -   由于阿里云网络安全策略动态变化，实时计算连接公网服务MQ时可能会出现网络连接问题，推荐您使用内网服务MQ，如果在使用公网服务MQ时出现异常，请您[提交工单](https://selfservice.console.aliyun.com/ticket/createIndex?accounttraceid=f7b76db740fa486baa4b63bd5848fbc1idrb)进行咨询。 |
-|accessId|AccessKey ID|是|无。|
-|accessKey|AccessKey Secret|是|无。|
-|producerGroup|写入的群组|是|无。|
-|tag|写入的标签|否|默认值为空。|
-|nameServerSubgroup|NameServer组|否|-   内网服务（阿里云经典网络/VPC）：nsaddr4client-internal
+|accessId|AccessKey ID。|是|无。|
+|accessKey|AccessKey Secret。|是|无。|
+|producerGroup|写入的群组。|是|无。|
+|tag|写入的标签。|否|默认值为空。|
+|nameServerSubgroup|NameServer组。|否|-   内网服务（阿里云经典网络/VPC）：nsaddr4client-internal
 -   公网服务：nsaddr4client-internet
 
- **说明：** 仅VVR 2.1.1 ~ VVR 3.0.0版本支持该参数，VVR 3.0.1及以后版本不支持该参数。 |
-|encoding|编码类型|否|默认值为`utf-8`。|
-|retryTimes|写入的重试次数|否|默认值为10。|
-|sleepTimeMs|重试间隔时间|否|默认值为1000（毫秒）。|
-|instanceID|MQ实例ID|否|-   如果MQ实例无独立命名空间，则不可以使用instanceID参数。
+**说明：** 仅VVR 2.1.1 ~ VVR 3.0.0版本支持该参数，VVR 3.0.1及以后版本不支持该参数。 |
+|encoding|编码类型。|否|默认值为`utf-8`。|
+|retryTimes|写入的重试次数。|否|默认值为10。|
+|sleepTimeMs|重试间隔时间。|否|默认值为1000（毫秒）。|
+|instanceID|MQ实例ID。|否|-   如果MQ实例无独立命名空间，则不可以使用instanceID参数。
 -   如果MQ实例有独立命名空间，则instanceID参数必选。 |
 
 ## 代码示例
@@ -80,7 +84,7 @@ create table mq_sink(
       id INTEGER,
       len BIGINT,
       content VARCHAR
-    ) with (
+    ) WITH (
       'connector'='mq',
       'endpoint'='<yourEndpoint>',
       'accessId'='<yourAccessId>',
