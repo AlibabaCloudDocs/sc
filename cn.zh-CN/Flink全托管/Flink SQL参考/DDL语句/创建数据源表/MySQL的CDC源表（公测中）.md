@@ -18,8 +18,8 @@ MySQL的CDC源表，即MySQL的流式源表，支持对MySQL数据库的全量�
 
 ## 使用限制
 
--   仅VVR 2.1.2及以上版本支持MySQL的CDC Connector。
 -   仅支持单并发消费CDC-MySQL数据。
+-   仅Flink计算引擎VVR 2.1.2及以上版本支持MySQL的CDC Connector。
 -   MySQL CDC 源表暂不支持定义Watermark。如果您需要进行窗口聚合，您可以采用非窗口聚合的方式，详情请参见[不支持定义Watermark，那如何进行窗口聚合？](#section_y6t_st6_f0a)
 -   MySQL的CDC源表需要一个有特定权限（包括SELECT、RELOAD、SHOW DATABASES、REPLICATION SLAVE和REPLICATION CLIENT）的MySQL用户，才能读取全量和增量数据。MySQL CDC Connector支持读取的MySQL版本为5.7和8.0。
 
