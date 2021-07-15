@@ -6,10 +6,7 @@ keyword: 创建交互式分析Hologres结果表
 
 本文为您介绍交互式分析Hologres结果表DDL定义、WITH参数、流式语义和类型映射。
 
-**说明：**
-
--   Hologres Connector不支持将结果数据写入Hologres外部表。Hologres外部表详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
--   Hologres Connector可以作为Stream作业和Batch作业的结果表使用。
+**说明：** Hologres Connector可以作为Stream作业和Batch作业的结果表使用。
 
 ## 什么是交互式分析Hologres
 
@@ -18,6 +15,11 @@ keyword: 创建交互式分析Hologres结果表
 ## 前提条件
 
 已创建Hologres表，详情请参见[表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/表.md)。
+
+## 使用限制
+
+-   仅Flink计算引擎VVR 2.0.0及以上版本支持交互式分析Hologres Connector。
+-   Hologres Connector不支持将结果数据写入Hologres外部表。Hologres外部表详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
 
 ## DDL定义
 
