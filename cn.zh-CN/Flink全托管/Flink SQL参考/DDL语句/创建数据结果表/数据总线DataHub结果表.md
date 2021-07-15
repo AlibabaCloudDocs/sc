@@ -14,6 +14,10 @@ keyword: [DataHub, 结果表]
 
 已创建DataHub的Project和Topic，详情请参见[创建Project和Topic]()。
 
+## 使用限制
+
+仅Flink计算引擎VVR 2.0.0及以上版本支持数据总线DataHub Connector。
+
 ## DDL定义
 
 ```
@@ -21,7 +25,7 @@ create table datahub_sink(
   name varchar,
   age BIGINT,
   birthday BIGINT
-) with (
+) WITH (
   'connector'='datahub',
   'endpoint'='<endPoint>',
   'project'='<yourProjectName>',
