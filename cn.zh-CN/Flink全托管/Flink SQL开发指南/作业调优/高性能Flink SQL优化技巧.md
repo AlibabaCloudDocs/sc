@@ -56,7 +56,7 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
 
     -   适用场景
 
-        微批处理通过增加延迟换取高吞吐，如果您有超低延迟的要求，不建议开启微批处理。通常对于聚合场景，微批处理可以显著的提升系统性能，建议开启。
+        微批处理通过增加延迟换取高吞吐，如果您有超低延迟的要求，不建议开启微批处理。通常对于聚合场景，微批处理可以显著地提升系统性能，建议开启。
 
     -   开启方式
 
@@ -222,7 +222,7 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
         cache_hit = cache_size*parallelism/top_n/partition_key_num
         ```
 
-        例如，Top100配置缓存10000条，并发50，当您的PatitionBy的key维度较大时，例如10万级别时，Cache命中率只有10000\*50/100/100000=5%，命中率会很低，导致大量的请求都会击中State（磁盘），性能会大幅下降。因此当PartitionBy的Key维度特别大时，可以适当加大TopN的Cache Size，相对应的也建议适当加大TopN节点的Heap Memory。
+        例如，Top100配置缓存10000条，并发50，当您的PatitionBy的Key维度较大时，例如10万级别时，Cache命中率只有10000\*50/100/100000=5%，命中率会很低，导致大量的请求都会击中State（磁盘），性能会大幅下降。因此当PartitionBy的Key维度特别大时，可以适当加大TopN的Cache Size，相对应地也建议适当加大TopN节点的Heap Memory。
 
         ```
         blink.topn.cache.size: 200000
@@ -241,7 +241,7 @@ keyword: [Flink SQL优化, 热点, 数据倾斜]
 
 -   语法
 
-    由于SQL上没有直接支持去重的语法，还要灵活的保留第一条或保留最后一条。因此我们使用了SQL的ROW\_NUMBER OVER WINDOW功能来实现去重语法。去重本质上是一种特殊的TopN。
+    由于SQL上没有直接支持去重的语法，还要灵活地保留第一条或保留最后一条。因此我们使用了SQL的ROW\_NUMBER OVER WINDOW功能来实现去重语法。去重本质上是一种特殊的TopN。
 
     ```
     SELECT *
