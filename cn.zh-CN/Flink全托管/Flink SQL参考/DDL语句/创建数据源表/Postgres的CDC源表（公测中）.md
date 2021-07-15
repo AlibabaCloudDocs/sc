@@ -20,7 +20,7 @@ Postgres的CDC源表，即Postgres的流式源表，用于依次读取PostgreSQL
 
 ## 使用限制
 
-仅VVR 2.1.2及以上版本支持Postgres的CDC Connector。
+仅Flink计算引擎VVR 2.1.2及以上版本支持Postgres的CDC Connector。
 
 ## DDL定义
 
