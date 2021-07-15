@@ -14,8 +14,12 @@ keyword: [Elasticsearch, ES, 维表]
 
 ## 前提条件
 
--   已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/cn.zh-CN/Elasticsearch/快速开始.md)。
+-   已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/cn.zh-CN/Elasticsearch/快速入门.md)。
 -   已配置Elasticsearch公网或私网访问白名单，详情请参见[配置Elasticsearch公网或私网访问白名单](/cn.zh-CN/Elasticsearch/安全配置/配置Elasticsearch公网或私网访问白名单.md)。
+
+## 使用限制
+
+仅Flink计算引擎VVR 2.0.0及以上版本支持Elasticsearch Connector。
 
 ## DDL定义
 
