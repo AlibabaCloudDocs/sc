@@ -18,6 +18,7 @@ keyword: [Hologres, 维表, 交互式分析]
 
 ## 使用限制
 
+-   仅Flink计算引擎VVR 2.0.0及以上版本支持交互式分析Hologres Connector。
 -   创建Hologres维表时建议选择行存模式，列存模式对于点查场景性能开销较大。
 
     选择行存模式创建维表时必须设置主键，并且将主键设置为clustering key才可以工作。示例语句如下：
