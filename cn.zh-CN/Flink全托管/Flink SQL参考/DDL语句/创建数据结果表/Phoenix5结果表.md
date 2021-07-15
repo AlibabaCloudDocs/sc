@@ -16,6 +16,10 @@ HBase SQL服务基于Phoenix 5.x为HBase 2.x提供SQL能力，通过轻客户端
 
 已开通HBase SQL服务，详情请参见[HBase SQL\(Phoenix\) 5.x 使用说明]()。
 
+## 使用限制
+
+仅Flink计算引擎VVR 2.0.0及以上版本支持Phoenix5 Connector。
+
 ## DDL定义
 
 ```
