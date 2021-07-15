@@ -16,7 +16,7 @@ keyword: [增量MaxCompute, 源表]
 
 ## 使用限制
 
-仅VVR 2.1.2及以上版本支持增量MaxCompute Connector。
+仅Flink计算引擎VVR 2.1.2及以上版本支持增量MaxCompute Connector。
 
 ## DDL定义
 
