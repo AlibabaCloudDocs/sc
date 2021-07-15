@@ -20,7 +20,7 @@ Upsert Kafka基于开源Flink社区的Upsert-Kafka版本实现，详情请参见
 
 ## 使用限制
 
-仅VVR 3.0.1及以上版本支持Upsert Kafka Connector。
+仅Flink计算引擎VVR 3.0.1及以上版本支持Upsert Kafka Connector。
 
 ## DDL定义
 
