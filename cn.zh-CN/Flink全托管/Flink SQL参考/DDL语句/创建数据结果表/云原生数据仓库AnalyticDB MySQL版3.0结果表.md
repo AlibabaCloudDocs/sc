@@ -15,6 +15,10 @@ keyword: [云原生数据仓库AnalyticDB MySQL版, 3.0, 云原生数据仓库An
 -   已创建AnalyticDB MySQL集群并创建表，详情请参见[创建集群]()和[CREATE TABLE]()。
 -   已设置白名单，详情请参见[设置白名单]()。
 
+## 使用限制
+
+仅Flink计算引擎VVR 2.0.0及以上版本支持云原生数据仓库AnalyticDB MySQL版3.0 Connector。
+
 ## DDL定义
 
 ```
