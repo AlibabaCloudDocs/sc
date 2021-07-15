@@ -10,6 +10,10 @@ keyword: 创建FileSystem维表
 
 已创建OSS存储空间，详细请参见[创建存储空间](/cn.zh-CN/快速入门/控制台快速入门/创建存储空间.md)。
 
+## 使用限制
+
+仅Flink计算引擎VVR 3.0.0及以上版本支持FileSystem Connector。
+
 ## DDL定义
 
 ```
