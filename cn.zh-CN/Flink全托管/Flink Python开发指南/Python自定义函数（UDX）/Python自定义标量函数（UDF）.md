@@ -45,7 +45,7 @@ keyword: [自定义标量函数, UDF, Python自定义标量函数]
     zip -r python_demo.zip udx
     ```
 
-    \\python\_demo-master\\目录下会出现python\_demo.zipZIP包，即代表完成了Python UDF的开发工作。
+    \\python\_demo-master\\目录下会出现python\_demo.zip的ZIP包，即代表完成了Python UDF的开发工作。
 
 
 ## UDF注册
