@@ -16,7 +16,7 @@ keyword: [DataHub, 源表]
 
 ## 使用限制
 
-仅VVR 2.0.0及以上版本支持数据总线DataHub Connector。
+仅Flink计算引擎VVR 2.0.0及以上版本支持数据总线DataHub Connector。
 
 ## DDL定义
 
