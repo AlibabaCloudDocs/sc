@@ -12,7 +12,7 @@ Datagen源表是系统内置的Connector，可以周期性地生成Datagen源表
 
 ## 使用限制
 
-仅VVR 2.0.0及以上版本支持Datagen Connector。
+仅Flink计算引擎VVR 2.0.0及以上版本支持Datagen Connector。
 
 ## DDL定义
 
