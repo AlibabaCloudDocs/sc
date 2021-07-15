@@ -37,12 +37,12 @@
 
 |参数|说明|是否必选|默认值|
 |--|--|----|---|
-|type|connector类型|是|elasticsearch|
+|type|connector类型。|是|elasticsearch|
 |endPoint|Server地址，例入：http://127.0.0.1:9211。|是|无|
-|accessId|创建ES时的登录名**说明：** 如果您通过Kibana插件操作ES，请填写Kibana登录ID。
+|accessId|创建ES时的登录名。**说明：** 如果您通过Kibana插件操作ES，请填写Kibana登录ID。
 
 |是|无|
-|accessKey|创建ES时的登录密码 **说明：** 如果您通过Kibana插件操作ES，请填写Kibana登录密码。
+|accessKey|创建ES时的登录密码 。**说明：** 如果您通过Kibana插件操作ES，请填写Kibana登录密码。
 
 |是|无|
 |index|索引名称。|是|无|
@@ -55,24 +55,22 @@
 |multiThread|是否开启JestClient多线程。|否|true|
 |ignoreWriteError|是否忽略写入异常。|否|false|
 |settings|创建Index的Settings配置。|否|无|
-|updateMode|指定主键（PRIMARY KEY）后的更新模式：-   full：全量覆盖
--   inc：增量更新
+|updateMode|指定主键（PRIMARY KEY）后的更新模式：-   full：全量覆盖。
+-   inc：增量更新。
 
 |否|full|
 
 ## WITH参数（动态索引相关）
 
-|参数|说明|默认值|是否必选|
-|--|--|---|----|
-|dynamicIndex|是否开启动态索引：-   true：开启
--   false：不开启
-
-|false|否|
-|indexField|抽取索引的字段名|无|dynamicIndex为true时必填，只支持TIMESTAMP（以秒为单位）、DATE和LONG3种数据类型。|
-|indexInterval|切换索引的周期|d|dynamicIndex为true时必填 ，可选参数值如下： -   d：天
+|参数|说明|是否必选|备注|
+|--|--|----|--|
+|dynamicIndex|是否开启动态索引。|否|参数取值如下：-   true：开启。
+-   false（默认值）：不开启。 |
+|indexField|抽取索引的字段名。|dynamicIndex为true时必填。|只支持TIMESTAMP（以秒为单位）、DATE和LONG3种数据类型。|
+|indexInterval|切换索引的周期。|dynamicIndex为true时必填。|参数值如下： -   d（默认值）：天
 -   m：月
 -   w：周 |
-|mapping|启用动态索引时，设置文档各字段的类型与格式。|空|否。Blink 3.7.0版本及以上版本支持该参数。例如，设置名为sendTime字段的格式：```
+|mapping|启用动态索引时，设置文档各字段的类型与格式。例如，设置名为sendTime字段的格式：```
 {
  "properties": {    
  "sendTime": {     
@@ -81,7 +79,12 @@
     }
   }
 }
-``` |
+```
+
+|否|默认值为空。**说明：**
+
+-   Blink 3.7.0版本及以上版本支持该参数。
+-   Elasticsearch 7.0不支持mapping参数。 |
 
 **说明：**
 
