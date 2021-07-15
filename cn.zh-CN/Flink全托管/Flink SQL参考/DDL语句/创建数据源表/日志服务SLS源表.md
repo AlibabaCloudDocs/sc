@@ -16,7 +16,7 @@ keyword: [日志服务, 源表]
 
 ## 使用限制
 
-仅VVR 2.0.0及以上版本支持日志服务SLS Connector。
+仅Flink计算引擎VVR 2.0.0及以上版本支持日志服务SLS Connector。
 
 ## DDL定义
 
