@@ -6,14 +6,7 @@ keyword: [Redis, 维表]
 
 本文为您介绍云数据库Redis维表DDL定义、WITH参数、CACHE参数、类型映射和代码示例。
 
-**说明：**
-
--   Redis维表仅支持引用Redis数据存储中STRING类型的数据。
--   Redis维表必须声明且只能声明一个主键。
--   Redis维表仅支持声明两个字段，且字段类型必须为STRING。
--   维表JOIN时，ON条件必须包含所有主键的等值条件。
--   Redis仅支持None和LRU两种缓存策略。
--   支持自建Redis服务。
+**说明：** Flink支持读取自建Redis服务的数据。
 
 ## 什么是云数据库Redis版
 
@@ -22,7 +15,12 @@ keyword: [Redis, 维表]
 ## 前提条件
 
 -   已创建云数据库Redis实例，详情请参见[步骤1：创建实例](/cn.zh-CN/快速入门/步骤1：创建实例.md)。
--   已设置白名单，详情请参见[步骤2：设置白名单](/cn.zh-CN/快速入门/步骤2：设置白名单.md)
+-   已设置白名单，详情请参见[步骤2：设置白名单](/cn.zh-CN/快速入门/步骤2：设置白名单.md)。
+
+## 使用限制
+
+-   仅Flink计算引擎VVR 2.0.0及以上版本支持云数据库Redis Connector。
+-   Redis维表仅支持读取Redis数据存储中STRING类型的数据。
 
 ## DDL定义
 
@@ -39,6 +37,13 @@ CREATE TABLE redis_dim (
   'dbNum' = '<yourDbNum>'
 );
 ```
+
+**说明：**
+
+-   Redis维表必须声明且只能声明一个主键。
+-   Redis维表仅支持声明两个字段，且字段类型必须为STRING。
+-   维表JOIN时，ON条件必须包含所有主键的等值条件。
+-   Redis仅支持None和LRU两种缓存策略。
 
 ## WITH参数
 
