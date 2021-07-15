@@ -18,7 +18,7 @@ keyword: [创建交互式分析Hologres源表, Hologres源表]
 
 ## 使用限制
 
--   仅VVR 2.0.0及以上版本支持交互式分析Hologres Connector。
+-   仅Flink计算引擎VVR 2.0.0及以上版本支持交互式分析Hologres Connector。
 -   Hologres Connector不支持访问Hologres外部表。Hologres外部表详情请参见[外部表](/cn.zh-CN/连接开发工具/HoloWeb/连接管理/MaxCompute加速/外部表.md)。
 -   Flink默认以批模式读取Hologres源表数据，即只扫描一次Hologres全表，扫描结束，消费结束，新到Hologres源表的数据不会被读取。从VVR 3.0.0版本开始，支持实时消费Hologres数据。如何实时消费Hologres数据，请参见[Flink实时消费Hologres](#section_lih_mxx_vik)。
 
