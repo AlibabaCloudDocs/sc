@@ -18,7 +18,7 @@ keyword: [源表, MaxCompute]
 
 ## 使用限制
 
-仅VVR 2.0.0及以上版本支持全量MaxCompute Connector。
+仅Flink计算引擎VVR 2.0.0及以上版本支持全量MaxCompute Connector。
 
 ## DDL定义
 
@@ -55,8 +55,6 @@ create table odps_source(
 |partition|分区名。|否|-   只存在一级分区的MaxCompute表
 
 例如，如果只存在1个分区列`ds`，则``partition` = 'ds=20180905'`表示读`ds=20180905`分区的数据。
-
-，值
 
 -   存在多级分区的MaxCompute表
 
