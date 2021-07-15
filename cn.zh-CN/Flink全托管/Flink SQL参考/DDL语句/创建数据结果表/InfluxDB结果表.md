@@ -10,6 +10,14 @@ keyword: [InfluxDB结果表, InfluxDB]
 
 时序数据库InfluxDB®版是一款专门处理高写入和查询负载的时序数据库，用于存储大规模的时序数据并进行实时分析，包括来自DevOps监控、应用指标和IoT传感器上的数据。时序数据库InfluxDB®版详情请参见[InfluxDB®️介绍]()。
 
+## 前提条件
+
+已创建InfluxDB的数据库，详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11174283.6.712.58d81426Nv5jsx)。
+
+## 使用限制
+
+仅Flink计算引擎VVR 2.1.5及以上版本支持InfluxDB Connector。
+
 ## DDL定义
 
 Flink支持使用InfluxDB作为结果表输出，示例代码如下。
@@ -64,16 +72,16 @@ CREATE TABLE stream_test_influxdb(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|结果表类型|是|固定值为influxdb。|
-|url|InfluxDB的服务地址|是|在InfluxDB中，url为VPC网络地址，例如：https://localhost:3242或http://localhost:8086。
+|connector|结果表类型。|是|固定值为influxdb。|
+|url|InfluxDB的服务地址。|是|在InfluxDB中，url为VPC网络地址，例如：https://localhost:3242或http://localhost:8086。
 
 url支持HTTP和HTTPS。 |
-|database|InfluxDB的数据库名称|是|例如db-flink。|
-|username|数据库的用户名|是|需要对目标数据库有写权限。用户名详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11186623.6.711.6709769eUmPMur)。|
-|password|数据库的密码|是|密码详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11186623.6.711.6709769eUmPMur)。|
-|batchSize|批量提交的记录条数|否|默认每次批量提交300条记录。|
-|retentionPolicy|保留策略|否|如果您不配置该参数时，该参数会被默认填写为每个数据库的默认保留策略autogen，保留策略详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11186623.6.711.6709769eUmPMur)。|
-|ignoreErrorData|是否忽略异常数据|否|取值如下：-   true：忽略异常数据。
+|database|InfluxDB的数据库名称。|是|例如db-flink。|
+|username|数据库的用户名。|是|需要对目标数据库有写权限。用户名详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11186623.6.711.6709769eUmPMur)。|
+|password|数据库的密码。|是|密码详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11186623.6.711.6709769eUmPMur)。|
+|batchSize|批量提交的记录条数。|否|默认每次批量提交300条记录。|
+|retentionPolicy|保留策略。|否|如果您不配置该参数时，该参数会被默认填写为每个数据库的默认保留策略autogen，保留策略详情请参见[管理用户账号和数据库](https://help.aliyun.com/document_detail/113095.html?spm=a2c4g.11186623.6.711.6709769eUmPMur)。|
+|ignoreErrorData|是否忽略异常数据。|否|取值如下：-   true：忽略异常数据。
 -   false（默认值）：不忽略异常数据。 |
 
 ## 类型映射
