@@ -14,6 +14,10 @@ keyword: [维表, MaxCompute]
 
 已创建MaxCompute表，详情请参见[创建表](/cn.zh-CN/快速入门/通过MaxCompute客户端使用MaxCompute/创建表.md)。
 
+## 使用限制
+
+仅Flink计算引擎VVR 2.0.0及以上版本支持MaxCompute Connector。
+
 ## DDL定义
 
 ```
@@ -47,18 +51,18 @@ create table odps_dim(
 |参数|说明|是否必填|备注|
 |--|--|----|--|
 |connector|维表类型。|是|固定值为`odps`。|
-|endPoint|MaxCompute服务地址。|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
-|tunnelEndpoint|MaxCompute Tunnel服务的连接地址。|是|请参见[开通MaxCompute服务的Region和服务连接对照表](/cn.zh-CN/准备工作/配置Endpoint.md)。|
+|endPoint|MaxCompute服务地址。|是|请参见[各地域Endpoint对照表（外网连接方式）](/cn.zh-CN/准备工作/Endpoint.md)。|
+|tunnelEndpoint|MaxCompute Tunnel服务的连接地址。|是|请参见[各地域Endpoint对照表（外网连接方式）](/cn.zh-CN/准备工作/Endpoint.md)。|
 |project|MaxCompute项目名称。|是|无。|
 |tableName|表名。|是|无。|
 |accessId|AccessKey ID。|是|无。|
 |accessKey|AccessKey Secret。|是|无。|
 |partition|分区名。|否|-   固定分区
-    -   只存在一个分区MaxCompute表
+    -   只存在一级分区的MaxCompute表
 
 例如，如果只存在1个分区列`ds`，则``partition` = 'ds=20180905'`表示读`ds=20180905`分区的数据。
 
-    -   存在多个分区的MaxCompute表
+    -   存在多级分区的MaxCompute表
 
 例如，如果存在2个分区列`ds`和`hh`，则``partition`='ds=20180905,hh=*'`表示读`ds=20180905`分区的数据。
 
