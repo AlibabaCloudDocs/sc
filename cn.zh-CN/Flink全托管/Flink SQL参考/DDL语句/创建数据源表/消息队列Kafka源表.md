@@ -17,7 +17,7 @@ keyword: [消息队列Kafka, 源表]
 
 ## 使用限制
 
--   仅VVR 2.0.0及以上版本支持消息队列Kafka Connector。
+-   仅Flink计算引擎VVR 2.0.0及以上版本支持消息队列Kafka Connector。
 -   消息队列Kafka Connector仅支持读取kafka 0.10及以上版本的数据。
 
 ## DDL定义
