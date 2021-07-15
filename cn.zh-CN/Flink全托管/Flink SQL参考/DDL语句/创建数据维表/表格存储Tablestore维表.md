@@ -14,6 +14,10 @@ keyword: [表格存储Tablestore, 维表]
 
 已创建Tablestore数据表，详情请参见[创建数据表](/cn.zh-CN/快速入门/创建数据表.md)。
 
+## 使用限制
+
+仅Flink计算引擎VVR 2.0.0及以上版本支持表格存储Tablestore Connector。
+
 ## DDL定义
 
 ```
