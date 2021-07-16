@@ -111,4 +111,5 @@ create table odps_dim(
 
 -   [max\_pt\(\)和max\_pt\_with\_done\(\)的区别是什么？](/cn.zh-CN/Flink全托管/常见问题.md)
 -   [endPoint和tunnelEndpoint是指什么？如果配置错误会产生什么结果？](/cn.zh-CN/Flink全托管/常见问题.md)
+-   [报错：ErrorMessage=Authorization Failed \[4019\], You have NO privilege'ODPS:\*\*\*'](t1916815.md#section_947_odv_kbe)
 
