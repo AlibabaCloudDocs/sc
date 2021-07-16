@@ -119,5 +119,5 @@ FROM odps_source GROUP BY cid;
 -   [全量MaxCompute和增量MaxCompute是如何读取MaxCompute数据的？](/cn.zh-CN/Flink全托管/常见问题.md)
 -   [引用MaxCompute作为数据源，在作业启动后，向已有的分区或者表里追加数据，这些新数据是否能被全量MaxCompute或增量MaxCompute源表读取？](/cn.zh-CN/Flink全托管/常见问题.md)
 -   [作业启动位点设置了2019-10-11 00:00:00， 为什么启动位点前的分区也会被全量MaxCompute源表读取？](/cn.zh-CN/Flink全托管/常见问题.md)
--   [t1916815.md\#section\_u38\_kqe\_ooj](/cn.zh-CN/Flink全托管/常见问题.md)
+-   [报错：ErrorMessage=Authorization Failed \[4019\], You have NO privilege'ODPS:\*\*\*'](t1916815.md#section_947_odv_kbe)
 
