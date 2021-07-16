@@ -175,3 +175,7 @@ create table odps_sink(
     ```
 
 
+## 常见问题
+
+[报错：ErrorMessage=Authorization Failed \[4019\], You have NO privilege'ODPS:\*\*\*'](t1916815.md#section_947_odv_kbe)
+
