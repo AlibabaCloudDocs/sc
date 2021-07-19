@@ -1,14 +1,14 @@
 ---
-keyword: [publish, publish a job, DataStream, Table API]
+keyword: [publish, publish a job, DataStream, Table API, Python]
 ---
 
 # Publish a job
 
-This topic describes how to publish DataStream API jobs and Table API jobs to clusters for running in fully managed Flink.
+This topic describes how to publish DataStream API jobs, Table API jobs, and Python API jobs to clusters for running in fully managed Flink.
 
 ## Upload a JAR package
 
-Before you run a DataStream API job or a Table API job, perform the following steps to upload the required JAR package to the console of fully managed Flink.
+Before you run a DataStream API job, Table API job, or Python API job, perform the following steps to upload a JAR package, Python job file, or Python dependency in the console of fully managed Flink:
 
 1.  Log on to the [Realtime Compute for Apache Flink console](https://realtime-compute.console.aliyun.com/regions/cn-shanghai).
 
@@ -18,10 +18,14 @@ Before you run a DataStream API job or a Table API job, perform the following st
 
 4.  In the upper-right corner of the page, click **Upload Artifact** and select the JAR package that you want to upload.
 
+    If the job is a Python API job, upload the official JAR package of PyFlink. To download the official JAR package of the required version, click [PyFlink V1.11](https://repo1.maven.org/maven2/org/apache/flink/flink-python_2.11/1.11.2/flink-python_2.11-1.11.2.jar) or [PyFlink V1.12](http://repo1.maven.org/maven2/org/apache/flink/flink-python_2.11/1.12.4/flink-python_2.11-1.12.4.jar).
+
+    **Note:** An entry point for publishing Python jobs is added to Ververica Platform \(VVP\) 2.4.0. We recommend that you publish Python jobs from this entry point. For more information, see [Overview](/intl.en-US/Fully Managed Flink/Flink Python Developer Guide/Overview.md).
+
 
 ## Create a job
 
-1.  Log on to the console of fully managed Flink and create a job.
+1.  Log on to the console of fully managed Flink to create a job.
 
     1.  Log on to the [Realtime Compute for Apache Flink console](https://realtime-compute.console.aliyun.com/regions/cn-shanghai).
 
@@ -36,50 +40,58 @@ Before you run a DataStream API job or a Table API job, perform the following st
         |Parameter|Description|
         |---------|-----------|
         |**Name**|The name of the job that you want to create. **Note:** The job name must be unique in the project. |
-        |**Type**|The following job types are supported:        -   SQL
+        |**Type**|Streaming and batch jobs support the following file types:        -   SQL
         -   JAR
         -   PYTHON
-Select STREAM / JAR for Type. |
-        |**Deployment Target**|The cluster in which the job is deployed. You must select a cluster type before you can select a cluster. Two cluster types are supported: **Per-Job Clusters** and **Session Clusters**. Per-Job Clusters is the default cluster type.|
+**Note:** VVR 3.0.1 and later and VVP 2.4.1 support the batch processing feature. |
+        |**Deployment Target**|The cluster in which the job is deployed. You must select a cluster type before you can select a cluster. The following cluster types are supported:        -   **Per-Job Clusters**: is suitable for jobs that consume a large number of resources or jobs that run in a continuous and stable manner. This is the default value. Each job requires an independent JobManager to isolate resources of jobs. Therefore, the resource utilization of JobManagers for jobs that process a small amount of data is low.
+        -   **Session Clusters**: is suitable for jobs that consume few resources or jobs that start and stop frequently. Multiple jobs can reuse the same JobManager. This improves the resource utilization of JobManager.
+**Note:** If you need to enable the SQL preview feature, you must select **Session Clusters** and turn on Use for SQL Editor previews. For more information, see [Debug a job](/intl.en-US/Fully Managed Flink/Flink SQL Developer Guide/Debug a job.md) and [Configure a session cluster](/intl.en-US/Fully Managed Flink/Configure a session cluster.md). |
+        |**Locate**|The folder in which the code file of the job is saved. You can also click the ![Create Folder](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/0161315261/p277156.png) icon next to an existing folder to create a subfolder. |
 
     6.  Click **OK**.
 
-2.  On the Drafts page, enter the basic configuration information.
+2.  On the Draft Editor page, enter the basic configuration information.
 
     You can directly enter the following configuration information. You can also click **YAML** in the lower-right corner of the page to directly modify the configuration information. The following table describes the parameters.
 
     |Parameter|Description|
     |---------|-----------|
-    |Deployment Target|You can change the cluster that you selected when you created the job to another one.|
-    |JAR URI|Select a file or manually upload a new file. You can drag the file that you want to upload to this field or click the ![Upload](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9217381261/p247547.png) icon on the right to select the file that you want to upload.|
-    |Entrypoint Class|The entry class of the program. **Note:** If you do not specify a main class for the JAR package, enter a standard path in the **Entrypoint Class** field. |
-    |Entrypoint main args|You can pass parameters and call them in the main method.|
-    |Additional Dependencies|    -   \(Recommended\) Select the dependency file that you uploaded.
+    |Deployment Target|You can change the cluster that you selected when you created the job.|
+    |JAR URI|Select a file or manually upload a new file. You can drag the file that you want to upload to this field or click the ![Upload](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/9217381261/p247547.png) icon on the right to select the file that you want to upload. **Note:** If the job is a Python API job, enter the download URL of the official JAR package of PyFlink. To download the official JAR package of the required version, click [PyFlink V1.11](https://repo1.maven.org/maven2/org/apache/flink/flink-python_2.11/1.11.2/flink-python_2.11-1.11.2.jar) or [PyFlink V1.12](http://repo1.maven.org/maven2/org/apache/flink/flink-python_2.11/1.12.4/flink-python_2.11-1.12.4.jar). |
+    |Entrypoint Class|The entry class of the program. If you do not specify a main class for the JAR package, enter a standard path in the **Entrypoint Class** field. **Note:** If the job is a Python API job, set Entrypoint Class to org.apache.flink.client.python.PythonDriver. |
+    |Entrypoint main args|You can pass parameters and call them in the main method. **Note:** If the job is a Python API job, upload the Python job file first. By default, after you upload the Python job file, the file is located in the /flink/usrlib/ directory of the node that runs the job.
 
-You must click Upload Artifacts in the upper-left corner of the Artifacts page or click the ![Update a JAR file](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5162152261/p164582.png) icon on the right side of **Additional Dependencies** on the **Advanced** tab of the Drafts page to upload a dependency file. The uploaded dependency file is saved in the oss://ossBucketName/artifacts/namespaces/namespaceName/\* directory.
+If the Python job file is named word\_count.py, set Entrypoint main args to `-py /flink/usrlib/word_count.py`.
 
-    -   Enter the OSS bucket where the required dependency file is stored.
+Enter a full path of the Python job file. You cannot omit or change /flink/usrlib/. |
+    |Additional Dependencies|    -   \(Recommended\) Select the dependency that you uploaded.
 
-You must upload the dependency file to the OSS bucket that corresponds to the current instance in advance. The OSS bucket to which the dependency file is uploaded must be the OSS bucket that you selected to activated fully managed Flink.
+You must click **Upload Artifacts** in the upper-left corner of the Artifacts page or click the ![Update a JAR file](https://static-aliyun-doc.oss-accelerate.aliyuncs.com/assets/img/en-US/5162152261/p164582.png) icon on the right side of **Additional Dependencies** on the Advanced tab of the Draft Editor page to upload a dependency. The uploaded dependency is saved in the oss://ossBucketName/artifacts/namespaces/namespaceName/\* directory.
 
-    -   Enter the URL of the required dependency file. Only URLs that end with file names are supported, such as http://xxxxxx/file.
+    -   Enter the OSS bucket where the required dependency is stored.
 
-You must upload the dependency file to the publicly accessible HTTP service in advance.
+You must upload the dependency to the OSS bucket that corresponds to the current instance in advance. The OSS bucket to which the dependency is uploaded must be the OSS bucket that you selected to activate fully managed Flink.
+
+    -   Enter the URL of the required dependency. Only URLs that end with file names are supported, such as http://xxxxxx/file.
+
+You must upload the dependency to the publicly accessible HTTP service in advance.
 
 **Note:**
 
-    -   When a job is running, the dependent files that are uploaded by using the preceding methods are loaded to the /flink/usrlib directory of the Pod where JobManager and Task Manager resides.
-    -   The directory of dependency files cannot be configured in jobs for session clusters. |
+    -   When a job is running, the dependency that is uploaded by using the preceding methods is loaded to the /flink/usrlib directory of the Pod where JobManager and Task Manager reside.
+    -   The directory of dependencies cannot be configured in jobs for session clusters.
+    -   If the job is a Python API job, select a Python job file and the dependencies in the Additional Dependencies field. For more information about Python dependencies, see [Manage Python dependencies](https://ci.apache.org/projects/flink/flink-docs-release-1.11/dev/python/table-api-users-guide/dependency_management.html#python-dependency). After you upload a Python dependency, the dependency is automatically located in the /flink/usrlib/ directory of the node that runs the job. |
     |Parallelism|The number of jobs that run in parallel.|
 
-3.  On the right side of the Drafts page, click the **Advanced** tab and enter the configuration information based on your business requirements.
+3.  On the right side of the Draft Editor page, click the **Advanced** tab and enter the configuration information based on your business requirements.
 
     The following table describes the parameters.
 
     |Section|Parameter|Description|
     |-------|---------|-----------|
-    |**Configuration**|Flink Version|Valid values: 1.10, 1.11, and 1.12.|
-    |Flink Image Tag|Select a Flink image tag.|
+    |**Configuration**|Flink Version|Valid values: 1.10, 1.11, and 1.12. **Note:** For Python API jobs, select Flink 1.11 or later. |
+    |Flink Image Tag|Select a Flink image tag. **Note:** For Python API jobs, select 1.11.2-vvr-2.1.1 or later. |
     |**Behavior**|Restore Strategy|The policy that restores the status of a job after the job is changed to the RUNNING state. Valid values:    -   Latest Savepoint: Restore the job from the latest savepoint.
     -   Latest State: Restore the job from the latest savepoint or checkpoint.
     -   None: Restore the job without the state. After the job is restored, the job is stateless and the calculation needs to be restarted. |
@@ -106,6 +118,6 @@ You must upload the dependency file to the publicly accessible HTTP service in a
     |Log Levels|Enter the log name and log level.|
     |Logging Profile|The log template. You can use the system template or configure a custom template.|
 
-4.  In the upper-right corner of the Drafts page, click **Publish**.
+4.  In the upper-right corner of the Draft Editor page, click **Publish**.
 
 
