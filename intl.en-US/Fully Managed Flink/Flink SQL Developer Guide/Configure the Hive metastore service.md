@@ -78,7 +78,7 @@ Before you use the Hive metastore service, take note of the following points:
             'type' = 'hive',
             'default-database' = 'default',
             'hive-version' = '<hive-version>',
-            'hive-conf-dir' = '<hive-conf-dir>'
+            'hive-conf-dir' = '<hive-conf-dir>',
             'hadoop-conf-dir' = '<hadoop-conf-dir>'
         );
         ```
