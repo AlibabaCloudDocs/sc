@@ -91,7 +91,7 @@ UDTF注册过程，请参见[管理自定义函数（UDF）](/cn.zh-CN/Flink全�
 
 在注册UDTF完成后，您就可以使用UDTF，详细的操作步骤如下。
 
-1.  Flink SQL作业开发。详情请参见[t1894286.md\#](/cn.zh-CN/Flink全托管/Flink SQL开发指南/作业开发.md)。
+1.  Flink SQL作业开发。详情请参见[作业开发](/cn.zh-CN/Flink全托管/Flink SQL开发指南/作业开发.md)。
 
     ASI\_UDTF\_Source表中message字段每行字符串按照竖线（\|）分割成多列，代码示例如下。
 
@@ -114,7 +114,7 @@ UDTF注册过程，请参见[管理自定义函数（UDF）](/cn.zh-CN/Flink全�
     FROM ASI_UDTF_Source,lateral table(ASI_UDTF(`message`)) as T(name,place);
     ```
 
-2.  在**作业列表**中，单击目标作业名称**操作**列的**启动**。
+2.  在**作业运维**页面，单击目标作业名称**操作**列的**启动**。
 
     启动成功后，ASI\_UDTF\_Sink表会被插入ASI\_UDTF\_Source表中message字段按照竖线（\|）分割成多列的字符。
 
