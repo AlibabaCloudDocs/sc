@@ -82,7 +82,7 @@ UDAF注册过程，请参见[注册UDF](/cn.zh-CN/Flink全托管/Flink SQL开发
 
 1.  Flink SQL作业开发。详情请参见[作业开发](/cn.zh-CN/Flink全托管/Flink SQL开发指南/作业开发.md)。
 
-    获取ASI\_UDAF\_Source表中a字段以b字段为权重的a字段当前数据和历史数据的均值，代码示例如下。
+    获取ASI\_UDAF\_Source表中a字段以b字段为权重的值，代码示例如下。
 
     ```
     CREATE TEMPORARY TABLE ASI_UDAF_Source (
@@ -103,7 +103,7 @@ UDAF注册过程，请参见[注册UDF](/cn.zh-CN/Flink全托管/Flink SQL开发
     FROM ASI_UDAF_Source;
     ```
 
-2.  在**作业列表**中，单击目标作业名称**操作**列的**启动**。
+2.  在**作业运维**页面，单击目标作业名称**操作**列的**启动**。
 
     启动成功后，ASI\_UDAF\_Sink表每行会被插入ASI\_UDAF\_Source表中以b字段为权重的a字段当前数据和历史数据的均值。
 
