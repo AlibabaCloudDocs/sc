@@ -4,7 +4,7 @@ keyword: [自定义表值函数, UDTF, Python自定义表值函数]
 
 # Python自定义表值函数（UDTF）
 
-本文为您介绍Python自定义表值函数（UDTF）开发、注册和使用流程。
+本文为您介绍Python自定义表值函数（UDTF）的开发、注册和使用流程。
 
 ## 定义
 
@@ -79,7 +79,7 @@ UDTF注册过程，请参见[注册UDF](/cn.zh-CN/Flink全托管/Flink SQL开发
     FROM ASI_UDTF_Source,lateral table(split(concat_ws('|', `message`, 'aa'))) as T(name,place);
     ```
 
-2.  在**作业列表**中，单击目标作业名称**操作**列的**启动**。
+2.  在**作业运维**页面，单击目标作业名称**操作**列的**启动**。
 
     启动成功后，ASI\_UDTF\_Sink表会被插入两列数据，这两列数据是ASI\_UDTF\_Source表中message和aa字段按照竖线（\|）连接后，再按照竖线（\|）分割成多列的字符。
 
