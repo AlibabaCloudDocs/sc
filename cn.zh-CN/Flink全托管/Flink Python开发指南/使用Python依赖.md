@@ -15,19 +15,7 @@
 
 1.  准备Python 3.7的虚拟环境。
 
-    1.  在本地准备bulid.sh脚本，其内容如下。
-
-        ```
-        #!/bin/bash
-        set -e -x
-        yum install -y zip wget
-        
-        cd /root/
-        bash /build/setup-pyflink-virtual-env.sh
-        mv venv.zip /build/
-        ```
-
-    2.  在本地准备setup-pyflink-virtual-env.sh脚本，其内容如下。
+    1.  在本地准备setup-pyflink-virtual-env.sh脚本，其内容如下。
 
         ```
         set -e
@@ -55,6 +43,18 @@
         
         # 将准备好的Conda Python虚拟环境打包。
         zip -r venv.zip venv
+        ```
+
+    2.  在本地准备bulid.sh脚本，其内容如下。
+
+        ```
+        #!/bin/bash
+        set -e -x
+        yum install -y zip wget
+        
+        cd /root/
+        bash /build/setup-pyflink-virtual-env.sh
+        mv venv.zip /build/
         ```
 
     3.  在CMD命令行，执行如下命令。
@@ -118,7 +118,13 @@
     下面以opencv-python-headless第三方Python包为例，介绍一下如何编译和使用该第三方Python包。
 
     1.  编译第三方Python包。
-        1.  在本地准备build.sh脚本，其内容如下。
+        1.  在本地准备requirements.txt文件，其内容如下。
+
+            ```
+            opencv-python-headless
+            ```
+
+        2.  在本地准备build.sh脚本，其内容如下。
 
             ```
             #!/bin/bash
@@ -130,12 +136,6 @@
             "${PYBIN}/pip" install --target __pypackages__ -r requirements.txt --no-deps
             cd __pypackages__ && zip -r deps.zip . && mv deps.zip ../ && cd ..
             rm -rf __pypackages__
-            ```
-
-        2.  在本地准备requirements.txt文件，其内容如下。
-
-            ```
-            opencv-python-headless
             ```
 
         3.  在CMD命令行，执行如下命令。
