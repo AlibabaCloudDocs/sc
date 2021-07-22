@@ -19,7 +19,7 @@ keyword: [Elasticsearch, ES, 源表]
 
 ## 前提条件
 
-已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/intl.zh-CN/Elasticsearch/快速开始.md)。
+已创建Elasticsearch索引，详情请参见[步骤一：创建实例](/intl.zh-CN/Elasticsearch/快速入门.md)。
 
 ## DDL定义
 
