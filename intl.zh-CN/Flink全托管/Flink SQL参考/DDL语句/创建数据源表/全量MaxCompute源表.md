@@ -12,22 +12,26 @@ keyword: [源表, MaxCompute]
 
 大数据计算服务MaxCompute（原名ODPS）是一种快速、完全托管的EB级数据仓库解决方案，致力于批量结构化数据的存储和计算，提供海量数据仓库的解决方案及分析建模服务。MaxCompute详情请参见[什么是MaxCompute](/intl.zh-CN/产品简介/什么是MaxCompute.md)。
 
+## 前提条件
+
+已创建MaxCompute表，详情请参见[创建表](/intl.zh-CN/快速入门/通过MaxCompute客户端使用MaxCompute/创建和查看表.md)。
+
 ## DDL定义
 
 ```
 create table odps_source(
-   id INT,
-   user_name VARCHAR,
-   content VARCHAR
+  id INT,
+  user_name VARCHAR,
+  content VARCHAR
 ) with (
-   'connector' = 'odps', 
-   'endpoint' = '<yourEndpoint>',
-   'tunnelEndpoint' = '<yourTunnelEndpoint>',
-   'project' = '<yourProjectName>',
-   'tablename' = '<yourTableName>',
-   'accessid' = '<yourAccessKeyId>',
-   'accesskey' = '<yourAccessKeySecret>',
-   'partition' = 'ds=2018****'
+  'connector' = 'odps', 
+  'endpoint' = '<yourEndpoint>',
+  'tunnelEndpoint' = '<yourTunnelEndpoint>',
+  'project' = '<yourProjectName>',
+  'tablename' = '<yourTableName>',
+  'accessid' = '<yourAccessKeyId>',
+  'accesskey' = '<yourAccessKeySecret>',
+  'partition' = 'ds=2018****'
 );
 ```
 
@@ -37,14 +41,14 @@ create table odps_source(
 
 |参数|说明|是否必填|备注|
 |--|--|----|--|
-|connector|源表类型|是|固定值为`odps`。|
-|endPoint|MaxCompute服务地址|是|参见[开通MaxCompute服务的Region和服务连接对照表](/intl.zh-CN/准备工作/配置Endpoint.md)。|
-|tunnelEndpoint|MaxCompute Tunnel服务的连接地址|否|参见[开通MaxCompute服务的Region和服务连接对照表](/intl.zh-CN/准备工作/配置Endpoint.md)。**说明：** VPC环境下为必填。 |
-|project|MaxCompute项目名称|是|无|
-|tableName|MaxCompute表名|是|无|
-|accessId|AccessKey ID|是|无|
-|accessKey|AccessKey Secret|是|无|
-|partition|分区名|否|-   只存在一级分区的MaxCompute表
+|connector|源表类型。|是|固定值为`odps`。|
+|endPoint|MaxCompute服务地址。|是|参见[各地域Endpoint对照表（外网连接方式）](/intl.zh-CN/准备工作/配置Endpoint.md)。|
+|tunnelEndpoint|MaxCompute Tunnel服务的连接地址。|否|参见[各地域Endpoint对照表（外网连接方式）](/intl.zh-CN/准备工作/配置Endpoint.md)。**说明：** VPC环境下为必填。 |
+|project|MaxCompute项目名称。|是|无|
+|tableName|MaxCompute表名。|是|无|
+|accessId|AccessKey ID。|是|无|
+|accessKey|AccessKey Secret。|是|无|
+|partition|分区名。|否|-   只存在一级分区的MaxCompute表
 
 例如，如果只存在1个分区列`ds`，则``partition` = 'ds=20180905'`表示读`ds=20180905`分区的数据。
 
@@ -78,24 +82,24 @@ create table odps_source(
 
 ```
 CREATE TEMPORARY TABLE odps_source (
-   cid varchar,
-   rt DOUBLE
+  cid varchar,
+  rt DOUBLE
 ) with (
-   'connector' = 'odps', 
-   'endpoint' = '<yourEndpointName>', 
-   'tunnelEndpoint' = '<yourTunnelEndpoint>',
-   'project' = '<yourProjectName>',
-   'tablename' = '<yourTableName>',
-   'accessid' = '<yourAccessId>',
-   'accesskey' = '<yourAccessPassword>',
-   'partition' = 'ds=20180905'
+  'connector' = 'odps', 
+  'endpoint' = '<yourEndpointName>', 
+  'tunnelEndpoint' = '<yourTunnelEndpoint>',
+  'project' = '<yourProjectName>',
+  'tablename' = '<yourTableName>',
+  'accessid' = '<yourAccessId>',
+  'accesskey' = '<yourAccessPassword>',
+  'partition' = 'ds=20180905'
 );
 
 CREATE TEMPORARY TABLE blackhole_sink (
-   cid varchar,
-   invoke_count BIGINT
+  cid varchar,
+  invoke_count BIGINT
 ) with (
-   'connector'='blackhole'
+  'connector'='blackhole'
 );
 
 INSERT INTO blackhole_sink 
@@ -109,7 +113,7 @@ FROM odps_source GROUP BY cid;
 
 -   Q：endPoint和tunnelEndpoint是指什么？如果配置错误会产生什么结果？
 
-    A：endPoint和tunnelEndpoint参数说明参见[配置Endpoint](/intl.zh-CN/准备工作/配置Endpoint.md)。VPC环境中这两个参数如果配置错误可能会导致任务异常。
+    A：endPoint和tunnelEndpoint参数说明参见[Endpoint](/intl.zh-CN/准备工作/配置Endpoint.md)。VPC环境中这两个参数如果配置错误可能会导致任务异常。
 
     -   endPoint配置错误：任务上线停滞在91%的进度。
     -   tunnelEndpoint配置错误：任务运行失败。
